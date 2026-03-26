@@ -1,0 +1,23 @@
+# Entornos virtuales
+.venv_tfm/
+venv/
+env/
+
+# Archivos temporales de Python y Jupyter
+__pycache__/
+*.pyc
+.ipynb_checkpoints/
+
+# Datos
+data/
+datasets/
+*.csv
+*.json
+
+# Modelos entrenados de PyTorch
+*.pth
+*.pt
+*.weights
+
+# Configuración del editor
+.vscode/
