@@ -1,23 +1,57 @@
-# Entornos virtuales
-.venv_tfm/
+# ==============================================================================
+# 1. ENTORNOS VIRTUALES Y DEPENDENCIAS
+# ==============================================================================
+.venv/
 venv/
 env/
+ENV/
+dist/
+build/
+*.egg-info/
 
-# Archivos temporales de Python y Jupyter
-__pycache__/
-*.pyc
-.ipynb_checkpoints/
+# ==============================================================================
+# 2. CACHÉS DE PYTHON Y ARCHIVOS COMPILADOS
+# ==============================================================================
+**/__pycache__/
+*.py[cod]
+*$py.class
+.pytest_cache/
+.mypy_cache/
 
-# Datos
+# ==============================================================================
+# 3. DATOS, LOGS Y RESULTADOS (¡CRUCIAL PARA TU TFM!)
+# Archivos binarios pesados, datasets y miles de imágenes/CSVs generados
+# ==============================================================================
 data/
-datasets/
-*.csv
-*.json
-
-# Modelos entrenados de PyTorch
+img/
+logs/
+results/
+tmp/
 *.pth
 *.pt
-*.weights
+*.pkl
+*.h5
 
-# Configuración del editor
+# ==============================================================================
+# 4. CONFIGURACIÓN DE JUPYTER NOTEBOOKS
+# ==============================================================================
+.ipynb_checkpoints/
+*/.ipynb_checkpoints/
+
+# ==============================================================================
+# 5. ENTORNOS DE DESARROLLO (IDEs)
+# ==============================================================================
 .vscode/
+.idea/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.swp
+
+# ==============================================================================
+# 6. ARCHIVOS DEL SISTEMA OPERATIVO (WINDOWS / MAC)
+# ==============================================================================
+Thumbs.db
+desktop.ini
+.DS_Store
