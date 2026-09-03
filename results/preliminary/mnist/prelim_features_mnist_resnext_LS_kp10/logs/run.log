@@ -1,0 +1,38 @@
+2026-07-19 10:19:49,644 | INFO | run_experiments | Experiment=prelim_features_mnist_resnext_LS_kp10 | device=cuda | search_runs=5 | planned_fitness_evaluations=500
+2026-07-19 10:19:49,647 | INFO | run_experiments | Training protocol | pretrained=True | freeze_backbone=True | trainable_scope=replacement_classifier_only | representation=preextracted_features
+2026-07-19 10:19:49,647 | INFO | run_experiments | Preparing data | dataset=MNIST | model=resnext
+2026-07-19 10:19:50,164 | INFO | utils.data_utils | [Features] Tensors loaded | active_train=48000 | base_train=48000 | validation=12000 | test=10000 | classes=10
+2026-07-19 10:19:50,292 | INFO | run_experiments | Data ready | representation=preextracted_features | base_train=48000 | validation=12000 | test=10000 | classes=10 | image_size=0 | feature_dimension=2048
+2026-07-19 10:19:51,323 | INFO | run_experiments | Starting run MNIST_resnext_LS_accuracy_kp1000_seed42
+2026-07-19 10:19:51,323 | INFO | algorithms.local_search | Starting LS | target_metric=accuracy | keep_percentage=0.1000 | max_evaluations=100 | num_swaps=10
+2026-07-19 10:20:33,186 | INFO | algorithms.local_search | [LS] New best at evaluation 5/100 | accuracy=0.950000
+2026-07-19 10:26:22,221 | INFO | algorithms.local_search | [LS] New best at evaluation 48/100 | accuracy=0.950167
+2026-07-19 10:33:24,643 | INFO | algorithms.local_search | [LS] Finished | evaluations=100 | best_accuracy=0.950167
+2026-07-19 10:33:24,673 | INFO | run_experiments | Completed MNIST_resnext_LS_accuracy_kp1000_seed42 | evaluations=100 | best_accuracy=0.950167
+2026-07-19 10:33:25,516 | INFO | run_experiments | Starting run MNIST_resnext_LS_accuracy_kp1000_seed123
+2026-07-19 10:33:25,516 | INFO | algorithms.local_search | Starting LS | target_metric=accuracy | keep_percentage=0.1000 | max_evaluations=100 | num_swaps=10
+2026-07-19 10:33:41,987 | INFO | algorithms.local_search | [LS] New best at evaluation 2/100 | accuracy=0.949000
+2026-07-19 10:34:14,469 | INFO | algorithms.local_search | [LS] New best at evaluation 6/100 | accuracy=0.950000
+2026-07-19 10:37:04,800 | INFO | algorithms.local_search | [LS] New best at evaluation 27/100 | accuracy=0.950500
+2026-07-19 10:47:03,709 | INFO | algorithms.local_search | [LS] Finished | evaluations=100 | best_accuracy=0.950500
+2026-07-19 10:47:03,740 | INFO | run_experiments | Completed MNIST_resnext_LS_accuracy_kp1000_seed123 | evaluations=100 | best_accuracy=0.950500
+2026-07-19 10:47:04,595 | INFO | run_experiments | Starting run MNIST_resnext_LS_accuracy_kp1000_seed456
+2026-07-19 10:47:04,595 | INFO | algorithms.local_search | Starting LS | target_metric=accuracy | keep_percentage=0.1000 | max_evaluations=100 | num_swaps=10
+2026-07-19 10:47:37,286 | INFO | algorithms.local_search | [LS] New best at evaluation 4/100 | accuracy=0.947500
+2026-07-19 10:48:01,526 | INFO | algorithms.local_search | [LS] New best at evaluation 7/100 | accuracy=0.947833
+2026-07-19 10:48:09,615 | INFO | algorithms.local_search | [LS] New best at evaluation 8/100 | accuracy=0.948250
+2026-07-19 10:48:25,818 | INFO | algorithms.local_search | [LS] New best at evaluation 10/100 | accuracy=0.949500
+2026-07-19 10:52:14,415 | INFO | algorithms.local_search | [LS] New best at evaluation 38/100 | accuracy=0.949917
+2026-07-19 11:00:39,344 | INFO | algorithms.local_search | [LS] Finished | evaluations=100 | best_accuracy=0.949917
+2026-07-19 11:00:39,376 | INFO | run_experiments | Completed MNIST_resnext_LS_accuracy_kp1000_seed456 | evaluations=100 | best_accuracy=0.949917
+2026-07-19 11:00:40,222 | INFO | run_experiments | Starting run MNIST_resnext_LS_accuracy_kp1000_seed789
+2026-07-19 11:00:40,222 | INFO | algorithms.local_search | Starting LS | target_metric=accuracy | keep_percentage=0.1000 | max_evaluations=100 | num_swaps=10
+2026-07-19 11:01:04,608 | INFO | algorithms.local_search | [LS] New best at evaluation 3/100 | accuracy=0.949333
+2026-07-19 11:06:14,166 | INFO | algorithms.local_search | [LS] New best at evaluation 41/100 | accuracy=0.950000
+2026-07-19 11:14:15,473 | INFO | algorithms.local_search | [LS] Finished | evaluations=100 | best_accuracy=0.950000
+2026-07-19 11:14:15,506 | INFO | run_experiments | Completed MNIST_resnext_LS_accuracy_kp1000_seed789 | evaluations=100 | best_accuracy=0.950000
+2026-07-19 11:14:16,348 | INFO | run_experiments | Starting run MNIST_resnext_LS_accuracy_kp1000_seed1024
+2026-07-19 11:14:16,349 | INFO | algorithms.local_search | Starting LS | target_metric=accuracy | keep_percentage=0.1000 | max_evaluations=100 | num_swaps=10
+2026-07-19 11:27:51,187 | INFO | algorithms.local_search | [LS] Finished | evaluations=100 | best_accuracy=0.948667
+2026-07-19 11:27:51,218 | INFO | run_experiments | Completed MNIST_resnext_LS_accuracy_kp1000_seed1024 | evaluations=100 | best_accuracy=0.948667
+2026-07-19 11:27:51,540 | INFO | run_experiments | Experiment completed successfully: prelim_features_mnist_resnext_LS_kp10

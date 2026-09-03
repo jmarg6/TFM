@@ -1,0 +1,60 @@
+{
+  "allocation_method": "proportional_largest_remainder",
+  "classes": {
+    "0": {
+      "available_instances": 4000,
+      "selected_fraction_within_class": 0.25,
+      "selected_instances": 1000
+    },
+    "1": {
+      "available_instances": 4000,
+      "selected_fraction_within_class": 0.25,
+      "selected_instances": 1000
+    },
+    "2": {
+      "available_instances": 4000,
+      "selected_fraction_within_class": 0.25,
+      "selected_instances": 1000
+    },
+    "3": {
+      "available_instances": 4000,
+      "selected_fraction_within_class": 0.25,
+      "selected_instances": 1000
+    },
+    "4": {
+      "available_instances": 4000,
+      "selected_fraction_within_class": 0.25,
+      "selected_instances": 1000
+    },
+    "5": {
+      "available_instances": 4000,
+      "selected_fraction_within_class": 0.25,
+      "selected_instances": 1000
+    },
+    "6": {
+      "available_instances": 4000,
+      "selected_fraction_within_class": 0.25,
+      "selected_instances": 1000
+    },
+    "7": {
+      "available_instances": 4000,
+      "selected_fraction_within_class": 0.25,
+      "selected_instances": 1000
+    },
+    "8": {
+      "available_instances": 4000,
+      "selected_fraction_within_class": 0.25,
+      "selected_instances": 1000
+    },
+    "9": {
+      "available_instances": 4000,
+      "selected_fraction_within_class": 0.25,
+      "selected_instances": 1000
+    }
+  },
+  "keep_percentage": 0.25,
+  "sampling_method": "uniform_without_replacement_within_class",
+  "search_seed": 42,
+  "selected_instances": 10000,
+  "total_instances": 40000
+}

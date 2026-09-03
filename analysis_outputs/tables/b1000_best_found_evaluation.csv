@@ -1,0 +1,21 @@
+dataset_name,method,retention,mean_best_found_evaluation,median_best_found_evaluation,max_best_found_evaluation
+CIFAR-10,GA,10,346.2,241.0,633
+CIFAR-10,GA,25,281.2,169.0,575
+CIFAR-10,GA,50,335.0,446.0,716
+CIFAR-10,GA,75,543.0,648.0,998
+CIFAR-10,GA,90,494.4,645.0,790
+CIFAR-10,RS,10,655.8,722.0,788
+CIFAR-10,RS,25,322.8,192.0,673
+CIFAR-10,RS,50,251.0,241.0,465
+CIFAR-10,RS,75,596.4,727.0,752
+CIFAR-10,RS,90,296.8,245.0,670
+Tiny ImageNet,GA,10,269.8,266.0,410
+Tiny ImageNet,GA,25,396.0,574.0,599
+Tiny ImageNet,GA,50,463.0,435.0,713
+Tiny ImageNet,GA,75,541.6,619.0,707
+Tiny ImageNet,GA,90,402.8,339.0,861
+Tiny ImageNet,RS,10,435.0,608.0,708
+Tiny ImageNet,RS,25,451.0,453.0,854
+Tiny ImageNet,RS,50,544.6,638.0,745
+Tiny ImageNet,RS,75,569.4,588.0,763
+Tiny ImageNet,RS,90,657.4,623.0,914

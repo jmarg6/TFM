@@ -1,0 +1,49 @@
+2026-07-20 22:20:25,646 | INFO | run_experiments | Experiment=prelim_features_mnist_swintransformer_LS_kp50 | device=cuda | search_runs=5 | planned_fitness_evaluations=500
+2026-07-20 22:20:25,649 | INFO | run_experiments | Training protocol | pretrained=True | freeze_backbone=True | trainable_scope=replacement_classifier_only | representation=preextracted_features
+2026-07-20 22:20:25,649 | INFO | run_experiments | Preparing data | dataset=MNIST | model=swintransformer
+2026-07-20 22:20:25,942 | INFO | utils.data_utils | [Features] Tensors loaded | active_train=48000 | base_train=48000 | validation=12000 | test=10000 | classes=10
+2026-07-20 22:20:26,070 | INFO | run_experiments | Data ready | representation=preextracted_features | base_train=48000 | validation=12000 | test=10000 | classes=10 | image_size=0 | feature_dimension=768
+2026-07-20 22:20:27,251 | INFO | run_experiments | Starting run MNIST_swintransformer_LS_accuracy_kp5000_seed42
+2026-07-20 22:20:27,251 | INFO | algorithms.local_search | Starting LS | target_metric=accuracy | keep_percentage=0.5000 | max_evaluations=100 | num_swaps=10
+2026-07-20 22:21:36,815 | INFO | algorithms.local_search | [LS] New best at evaluation 4/100 | accuracy=0.967750
+2026-07-20 22:23:36,134 | INFO | algorithms.local_search | [LS] New best at evaluation 12/100 | accuracy=0.969500
+2026-07-20 22:47:40,676 | INFO | algorithms.local_search | [LS] Finished | evaluations=100 | best_accuracy=0.969500
+2026-07-20 22:47:40,734 | INFO | run_experiments | Completed MNIST_swintransformer_LS_accuracy_kp5000_seed42 | evaluations=100 | best_accuracy=0.969500
+2026-07-20 22:47:41,922 | INFO | run_experiments | Starting run MNIST_swintransformer_LS_accuracy_kp5000_seed123
+2026-07-20 22:47:41,922 | INFO | algorithms.local_search | Starting LS | target_metric=accuracy | keep_percentage=0.5000 | max_evaluations=100 | num_swaps=10
+2026-07-20 22:48:27,871 | INFO | algorithms.local_search | [LS] New best at evaluation 3/100 | accuracy=0.967500
+2026-07-20 22:50:14,680 | INFO | algorithms.local_search | [LS] New best at evaluation 9/100 | accuracy=0.967917
+2026-07-20 22:50:29,326 | INFO | algorithms.local_search | [LS] New best at evaluation 10/100 | accuracy=0.968167
+2026-07-20 23:01:01,509 | INFO | algorithms.local_search | [LS] New best at evaluation 49/100 | accuracy=0.968250
+2026-07-20 23:07:11,617 | INFO | algorithms.local_search | [LS] New best at evaluation 72/100 | accuracy=0.968667
+2026-07-20 23:15:15,013 | INFO | algorithms.local_search | [LS] Finished | evaluations=100 | best_accuracy=0.968667
+2026-07-20 23:15:15,072 | INFO | run_experiments | Completed MNIST_swintransformer_LS_accuracy_kp5000_seed123 | evaluations=100 | best_accuracy=0.968667
+2026-07-20 23:15:16,195 | INFO | run_experiments | Starting run MNIST_swintransformer_LS_accuracy_kp5000_seed456
+2026-07-20 23:15:16,195 | INFO | algorithms.local_search | Starting LS | target_metric=accuracy | keep_percentage=0.5000 | max_evaluations=100 | num_swaps=10
+2026-07-20 23:16:18,509 | INFO | algorithms.local_search | [LS] New best at evaluation 4/100 | accuracy=0.965667
+2026-07-20 23:17:23,837 | INFO | algorithms.local_search | [LS] New best at evaluation 8/100 | accuracy=0.967250
+2026-07-20 23:20:38,669 | INFO | algorithms.local_search | [LS] New best at evaluation 20/100 | accuracy=0.967667
+2026-07-20 23:38:30,590 | INFO | algorithms.local_search | [LS] New best at evaluation 88/100 | accuracy=0.968083
+2026-07-20 23:41:30,855 | INFO | algorithms.local_search | [LS] Finished | evaluations=100 | best_accuracy=0.968083
+2026-07-20 23:41:30,911 | INFO | run_experiments | Completed MNIST_swintransformer_LS_accuracy_kp5000_seed456 | evaluations=100 | best_accuracy=0.968083
+2026-07-20 23:41:32,035 | INFO | run_experiments | Starting run MNIST_swintransformer_LS_accuracy_kp5000_seed789
+2026-07-20 23:41:32,035 | INFO | algorithms.local_search | Starting LS | target_metric=accuracy | keep_percentage=0.5000 | max_evaluations=100 | num_swaps=10
+2026-07-20 23:42:01,403 | INFO | algorithms.local_search | [LS] New best at evaluation 2/100 | accuracy=0.967500
+2026-07-20 23:42:59,872 | INFO | algorithms.local_search | [LS] New best at evaluation 6/100 | accuracy=0.967750
+2026-07-20 23:43:14,526 | INFO | algorithms.local_search | [LS] New best at evaluation 7/100 | accuracy=0.968250
+2026-07-20 23:45:28,426 | INFO | algorithms.local_search | [LS] New best at evaluation 16/100 | accuracy=0.969333
+2026-07-20 23:47:10,564 | INFO | algorithms.local_search | [LS] New best at evaluation 23/100 | accuracy=0.969750
+2026-07-21 00:01:05,766 | INFO | algorithms.local_search | [LS] New best at evaluation 74/100 | accuracy=0.969833
+2026-07-21 00:07:49,803 | INFO | algorithms.local_search | [LS] Finished | evaluations=100 | best_accuracy=0.969833
+2026-07-21 00:07:49,878 | INFO | run_experiments | Completed MNIST_swintransformer_LS_accuracy_kp5000_seed789 | evaluations=100 | best_accuracy=0.969833
+2026-07-21 00:07:50,997 | INFO | run_experiments | Starting run MNIST_swintransformer_LS_accuracy_kp5000_seed1024
+2026-07-21 00:07:50,998 | INFO | algorithms.local_search | Starting LS | target_metric=accuracy | keep_percentage=0.5000 | max_evaluations=100 | num_swaps=10
+2026-07-21 00:08:20,099 | INFO | algorithms.local_search | [LS] New best at evaluation 2/100 | accuracy=0.966833
+2026-07-21 00:09:47,700 | INFO | algorithms.local_search | [LS] New best at evaluation 8/100 | accuracy=0.967083
+2026-07-21 00:10:02,309 | INFO | algorithms.local_search | [LS] New best at evaluation 9/100 | accuracy=0.967167
+2026-07-21 00:11:30,248 | INFO | algorithms.local_search | [LS] New best at evaluation 15/100 | accuracy=0.967250
+2026-07-21 00:12:14,707 | INFO | algorithms.local_search | [LS] New best at evaluation 18/100 | accuracy=0.968333
+2026-07-21 00:21:41,856 | INFO | algorithms.local_search | [LS] New best at evaluation 56/100 | accuracy=0.968417
+2026-07-21 00:34:00,676 | INFO | algorithms.local_search | [LS] Finished | evaluations=100 | best_accuracy=0.968417
+2026-07-21 00:34:00,734 | INFO | run_experiments | Completed MNIST_swintransformer_LS_accuracy_kp5000_seed1024 | evaluations=100 | best_accuracy=0.968417
+2026-07-21 00:34:01,023 | INFO | run_experiments | Experiment completed successfully: prelim_features_mnist_swintransformer_LS_kp50

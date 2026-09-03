@@ -1,0 +1,53 @@
+2026-07-18 13:09:03,590 | INFO | run_experiments | Experiment=prelim_features_mnist_alexnet_RS_kp75 | device=cuda | search_runs=5 | planned_fitness_evaluations=500
+2026-07-18 13:09:03,592 | INFO | run_experiments | Training protocol | pretrained=True | freeze_backbone=True | trainable_scope=replacement_classifier_only | representation=preextracted_features
+2026-07-18 13:09:03,592 | INFO | run_experiments | Preparing data | dataset=MNIST | model=alexnet
+2026-07-18 13:09:23,576 | INFO | utils.data_utils | [Features] Tensors loaded | active_train=48000 | base_train=48000 | validation=12000 | test=10000 | classes=10
+2026-07-18 13:09:23,719 | INFO | run_experiments | Data ready | representation=preextracted_features | base_train=48000 | validation=12000 | test=10000 | classes=10 | image_size=0 | feature_dimension=4096
+2026-07-18 13:09:24,732 | INFO | run_experiments | Starting run MNIST_alexnet_RS_accuracy_kp7500_seed42
+2026-07-18 13:09:24,732 | INFO | algorithms.random_search | Starting RS | target_metric=accuracy | keep_percentage=0.7500 | max_evaluations=100
+2026-07-18 13:09:57,127 | INFO | algorithms.random_search | [RS] New best at evaluation 1/100 | accuracy=0.971250
+2026-07-18 13:10:28,587 | INFO | algorithms.random_search | [RS] New best at evaluation 2/100 | accuracy=0.972500
+2026-07-18 13:12:02,868 | INFO | algorithms.random_search | [RS] New best at evaluation 5/100 | accuracy=0.974167
+2026-07-18 13:27:10,960 | INFO | algorithms.random_search | [RS] New best at evaluation 34/100 | accuracy=0.974833
+2026-07-18 13:43:24,636 | INFO | algorithms.random_search | [RS] New best at evaluation 65/100 | accuracy=0.975417
+2026-07-18 13:45:30,367 | INFO | algorithms.random_search | [RS] New best at evaluation 69/100 | accuracy=0.976000
+2026-07-18 14:01:43,188 | INFO | algorithms.random_search | [RS] Finished | evaluations=100 | best_accuracy=0.976000
+2026-07-18 14:01:43,266 | INFO | run_experiments | Completed MNIST_alexnet_RS_accuracy_kp7500_seed42 | evaluations=100 | best_accuracy=0.976000
+2026-07-18 14:01:44,300 | INFO | run_experiments | Starting run MNIST_alexnet_RS_accuracy_kp7500_seed123
+2026-07-18 14:01:44,301 | INFO | algorithms.random_search | Starting RS | target_metric=accuracy | keep_percentage=0.7500 | max_evaluations=100
+2026-07-18 14:02:15,751 | INFO | algorithms.random_search | [RS] New best at evaluation 1/100 | accuracy=0.970250
+2026-07-18 14:02:47,178 | INFO | algorithms.random_search | [RS] New best at evaluation 2/100 | accuracy=0.972583
+2026-07-18 14:04:21,662 | INFO | algorithms.random_search | [RS] New best at evaluation 5/100 | accuracy=0.973250
+2026-07-18 14:04:53,171 | INFO | algorithms.random_search | [RS] New best at evaluation 6/100 | accuracy=0.975167
+2026-07-18 14:14:51,141 | INFO | algorithms.random_search | [RS] New best at evaluation 25/100 | accuracy=0.975583
+2026-07-18 14:50:03,709 | INFO | algorithms.random_search | [RS] New best at evaluation 92/100 | accuracy=0.976000
+2026-07-18 14:54:15,480 | INFO | algorithms.random_search | [RS] Finished | evaluations=100 | best_accuracy=0.976000
+2026-07-18 14:54:15,556 | INFO | run_experiments | Completed MNIST_alexnet_RS_accuracy_kp7500_seed123 | evaluations=100 | best_accuracy=0.976000
+2026-07-18 14:54:16,587 | INFO | run_experiments | Starting run MNIST_alexnet_RS_accuracy_kp7500_seed456
+2026-07-18 14:54:16,587 | INFO | algorithms.random_search | Starting RS | target_metric=accuracy | keep_percentage=0.7500 | max_evaluations=100
+2026-07-18 14:54:48,176 | INFO | algorithms.random_search | [RS] New best at evaluation 1/100 | accuracy=0.970583
+2026-07-18 14:55:19,754 | INFO | algorithms.random_search | [RS] New best at evaluation 2/100 | accuracy=0.971500
+2026-07-18 14:55:51,073 | INFO | algorithms.random_search | [RS] New best at evaluation 3/100 | accuracy=0.971750
+2026-07-18 14:56:22,663 | INFO | algorithms.random_search | [RS] New best at evaluation 4/100 | accuracy=0.974750
+2026-07-18 15:01:38,471 | INFO | algorithms.random_search | [RS] New best at evaluation 14/100 | accuracy=0.975417
+2026-07-18 15:31:02,987 | INFO | algorithms.random_search | [RS] New best at evaluation 70/100 | accuracy=0.975833
+2026-07-18 15:46:43,623 | INFO | algorithms.random_search | [RS] Finished | evaluations=100 | best_accuracy=0.975833
+2026-07-18 15:46:43,707 | INFO | run_experiments | Completed MNIST_alexnet_RS_accuracy_kp7500_seed456 | evaluations=100 | best_accuracy=0.975833
+2026-07-18 15:46:44,717 | INFO | run_experiments | Starting run MNIST_alexnet_RS_accuracy_kp7500_seed789
+2026-07-18 15:46:44,718 | INFO | algorithms.random_search | Starting RS | target_metric=accuracy | keep_percentage=0.7500 | max_evaluations=100
+2026-07-18 15:47:16,039 | INFO | algorithms.random_search | [RS] New best at evaluation 1/100 | accuracy=0.968000
+2026-07-18 15:47:47,425 | INFO | algorithms.random_search | [RS] New best at evaluation 2/100 | accuracy=0.970250
+2026-07-18 15:48:18,667 | INFO | algorithms.random_search | [RS] New best at evaluation 3/100 | accuracy=0.973500
+2026-07-18 15:51:26,802 | INFO | algorithms.random_search | [RS] New best at evaluation 9/100 | accuracy=0.974500
+2026-07-18 16:00:52,257 | INFO | algorithms.random_search | [RS] New best at evaluation 27/100 | accuracy=0.976417
+2026-07-18 16:39:04,021 | INFO | algorithms.random_search | [RS] Finished | evaluations=100 | best_accuracy=0.976417
+2026-07-18 16:39:04,144 | INFO | run_experiments | Completed MNIST_alexnet_RS_accuracy_kp7500_seed789 | evaluations=100 | best_accuracy=0.976417
+2026-07-18 16:39:05,172 | INFO | run_experiments | Starting run MNIST_alexnet_RS_accuracy_kp7500_seed1024
+2026-07-18 16:39:05,173 | INFO | algorithms.random_search | Starting RS | target_metric=accuracy | keep_percentage=0.7500 | max_evaluations=100
+2026-07-18 16:39:36,505 | INFO | algorithms.random_search | [RS] New best at evaluation 1/100 | accuracy=0.971667
+2026-07-18 16:40:39,228 | INFO | algorithms.random_search | [RS] New best at evaluation 3/100 | accuracy=0.973583
+2026-07-18 16:42:13,212 | INFO | algorithms.random_search | [RS] New best at evaluation 6/100 | accuracy=0.974417
+2026-07-18 16:48:30,193 | INFO | algorithms.random_search | [RS] New best at evaluation 18/100 | accuracy=0.975500
+2026-07-18 17:31:27,123 | INFO | algorithms.random_search | [RS] Finished | evaluations=100 | best_accuracy=0.975500
+2026-07-18 17:31:27,200 | INFO | run_experiments | Completed MNIST_alexnet_RS_accuracy_kp7500_seed1024 | evaluations=100 | best_accuracy=0.975500
+2026-07-18 17:31:27,541 | INFO | run_experiments | Experiment completed successfully: prelim_features_mnist_alexnet_RS_kp75

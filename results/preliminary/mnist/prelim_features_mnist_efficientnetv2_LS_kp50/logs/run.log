@@ -1,0 +1,48 @@
+2026-07-20 08:09:57,463 | INFO | run_experiments | Experiment=prelim_features_mnist_efficientnetv2_LS_kp50 | device=cuda | search_runs=5 | planned_fitness_evaluations=500
+2026-07-20 08:09:57,467 | INFO | run_experiments | Training protocol | pretrained=True | freeze_backbone=True | trainable_scope=replacement_classifier_only | representation=preextracted_features
+2026-07-20 08:09:57,468 | INFO | run_experiments | Preparing data | dataset=MNIST | model=efficientnetv2
+2026-07-20 08:10:05,748 | INFO | utils.data_utils | [Features] Tensors loaded | active_train=48000 | base_train=48000 | validation=12000 | test=10000 | classes=10
+2026-07-20 08:10:05,925 | INFO | run_experiments | Data ready | representation=preextracted_features | base_train=48000 | validation=12000 | test=10000 | classes=10 | image_size=0 | feature_dimension=1280
+2026-07-20 08:10:07,548 | INFO | run_experiments | Starting run MNIST_efficientnetv2_LS_accuracy_kp5000_seed42
+2026-07-20 08:10:07,548 | INFO | algorithms.local_search | Starting LS | target_metric=accuracy | keep_percentage=0.5000 | max_evaluations=100 | num_swaps=10
+2026-07-20 08:11:36,385 | INFO | algorithms.local_search | [LS] New best at evaluation 4/100 | accuracy=0.968583
+2026-07-20 08:11:57,603 | INFO | algorithms.local_search | [LS] New best at evaluation 5/100 | accuracy=0.969167
+2026-07-20 08:24:46,260 | INFO | algorithms.local_search | [LS] New best at evaluation 41/100 | accuracy=0.969417
+2026-07-20 08:33:19,415 | INFO | algorithms.local_search | [LS] New best at evaluation 65/100 | accuracy=0.969917
+2026-07-20 08:33:40,780 | INFO | algorithms.local_search | [LS] New best at evaluation 66/100 | accuracy=0.970000
+2026-07-20 08:45:48,453 | INFO | algorithms.local_search | [LS] Finished | evaluations=100 | best_accuracy=0.970000
+2026-07-20 08:45:48,517 | INFO | run_experiments | Completed MNIST_efficientnetv2_LS_accuracy_kp5000_seed42 | evaluations=100 | best_accuracy=0.970000
+2026-07-20 08:45:49,450 | INFO | run_experiments | Starting run MNIST_efficientnetv2_LS_accuracy_kp5000_seed123
+2026-07-20 08:45:49,450 | INFO | algorithms.local_search | Starting LS | target_metric=accuracy | keep_percentage=0.5000 | max_evaluations=100 | num_swaps=10
+2026-07-20 08:46:32,155 | INFO | algorithms.local_search | [LS] New best at evaluation 2/100 | accuracy=0.969667
+2026-07-20 08:47:36,375 | INFO | algorithms.local_search | [LS] New best at evaluation 5/100 | accuracy=0.970333
+2026-07-20 09:21:31,073 | INFO | algorithms.local_search | [LS] Finished | evaluations=100 | best_accuracy=0.970333
+2026-07-20 09:21:31,249 | INFO | run_experiments | Completed MNIST_efficientnetv2_LS_accuracy_kp5000_seed123 | evaluations=100 | best_accuracy=0.970333
+2026-07-20 09:21:32,218 | INFO | run_experiments | Starting run MNIST_efficientnetv2_LS_accuracy_kp5000_seed456
+2026-07-20 09:21:32,218 | INFO | algorithms.local_search | Starting LS | target_metric=accuracy | keep_percentage=0.5000 | max_evaluations=100 | num_swaps=10
+2026-07-20 09:22:15,224 | INFO | algorithms.local_search | [LS] New best at evaluation 2/100 | accuracy=0.968417
+2026-07-20 09:22:58,247 | INFO | algorithms.local_search | [LS] New best at evaluation 4/100 | accuracy=0.969167
+2026-07-20 09:24:02,704 | INFO | algorithms.local_search | [LS] New best at evaluation 7/100 | accuracy=0.969333
+2026-07-20 09:27:58,551 | INFO | algorithms.local_search | [LS] New best at evaluation 18/100 | accuracy=0.969417
+2026-07-20 09:31:32,888 | INFO | algorithms.local_search | [LS] New best at evaluation 28/100 | accuracy=0.970000
+2026-07-20 09:57:17,155 | INFO | algorithms.local_search | [LS] Finished | evaluations=100 | best_accuracy=0.970000
+2026-07-20 09:57:17,221 | INFO | run_experiments | Completed MNIST_efficientnetv2_LS_accuracy_kp5000_seed456 | evaluations=100 | best_accuracy=0.970000
+2026-07-20 09:57:18,153 | INFO | run_experiments | Starting run MNIST_efficientnetv2_LS_accuracy_kp5000_seed789
+2026-07-20 09:57:18,154 | INFO | algorithms.local_search | Starting LS | target_metric=accuracy | keep_percentage=0.5000 | max_evaluations=100 | num_swaps=10
+2026-07-20 09:58:01,263 | INFO | algorithms.local_search | [LS] New best at evaluation 2/100 | accuracy=0.968833
+2026-07-20 09:58:22,865 | INFO | algorithms.local_search | [LS] New best at evaluation 3/100 | accuracy=0.969083
+2026-07-20 10:01:37,867 | INFO | algorithms.local_search | [LS] New best at evaluation 12/100 | accuracy=0.969250
+2026-07-20 10:03:46,638 | INFO | algorithms.local_search | [LS] New best at evaluation 18/100 | accuracy=0.969500
+2026-07-20 10:11:17,554 | INFO | algorithms.local_search | [LS] New best at evaluation 39/100 | accuracy=0.969667
+2026-07-20 10:33:09,436 | INFO | algorithms.local_search | [LS] Finished | evaluations=100 | best_accuracy=0.969667
+2026-07-20 10:33:09,497 | INFO | run_experiments | Completed MNIST_efficientnetv2_LS_accuracy_kp5000_seed789 | evaluations=100 | best_accuracy=0.969667
+2026-07-20 10:33:10,442 | INFO | run_experiments | Starting run MNIST_efficientnetv2_LS_accuracy_kp5000_seed1024
+2026-07-20 10:33:10,442 | INFO | algorithms.local_search | Starting LS | target_metric=accuracy | keep_percentage=0.5000 | max_evaluations=100 | num_swaps=10
+2026-07-20 10:34:15,131 | INFO | algorithms.local_search | [LS] New best at evaluation 3/100 | accuracy=0.968417
+2026-07-20 10:34:58,221 | INFO | algorithms.local_search | [LS] New best at evaluation 5/100 | accuracy=0.969167
+2026-07-20 10:36:02,576 | INFO | algorithms.local_search | [LS] New best at evaluation 8/100 | accuracy=0.969333
+2026-07-20 10:39:58,826 | INFO | algorithms.local_search | [LS] New best at evaluation 19/100 | accuracy=0.969833
+2026-07-20 10:54:19,018 | INFO | algorithms.local_search | [LS] New best at evaluation 59/100 | accuracy=0.970083
+2026-07-20 11:09:03,138 | INFO | algorithms.local_search | [LS] Finished | evaluations=100 | best_accuracy=0.970083
+2026-07-20 11:09:03,213 | INFO | run_experiments | Completed MNIST_efficientnetv2_LS_accuracy_kp5000_seed1024 | evaluations=100 | best_accuracy=0.970083
+2026-07-20 11:09:03,508 | INFO | run_experiments | Experiment completed successfully: prelim_features_mnist_efficientnetv2_LS_kp50

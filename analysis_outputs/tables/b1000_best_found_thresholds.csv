@@ -1,0 +1,6 @@
+evaluation_threshold,fraction_of_runs_final_best_already_found,percentage_of_runs_final_best_already_found
+100,0.1,10.0
+250,0.35,35.0
+500,0.54,54.0
+750,0.9,90.0
+1000,1.0,100.0

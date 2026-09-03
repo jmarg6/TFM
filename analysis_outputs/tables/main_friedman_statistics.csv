@@ -1,0 +1,3 @@
+dataset,friedman_statistic,friedman_p_value
+CIFAR-10,9.0,0.02929088653488826
+Tiny ImageNet,9.719999999999999,0.021102512414100234

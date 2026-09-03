@@ -1,0 +1,21 @@
+2026-08-21 11:48:46,658 | INFO | run_experiments | Experiment=main_b1000_tinyimagenet_alexnet_GEN_kp50_seed42 | device=cuda | search_runs=1 | planned_fitness_evaluations=1000
+2026-08-21 11:48:46,663 | INFO | run_experiments | Training protocol | pretrained=True | freeze_backbone=True | trainable_scope=replacement_classifier_only | representation=preextracted_features
+2026-08-21 11:48:46,663 | INFO | run_experiments | Preparing data | dataset=TINYIMAGENET | model=alexnet
+2026-08-21 11:49:08,997 | INFO | utils.data_utils | [Features] Tensors loaded | active_train=80000 | base_train=80000 | validation=20000 | test=10000 | classes=200
+2026-08-21 11:49:09,165 | INFO | run_experiments | Data ready | representation=preextracted_features | base_train=80000 | validation=20000 | test=10000 | classes=200 | image_size=0 | feature_dimension=4096
+2026-08-21 11:49:10,379 | INFO | run_experiments | Starting run TINYIMAGENET_alexnet_GEN_accuracy_kp5000_seed42
+2026-08-21 11:49:10,379 | INFO | algorithms.genetic | Starting GEN | target_metric=accuracy | keep_percentage=0.5000 | population_size=10 | max_evaluations=1000
+2026-08-21 11:56:39,880 | INFO | algorithms.genetic | [GEN] New best at evaluation 15/1000 | generation=1 | accuracy=0.442750
+2026-08-21 11:57:09,761 | INFO | algorithms.genetic | [GEN] New best at evaluation 16/1000 | generation=1 | accuracy=0.444250
+2026-08-21 12:06:07,463 | INFO | algorithms.genetic | [GEN] New best at evaluation 34/1000 | generation=3 | accuracy=0.445350
+2026-08-21 12:13:36,212 | INFO | algorithms.genetic | [GEN] New best at evaluation 49/1000 | generation=5 | accuracy=0.445650
+2026-08-21 12:30:02,082 | INFO | algorithms.genetic | [GEN] New best at evaluation 82/1000 | generation=8 | accuracy=0.449000
+2026-08-21 13:11:50,723 | INFO | algorithms.genetic | [GEN] New best at evaluation 165/1000 | generation=18 | accuracy=0.449800
+2026-08-21 14:27:10,606 | INFO | algorithms.genetic | [GEN] New best at evaluation 313/1000 | generation=34 | accuracy=0.449850
+2026-08-21 14:31:47,064 | INFO | algorithms.genetic | [GEN] New best at evaluation 322/1000 | generation=35 | accuracy=0.452000
+2026-08-21 14:37:55,600 | INFO | algorithms.genetic | [GEN] New best at evaluation 334/1000 | generation=36 | accuracy=0.453600
+2026-08-21 14:40:59,832 | INFO | algorithms.genetic | [GEN] New best at evaluation 340/1000 | generation=37 | accuracy=0.454450
+2026-08-21 14:47:39,169 | INFO | algorithms.genetic | [GEN] New best at evaluation 353/1000 | generation=39 | accuracy=0.456000
+2026-08-21 20:20:06,324 | INFO | algorithms.genetic | [GEN] Finished | evaluations=1000 | generations=110 | best_accuracy=0.456000
+2026-08-21 20:20:06,606 | INFO | run_experiments | Completed TINYIMAGENET_alexnet_GEN_accuracy_kp5000_seed42 | evaluations=1000 | best_accuracy=0.456000
+2026-08-21 20:20:39,017 | INFO | run_experiments | Experiment completed successfully: main_b1000_tinyimagenet_alexnet_GEN_kp50_seed42

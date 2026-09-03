@@ -1,0 +1,17 @@
+2026-08-25 00:37:40,993 | INFO | run_experiments | Experiment=main_b1000_cifar10_alexnet_GEN_kp75_seed456 | device=cuda | search_runs=1 | planned_fitness_evaluations=1000
+2026-08-25 00:37:40,995 | INFO | run_experiments | Training protocol | pretrained=True | freeze_backbone=True | trainable_scope=replacement_classifier_only | representation=preextracted_features
+2026-08-25 00:37:40,995 | INFO | run_experiments | Preparing data | dataset=CIFAR10 | model=alexnet
+2026-08-25 00:37:50,654 | INFO | utils.data_utils | [Features] Tensors loaded | active_train=40000 | base_train=40000 | validation=10000 | test=10000 | classes=10
+2026-08-25 00:37:50,808 | INFO | run_experiments | Data ready | representation=preextracted_features | base_train=40000 | validation=10000 | test=10000 | classes=10 | image_size=0 | feature_dimension=4096
+2026-08-25 00:37:51,672 | INFO | run_experiments | Starting run CIFAR10_alexnet_GEN_accuracy_kp7500_seed456
+2026-08-25 00:37:51,672 | INFO | algorithms.genetic | Starting GEN | target_metric=accuracy | keep_percentage=0.7500 | population_size=10 | max_evaluations=1000
+2026-08-25 00:41:46,594 | INFO | algorithms.genetic | [GEN] New best at evaluation 11/1000 | generation=1 | accuracy=0.814000
+2026-08-25 00:46:19,314 | INFO | algorithms.genetic | [GEN] New best at evaluation 24/1000 | generation=2 | accuracy=0.816000
+2026-08-25 00:47:22,002 | INFO | algorithms.genetic | [GEN] New best at evaluation 27/1000 | generation=2 | accuracy=0.818700
+2026-08-25 01:28:59,416 | INFO | algorithms.genetic | [GEN] New best at evaluation 141/1000 | generation=15 | accuracy=0.819400
+2026-08-25 01:37:08,982 | INFO | algorithms.genetic | [GEN] New best at evaluation 164/1000 | generation=18 | accuracy=0.819500
+2026-08-25 01:37:30,245 | INFO | algorithms.genetic | [GEN] New best at evaluation 165/1000 | generation=18 | accuracy=0.821300
+2026-08-25 04:30:16,264 | INFO | algorithms.genetic | [GEN] New best at evaluation 648/1000 | generation=71 | accuracy=0.823900
+2026-08-25 06:36:26,888 | INFO | algorithms.genetic | [GEN] Finished | evaluations=1000 | generations=110 | best_accuracy=0.823900
+2026-08-25 06:36:31,951 | INFO | run_experiments | Completed CIFAR10_alexnet_GEN_accuracy_kp7500_seed456 | evaluations=1000 | best_accuracy=0.823900
+2026-08-25 06:36:56,017 | INFO | run_experiments | Experiment completed successfully: main_b1000_cifar10_alexnet_GEN_kp75_seed456

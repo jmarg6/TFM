@@ -1,0 +1,38 @@
+2026-07-20 12:14:47,752 | INFO | run_experiments | Experiment=prelim_features_mnist_efficientnetv2_GEN_kp75 | device=cuda | search_runs=5 | planned_fitness_evaluations=500
+2026-07-20 12:14:47,755 | INFO | run_experiments | Training protocol | pretrained=True | freeze_backbone=True | trainable_scope=replacement_classifier_only | representation=preextracted_features
+2026-07-20 12:14:47,755 | INFO | run_experiments | Preparing data | dataset=MNIST | model=efficientnetv2
+2026-07-20 12:14:49,750 | INFO | utils.data_utils | [Features] Tensors loaded | active_train=48000 | base_train=48000 | validation=12000 | test=10000 | classes=10
+2026-07-20 12:14:49,880 | INFO | run_experiments | Data ready | representation=preextracted_features | base_train=48000 | validation=12000 | test=10000 | classes=10 | image_size=0 | feature_dimension=1280
+2026-07-20 12:14:51,088 | INFO | run_experiments | Starting run MNIST_efficientnetv2_GEN_accuracy_kp7500_seed42
+2026-07-20 12:14:51,088 | INFO | algorithms.genetic | Starting GEN | target_metric=accuracy | keep_percentage=0.7500 | population_size=10 | max_evaluations=100
+2026-07-20 12:25:37,349 | INFO | algorithms.genetic | [GEN] New best at evaluation 22/100 | generation=2 | accuracy=0.973833
+2026-07-20 12:58:21,269 | INFO | algorithms.genetic | [GEN] New best at evaluation 89/100 | generation=9 | accuracy=0.974833
+2026-07-20 13:03:44,444 | INFO | algorithms.genetic | [GEN] Finished | evaluations=100 | generations=10 | best_accuracy=0.974833
+2026-07-20 13:03:44,533 | INFO | run_experiments | Completed MNIST_efficientnetv2_GEN_accuracy_kp7500_seed42 | evaluations=100 | best_accuracy=0.974833
+2026-07-20 13:03:45,446 | INFO | run_experiments | Starting run MNIST_efficientnetv2_GEN_accuracy_kp7500_seed123
+2026-07-20 13:03:45,446 | INFO | algorithms.genetic | Starting GEN | target_metric=accuracy | keep_percentage=0.7500 | population_size=10 | max_evaluations=100
+2026-07-20 13:09:08,408 | INFO | algorithms.genetic | [GEN] New best at evaluation 11/100 | generation=1 | accuracy=0.973000
+2026-07-20 13:16:59,310 | INFO | algorithms.genetic | [GEN] New best at evaluation 27/100 | generation=2 | accuracy=0.973250
+2026-07-20 13:52:48,340 | INFO | algorithms.genetic | [GEN] Finished | evaluations=100 | generations=10 | best_accuracy=0.973250
+2026-07-20 13:52:48,433 | INFO | run_experiments | Completed MNIST_efficientnetv2_GEN_accuracy_kp7500_seed123 | evaluations=100 | best_accuracy=0.973250
+2026-07-20 13:52:49,359 | INFO | run_experiments | Starting run MNIST_efficientnetv2_GEN_accuracy_kp7500_seed456
+2026-07-20 13:52:49,359 | INFO | algorithms.genetic | Starting GEN | target_metric=accuracy | keep_percentage=0.7500 | population_size=10 | max_evaluations=100
+2026-07-20 14:00:11,178 | INFO | algorithms.genetic | [GEN] New best at evaluation 15/100 | generation=1 | accuracy=0.973667
+2026-07-20 14:19:52,689 | INFO | algorithms.genetic | [GEN] New best at evaluation 55/100 | generation=5 | accuracy=0.974917
+2026-07-20 14:42:02,758 | INFO | algorithms.genetic | [GEN] Finished | evaluations=100 | generations=10 | best_accuracy=0.974917
+2026-07-20 14:42:02,847 | INFO | run_experiments | Completed MNIST_efficientnetv2_GEN_accuracy_kp7500_seed456 | evaluations=100 | best_accuracy=0.974917
+2026-07-20 14:42:04,007 | INFO | run_experiments | Starting run MNIST_efficientnetv2_GEN_accuracy_kp7500_seed789
+2026-07-20 14:42:04,007 | INFO | algorithms.genetic | Starting GEN | target_metric=accuracy | keep_percentage=0.7500 | population_size=10 | max_evaluations=100
+2026-07-20 15:24:32,152 | INFO | algorithms.genetic | [GEN] New best at evaluation 86/100 | generation=9 | accuracy=0.973750
+2026-07-20 15:26:30,850 | INFO | algorithms.genetic | [GEN] New best at evaluation 90/100 | generation=9 | accuracy=0.973833
+2026-07-20 15:31:27,863 | INFO | algorithms.genetic | [GEN] Finished | evaluations=100 | generations=10 | best_accuracy=0.973833
+2026-07-20 15:31:27,947 | INFO | run_experiments | Completed MNIST_efficientnetv2_GEN_accuracy_kp7500_seed789 | evaluations=100 | best_accuracy=0.973833
+2026-07-20 15:31:28,889 | INFO | run_experiments | Starting run MNIST_efficientnetv2_GEN_accuracy_kp7500_seed1024
+2026-07-20 15:31:28,890 | INFO | algorithms.genetic | Starting GEN | target_metric=accuracy | keep_percentage=0.7500 | population_size=10 | max_evaluations=100
+2026-07-20 15:43:52,748 | INFO | algorithms.genetic | [GEN] New best at evaluation 25/100 | generation=2 | accuracy=0.973500
+2026-07-20 16:00:45,931 | INFO | algorithms.genetic | [GEN] New best at evaluation 59/100 | generation=6 | accuracy=0.973583
+2026-07-20 16:12:40,792 | INFO | algorithms.genetic | [GEN] New best at evaluation 83/100 | generation=9 | accuracy=0.973667
+2026-07-20 16:19:39,357 | INFO | algorithms.genetic | [GEN] New best at evaluation 97/100 | generation=10 | accuracy=0.974000
+2026-07-20 16:21:08,887 | INFO | algorithms.genetic | [GEN] Finished | evaluations=100 | generations=10 | best_accuracy=0.974000
+2026-07-20 16:21:08,973 | INFO | run_experiments | Completed MNIST_efficientnetv2_GEN_accuracy_kp7500_seed1024 | evaluations=100 | best_accuracy=0.974000
+2026-07-20 16:21:09,276 | INFO | run_experiments | Experiment completed successfully: prelim_features_mnist_efficientnetv2_GEN_kp75

@@ -1,0 +1,1010 @@
+{
+  "allocation_method": "proportional_largest_remainder",
+  "classes": {
+    "0": {
+      "available_instances": 400,
+      "selected_fraction_within_class": 0.5,
+      "selected_instances": 200
+    },
+    "1": {
+      "available_instances": 400,
+      "selected_fraction_within_class": 0.5,
+      "selected_instances": 200
+    },
+    "10": {
+      "available_instances": 400,
+      "selected_fraction_within_class": 0.5,
+      "selected_instances": 200
+    },
+    "100": {
+      "available_instances": 400,
+      "selected_fraction_within_class": 0.5,
+      "selected_instances": 200
+    },
+    "101": {
+      "available_instances": 400,
+      "selected_fraction_within_class": 0.5,
+      "selected_instances": 200
+    },
+    "102": {
+      "available_instances": 400,
+      "selected_fraction_within_class": 0.5,
+      "selected_instances": 200
+    },
+    "103": {
+      "available_instances": 400,
+      "selected_fraction_within_class": 0.5,
+      "selected_instances": 200
+    },
+    "104": {
+      "available_instances": 400,
+      "selected_fraction_within_class": 0.5,
+      "selected_instances": 200
+    },
+    "105": {
+      "available_instances": 400,
+      "selected_fraction_within_class": 0.5,
+      "selected_instances": 200
+    },
+    "106": {
+      "available_instances": 400,
+      "selected_fraction_within_class": 0.5,
+      "selected_instances": 200
+    },
+    "107": {
+      "available_instances": 400,
+      "selected_fraction_within_class": 0.5,
+      "selected_instances": 200
+    },
+    "108": {
+      "available_instances": 400,
+      "selected_fraction_within_class": 0.5,
+      "selected_instances": 200
+    },
+    "109": {
+      "available_instances": 400,
+      "selected_fraction_within_class": 0.5,
+      "selected_instances": 200
+    },
+    "11": {
+      "available_instances": 400,
+      "selected_fraction_within_class": 0.5,
+      "selected_instances": 200
+    },
+    "110": {
+      "available_instances": 400,
+      "selected_fraction_within_class": 0.5,
+      "selected_instances": 200
+    },
+    "111": {
+      "available_instances": 400,
+      "selected_fraction_within_class": 0.5,
+      "selected_instances": 200
+    },
+    "112": {
+      "available_instances": 400,
+      "selected_fraction_within_class": 0.5,
+      "selected_instances": 200
+    },
+    "113": {
+      "available_instances": 400,
+      "selected_fraction_within_class": 0.5,
+      "selected_instances": 200
+    },
+    "114": {
+      "available_instances": 400,
+      "selected_fraction_within_class": 0.5,
+      "selected_instances": 200
+    },
+    "115": {
+      "available_instances": 400,
+      "selected_fraction_within_class": 0.5,
+      "selected_instances": 200
+    },
+    "116": {
+      "available_instances": 400,
+      "selected_fraction_within_class": 0.5,
+      "selected_instances": 200
+    },
+    "117": {
+      "available_instances": 400,
+      "selected_fraction_within_class": 0.5,
+      "selected_instances": 200
+    },
+    "118": {
+      "available_instances": 400,
+      "selected_fraction_within_class": 0.5,
+      "selected_instances": 200
+    },
+    "119": {
+      "available_instances": 400,
+      "selected_fraction_within_class": 0.5,
+      "selected_instances": 200
+    },
+    "12": {
+      "available_instances": 400,
+      "selected_fraction_within_class": 0.5,
+      "selected_instances": 200
+    },
+    "120": {
+      "available_instances": 400,
+      "selected_fraction_within_class": 0.5,
+      "selected_instances": 200
+    },
+    "121": {
+      "available_instances": 400,
+      "selected_fraction_within_class": 0.5,
+      "selected_instances": 200
+    },
+    "122": {
+      "available_instances": 400,
+      "selected_fraction_within_class": 0.5,
+      "selected_instances": 200
+    },
+    "123": {
+      "available_instances": 400,
+      "selected_fraction_within_class": 0.5,
+      "selected_instances": 200
+    },
+    "124": {
+      "available_instances": 400,
+      "selected_fraction_within_class": 0.5,
+      "selected_instances": 200
+    },
+    "125": {
+      "available_instances": 400,
+      "selected_fraction_within_class": 0.5,
+      "selected_instances": 200
+    },
+    "126": {
+      "available_instances": 400,
+      "selected_fraction_within_class": 0.5,
+      "selected_instances": 200
+    },
+    "127": {
+      "available_instances": 400,
+      "selected_fraction_within_class": 0.5,
+      "selected_instances": 200
+    },
+    "128": {
+      "available_instances": 400,
+      "selected_fraction_within_class": 0.5,
+      "selected_instances": 200
+    },
+    "129": {
+      "available_instances": 400,
+      "selected_fraction_within_class": 0.5,
+      "selected_instances": 200
+    },
+    "13": {
+      "available_instances": 400,
+      "selected_fraction_within_class": 0.5,
+      "selected_instances": 200
+    },
+    "130": {
+      "available_instances": 400,
+      "selected_fraction_within_class": 0.5,
+      "selected_instances": 200
+    },
+    "131": {
+      "available_instances": 400,
+      "selected_fraction_within_class": 0.5,
+      "selected_instances": 200
+    },
+    "132": {
+      "available_instances": 400,
+      "selected_fraction_within_class": 0.5,
+      "selected_instances": 200
+    },
+    "133": {
+      "available_instances": 400,
+      "selected_fraction_within_class": 0.5,
+      "selected_instances": 200
+    },
+    "134": {
+      "available_instances": 400,
+      "selected_fraction_within_class": 0.5,
+      "selected_instances": 200
+    },
+    "135": {
+      "available_instances": 400,
+      "selected_fraction_within_class": 0.5,
+      "selected_instances": 200
+    },
+    "136": {
+      "available_instances": 400,
+      "selected_fraction_within_class": 0.5,
+      "selected_instances": 200
+    },
+    "137": {
+      "available_instances": 400,
+      "selected_fraction_within_class": 0.5,
+      "selected_instances": 200
+    },
+    "138": {
+      "available_instances": 400,
+      "selected_fraction_within_class": 0.5,
+      "selected_instances": 200
+    },
+    "139": {
+      "available_instances": 400,
+      "selected_fraction_within_class": 0.5,
+      "selected_instances": 200
+    },
+    "14": {
+      "available_instances": 400,
+      "selected_fraction_within_class": 0.5,
+      "selected_instances": 200
+    },
+    "140": {
+      "available_instances": 400,
+      "selected_fraction_within_class": 0.5,
+      "selected_instances": 200
+    },
+    "141": {
+      "available_instances": 400,
+      "selected_fraction_within_class": 0.5,
+      "selected_instances": 200
+    },
+    "142": {
+      "available_instances": 400,
+      "selected_fraction_within_class": 0.5,
+      "selected_instances": 200
+    },
+    "143": {
+      "available_instances": 400,
+      "selected_fraction_within_class": 0.5,
+      "selected_instances": 200
+    },
+    "144": {
+      "available_instances": 400,
+      "selected_fraction_within_class": 0.5,
+      "selected_instances": 200
+    },
+    "145": {
+      "available_instances": 400,
+      "selected_fraction_within_class": 0.5,
+      "selected_instances": 200
+    },
+    "146": {
+      "available_instances": 400,
+      "selected_fraction_within_class": 0.5,
+      "selected_instances": 200
+    },
+    "147": {
+      "available_instances": 400,
+      "selected_fraction_within_class": 0.5,
+      "selected_instances": 200
+    },
+    "148": {
+      "available_instances": 400,
+      "selected_fraction_within_class": 0.5,
+      "selected_instances": 200
+    },
+    "149": {
+      "available_instances": 400,
+      "selected_fraction_within_class": 0.5,
+      "selected_instances": 200
+    },
+    "15": {
+      "available_instances": 400,
+      "selected_fraction_within_class": 0.5,
+      "selected_instances": 200
+    },
+    "150": {
+      "available_instances": 400,
+      "selected_fraction_within_class": 0.5,
+      "selected_instances": 200
+    },
+    "151": {
+      "available_instances": 400,
+      "selected_fraction_within_class": 0.5,
+      "selected_instances": 200
+    },
+    "152": {
+      "available_instances": 400,
+      "selected_fraction_within_class": 0.5,
+      "selected_instances": 200
+    },
+    "153": {
+      "available_instances": 400,
+      "selected_fraction_within_class": 0.5,
+      "selected_instances": 200
+    },
+    "154": {
+      "available_instances": 400,
+      "selected_fraction_within_class": 0.5,
+      "selected_instances": 200
+    },
+    "155": {
+      "available_instances": 400,
+      "selected_fraction_within_class": 0.5,
+      "selected_instances": 200
+    },
+    "156": {
+      "available_instances": 400,
+      "selected_fraction_within_class": 0.5,
+      "selected_instances": 200
+    },
+    "157": {
+      "available_instances": 400,
+      "selected_fraction_within_class": 0.5,
+      "selected_instances": 200
+    },
+    "158": {
+      "available_instances": 400,
+      "selected_fraction_within_class": 0.5,
+      "selected_instances": 200
+    },
+    "159": {
+      "available_instances": 400,
+      "selected_fraction_within_class": 0.5,
+      "selected_instances": 200
+    },
+    "16": {
+      "available_instances": 400,
+      "selected_fraction_within_class": 0.5,
+      "selected_instances": 200
+    },
+    "160": {
+      "available_instances": 400,
+      "selected_fraction_within_class": 0.5,
+      "selected_instances": 200
+    },
+    "161": {
+      "available_instances": 400,
+      "selected_fraction_within_class": 0.5,
+      "selected_instances": 200
+    },
+    "162": {
+      "available_instances": 400,
+      "selected_fraction_within_class": 0.5,
+      "selected_instances": 200
+    },
+    "163": {
+      "available_instances": 400,
+      "selected_fraction_within_class": 0.5,
+      "selected_instances": 200
+    },
+    "164": {
+      "available_instances": 400,
+      "selected_fraction_within_class": 0.5,
+      "selected_instances": 200
+    },
+    "165": {
+      "available_instances": 400,
+      "selected_fraction_within_class": 0.5,
+      "selected_instances": 200
+    },
+    "166": {
+      "available_instances": 400,
+      "selected_fraction_within_class": 0.5,
+      "selected_instances": 200
+    },
+    "167": {
+      "available_instances": 400,
+      "selected_fraction_within_class": 0.5,
+      "selected_instances": 200
+    },
+    "168": {
+      "available_instances": 400,
+      "selected_fraction_within_class": 0.5,
+      "selected_instances": 200
+    },
+    "169": {
+      "available_instances": 400,
+      "selected_fraction_within_class": 0.5,
+      "selected_instances": 200
+    },
+    "17": {
+      "available_instances": 400,
+      "selected_fraction_within_class": 0.5,
+      "selected_instances": 200
+    },
+    "170": {
+      "available_instances": 400,
+      "selected_fraction_within_class": 0.5,
+      "selected_instances": 200
+    },
+    "171": {
+      "available_instances": 400,
+      "selected_fraction_within_class": 0.5,
+      "selected_instances": 200
+    },
+    "172": {
+      "available_instances": 400,
+      "selected_fraction_within_class": 0.5,
+      "selected_instances": 200
+    },
+    "173": {
+      "available_instances": 400,
+      "selected_fraction_within_class": 0.5,
+      "selected_instances": 200
+    },
+    "174": {
+      "available_instances": 400,
+      "selected_fraction_within_class": 0.5,
+      "selected_instances": 200
+    },
+    "175": {
+      "available_instances": 400,
+      "selected_fraction_within_class": 0.5,
+      "selected_instances": 200
+    },
+    "176": {
+      "available_instances": 400,
+      "selected_fraction_within_class": 0.5,
+      "selected_instances": 200
+    },
+    "177": {
+      "available_instances": 400,
+      "selected_fraction_within_class": 0.5,
+      "selected_instances": 200
+    },
+    "178": {
+      "available_instances": 400,
+      "selected_fraction_within_class": 0.5,
+      "selected_instances": 200
+    },
+    "179": {
+      "available_instances": 400,
+      "selected_fraction_within_class": 0.5,
+      "selected_instances": 200
+    },
+    "18": {
+      "available_instances": 400,
+      "selected_fraction_within_class": 0.5,
+      "selected_instances": 200
+    },
+    "180": {
+      "available_instances": 400,
+      "selected_fraction_within_class": 0.5,
+      "selected_instances": 200
+    },
+    "181": {
+      "available_instances": 400,
+      "selected_fraction_within_class": 0.5,
+      "selected_instances": 200
+    },
+    "182": {
+      "available_instances": 400,
+      "selected_fraction_within_class": 0.5,
+      "selected_instances": 200
+    },
+    "183": {
+      "available_instances": 400,
+      "selected_fraction_within_class": 0.5,
+      "selected_instances": 200
+    },
+    "184": {
+      "available_instances": 400,
+      "selected_fraction_within_class": 0.5,
+      "selected_instances": 200
+    },
+    "185": {
+      "available_instances": 400,
+      "selected_fraction_within_class": 0.5,
+      "selected_instances": 200
+    },
+    "186": {
+      "available_instances": 400,
+      "selected_fraction_within_class": 0.5,
+      "selected_instances": 200
+    },
+    "187": {
+      "available_instances": 400,
+      "selected_fraction_within_class": 0.5,
+      "selected_instances": 200
+    },
+    "188": {
+      "available_instances": 400,
+      "selected_fraction_within_class": 0.5,
+      "selected_instances": 200
+    },
+    "189": {
+      "available_instances": 400,
+      "selected_fraction_within_class": 0.5,
+      "selected_instances": 200
+    },
+    "19": {
+      "available_instances": 400,
+      "selected_fraction_within_class": 0.5,
+      "selected_instances": 200
+    },
+    "190": {
+      "available_instances": 400,
+      "selected_fraction_within_class": 0.5,
+      "selected_instances": 200
+    },
+    "191": {
+      "available_instances": 400,
+      "selected_fraction_within_class": 0.5,
+      "selected_instances": 200
+    },
+    "192": {
+      "available_instances": 400,
+      "selected_fraction_within_class": 0.5,
+      "selected_instances": 200
+    },
+    "193": {
+      "available_instances": 400,
+      "selected_fraction_within_class": 0.5,
+      "selected_instances": 200
+    },
+    "194": {
+      "available_instances": 400,
+      "selected_fraction_within_class": 0.5,
+      "selected_instances": 200
+    },
+    "195": {
+      "available_instances": 400,
+      "selected_fraction_within_class": 0.5,
+      "selected_instances": 200
+    },
+    "196": {
+      "available_instances": 400,
+      "selected_fraction_within_class": 0.5,
+      "selected_instances": 200
+    },
+    "197": {
+      "available_instances": 400,
+      "selected_fraction_within_class": 0.5,
+      "selected_instances": 200
+    },
+    "198": {
+      "available_instances": 400,
+      "selected_fraction_within_class": 0.5,
+      "selected_instances": 200
+    },
+    "199": {
+      "available_instances": 400,
+      "selected_fraction_within_class": 0.5,
+      "selected_instances": 200
+    },
+    "2": {
+      "available_instances": 400,
+      "selected_fraction_within_class": 0.5,
+      "selected_instances": 200
+    },
+    "20": {
+      "available_instances": 400,
+      "selected_fraction_within_class": 0.5,
+      "selected_instances": 200
+    },
+    "21": {
+      "available_instances": 400,
+      "selected_fraction_within_class": 0.5,
+      "selected_instances": 200
+    },
+    "22": {
+      "available_instances": 400,
+      "selected_fraction_within_class": 0.5,
+      "selected_instances": 200
+    },
+    "23": {
+      "available_instances": 400,
+      "selected_fraction_within_class": 0.5,
+      "selected_instances": 200
+    },
+    "24": {
+      "available_instances": 400,
+      "selected_fraction_within_class": 0.5,
+      "selected_instances": 200
+    },
+    "25": {
+      "available_instances": 400,
+      "selected_fraction_within_class": 0.5,
+      "selected_instances": 200
+    },
+    "26": {
+      "available_instances": 400,
+      "selected_fraction_within_class": 0.5,
+      "selected_instances": 200
+    },
+    "27": {
+      "available_instances": 400,
+      "selected_fraction_within_class": 0.5,
+      "selected_instances": 200
+    },
+    "28": {
+      "available_instances": 400,
+      "selected_fraction_within_class": 0.5,
+      "selected_instances": 200
+    },
+    "29": {
+      "available_instances": 400,
+      "selected_fraction_within_class": 0.5,
+      "selected_instances": 200
+    },
+    "3": {
+      "available_instances": 400,
+      "selected_fraction_within_class": 0.5,
+      "selected_instances": 200
+    },
+    "30": {
+      "available_instances": 400,
+      "selected_fraction_within_class": 0.5,
+      "selected_instances": 200
+    },
+    "31": {
+      "available_instances": 400,
+      "selected_fraction_within_class": 0.5,
+      "selected_instances": 200
+    },
+    "32": {
+      "available_instances": 400,
+      "selected_fraction_within_class": 0.5,
+      "selected_instances": 200
+    },
+    "33": {
+      "available_instances": 400,
+      "selected_fraction_within_class": 0.5,
+      "selected_instances": 200
+    },
+    "34": {
+      "available_instances": 400,
+      "selected_fraction_within_class": 0.5,
+      "selected_instances": 200
+    },
+    "35": {
+      "available_instances": 400,
+      "selected_fraction_within_class": 0.5,
+      "selected_instances": 200
+    },
+    "36": {
+      "available_instances": 400,
+      "selected_fraction_within_class": 0.5,
+      "selected_instances": 200
+    },
+    "37": {
+      "available_instances": 400,
+      "selected_fraction_within_class": 0.5,
+      "selected_instances": 200
+    },
+    "38": {
+      "available_instances": 400,
+      "selected_fraction_within_class": 0.5,
+      "selected_instances": 200
+    },
+    "39": {
+      "available_instances": 400,
+      "selected_fraction_within_class": 0.5,
+      "selected_instances": 200
+    },
+    "4": {
+      "available_instances": 400,
+      "selected_fraction_within_class": 0.5,
+      "selected_instances": 200
+    },
+    "40": {
+      "available_instances": 400,
+      "selected_fraction_within_class": 0.5,
+      "selected_instances": 200
+    },
+    "41": {
+      "available_instances": 400,
+      "selected_fraction_within_class": 0.5,
+      "selected_instances": 200
+    },
+    "42": {
+      "available_instances": 400,
+      "selected_fraction_within_class": 0.5,
+      "selected_instances": 200
+    },
+    "43": {
+      "available_instances": 400,
+      "selected_fraction_within_class": 0.5,
+      "selected_instances": 200
+    },
+    "44": {
+      "available_instances": 400,
+      "selected_fraction_within_class": 0.5,
+      "selected_instances": 200
+    },
+    "45": {
+      "available_instances": 400,
+      "selected_fraction_within_class": 0.5,
+      "selected_instances": 200
+    },
+    "46": {
+      "available_instances": 400,
+      "selected_fraction_within_class": 0.5,
+      "selected_instances": 200
+    },
+    "47": {
+      "available_instances": 400,
+      "selected_fraction_within_class": 0.5,
+      "selected_instances": 200
+    },
+    "48": {
+      "available_instances": 400,
+      "selected_fraction_within_class": 0.5,
+      "selected_instances": 200
+    },
+    "49": {
+      "available_instances": 400,
+      "selected_fraction_within_class": 0.5,
+      "selected_instances": 200
+    },
+    "5": {
+      "available_instances": 400,
+      "selected_fraction_within_class": 0.5,
+      "selected_instances": 200
+    },
+    "50": {
+      "available_instances": 400,
+      "selected_fraction_within_class": 0.5,
+      "selected_instances": 200
+    },
+    "51": {
+      "available_instances": 400,
+      "selected_fraction_within_class": 0.5,
+      "selected_instances": 200
+    },
+    "52": {
+      "available_instances": 400,
+      "selected_fraction_within_class": 0.5,
+      "selected_instances": 200
+    },
+    "53": {
+      "available_instances": 400,
+      "selected_fraction_within_class": 0.5,
+      "selected_instances": 200
+    },
+    "54": {
+      "available_instances": 400,
+      "selected_fraction_within_class": 0.5,
+      "selected_instances": 200
+    },
+    "55": {
+      "available_instances": 400,
+      "selected_fraction_within_class": 0.5,
+      "selected_instances": 200
+    },
+    "56": {
+      "available_instances": 400,
+      "selected_fraction_within_class": 0.5,
+      "selected_instances": 200
+    },
+    "57": {
+      "available_instances": 400,
+      "selected_fraction_within_class": 0.5,
+      "selected_instances": 200
+    },
+    "58": {
+      "available_instances": 400,
+      "selected_fraction_within_class": 0.5,
+      "selected_instances": 200
+    },
+    "59": {
+      "available_instances": 400,
+      "selected_fraction_within_class": 0.5,
+      "selected_instances": 200
+    },
+    "6": {
+      "available_instances": 400,
+      "selected_fraction_within_class": 0.5,
+      "selected_instances": 200
+    },
+    "60": {
+      "available_instances": 400,
+      "selected_fraction_within_class": 0.5,
+      "selected_instances": 200
+    },
+    "61": {
+      "available_instances": 400,
+      "selected_fraction_within_class": 0.5,
+      "selected_instances": 200
+    },
+    "62": {
+      "available_instances": 400,
+      "selected_fraction_within_class": 0.5,
+      "selected_instances": 200
+    },
+    "63": {
+      "available_instances": 400,
+      "selected_fraction_within_class": 0.5,
+      "selected_instances": 200
+    },
+    "64": {
+      "available_instances": 400,
+      "selected_fraction_within_class": 0.5,
+      "selected_instances": 200
+    },
+    "65": {
+      "available_instances": 400,
+      "selected_fraction_within_class": 0.5,
+      "selected_instances": 200
+    },
+    "66": {
+      "available_instances": 400,
+      "selected_fraction_within_class": 0.5,
+      "selected_instances": 200
+    },
+    "67": {
+      "available_instances": 400,
+      "selected_fraction_within_class": 0.5,
+      "selected_instances": 200
+    },
+    "68": {
+      "available_instances": 400,
+      "selected_fraction_within_class": 0.5,
+      "selected_instances": 200
+    },
+    "69": {
+      "available_instances": 400,
+      "selected_fraction_within_class": 0.5,
+      "selected_instances": 200
+    },
+    "7": {
+      "available_instances": 400,
+      "selected_fraction_within_class": 0.5,
+      "selected_instances": 200
+    },
+    "70": {
+      "available_instances": 400,
+      "selected_fraction_within_class": 0.5,
+      "selected_instances": 200
+    },
+    "71": {
+      "available_instances": 400,
+      "selected_fraction_within_class": 0.5,
+      "selected_instances": 200
+    },
+    "72": {
+      "available_instances": 400,
+      "selected_fraction_within_class": 0.5,
+      "selected_instances": 200
+    },
+    "73": {
+      "available_instances": 400,
+      "selected_fraction_within_class": 0.5,
+      "selected_instances": 200
+    },
+    "74": {
+      "available_instances": 400,
+      "selected_fraction_within_class": 0.5,
+      "selected_instances": 200
+    },
+    "75": {
+      "available_instances": 400,
+      "selected_fraction_within_class": 0.5,
+      "selected_instances": 200
+    },
+    "76": {
+      "available_instances": 400,
+      "selected_fraction_within_class": 0.5,
+      "selected_instances": 200
+    },
+    "77": {
+      "available_instances": 400,
+      "selected_fraction_within_class": 0.5,
+      "selected_instances": 200
+    },
+    "78": {
+      "available_instances": 400,
+      "selected_fraction_within_class": 0.5,
+      "selected_instances": 200
+    },
+    "79": {
+      "available_instances": 400,
+      "selected_fraction_within_class": 0.5,
+      "selected_instances": 200
+    },
+    "8": {
+      "available_instances": 400,
+      "selected_fraction_within_class": 0.5,
+      "selected_instances": 200
+    },
+    "80": {
+      "available_instances": 400,
+      "selected_fraction_within_class": 0.5,
+      "selected_instances": 200
+    },
+    "81": {
+      "available_instances": 400,
+      "selected_fraction_within_class": 0.5,
+      "selected_instances": 200
+    },
+    "82": {
+      "available_instances": 400,
+      "selected_fraction_within_class": 0.5,
+      "selected_instances": 200
+    },
+    "83": {
+      "available_instances": 400,
+      "selected_fraction_within_class": 0.5,
+      "selected_instances": 200
+    },
+    "84": {
+      "available_instances": 400,
+      "selected_fraction_within_class": 0.5,
+      "selected_instances": 200
+    },
+    "85": {
+      "available_instances": 400,
+      "selected_fraction_within_class": 0.5,
+      "selected_instances": 200
+    },
+    "86": {
+      "available_instances": 400,
+      "selected_fraction_within_class": 0.5,
+      "selected_instances": 200
+    },
+    "87": {
+      "available_instances": 400,
+      "selected_fraction_within_class": 0.5,
+      "selected_instances": 200
+    },
+    "88": {
+      "available_instances": 400,
+      "selected_fraction_within_class": 0.5,
+      "selected_instances": 200
+    },
+    "89": {
+      "available_instances": 400,
+      "selected_fraction_within_class": 0.5,
+      "selected_instances": 200
+    },
+    "9": {
+      "available_instances": 400,
+      "selected_fraction_within_class": 0.5,
+      "selected_instances": 200
+    },
+    "90": {
+      "available_instances": 400,
+      "selected_fraction_within_class": 0.5,
+      "selected_instances": 200
+    },
+    "91": {
+      "available_instances": 400,
+      "selected_fraction_within_class": 0.5,
+      "selected_instances": 200
+    },
+    "92": {
+      "available_instances": 400,
+      "selected_fraction_within_class": 0.5,
+      "selected_instances": 200
+    },
+    "93": {
+      "available_instances": 400,
+      "selected_fraction_within_class": 0.5,
+      "selected_instances": 200
+    },
+    "94": {
+      "available_instances": 400,
+      "selected_fraction_within_class": 0.5,
+      "selected_instances": 200
+    },
+    "95": {
+      "available_instances": 400,
+      "selected_fraction_within_class": 0.5,
+      "selected_instances": 200
+    },
+    "96": {
+      "available_instances": 400,
+      "selected_fraction_within_class": 0.5,
+      "selected_instances": 200
+    },
+    "97": {
+      "available_instances": 400,
+      "selected_fraction_within_class": 0.5,
+      "selected_instances": 200
+    },
+    "98": {
+      "available_instances": 400,
+      "selected_fraction_within_class": 0.5,
+      "selected_instances": 200
+    },
+    "99": {
+      "available_instances": 400,
+      "selected_fraction_within_class": 0.5,
+      "selected_instances": 200
+    }
+  },
+  "keep_percentage": 0.5,
+  "sampling_method": "uniform_without_replacement_within_class",
+  "search_seed": 456,
+  "selected_instances": 40000,
+  "total_instances": 80000
+}

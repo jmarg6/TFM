@@ -1,0 +1,35 @@
+2026-07-20 15:39:19,674 | INFO | run_experiments | Experiment=prelim_features_mnist_efficientnetv2_MEM_kp10 | device=cuda | search_runs=5 | planned_fitness_evaluations=500
+2026-07-20 15:39:19,677 | INFO | run_experiments | Training protocol | pretrained=True | freeze_backbone=True | trainable_scope=replacement_classifier_only | representation=preextracted_features
+2026-07-20 15:39:19,677 | INFO | run_experiments | Preparing data | dataset=MNIST | model=efficientnetv2
+2026-07-20 15:39:25,403 | INFO | utils.data_utils | [Features] Tensors loaded | active_train=48000 | base_train=48000 | validation=12000 | test=10000 | classes=10
+2026-07-20 15:39:25,537 | INFO | run_experiments | Data ready | representation=preextracted_features | base_train=48000 | validation=12000 | test=10000 | classes=10 | image_size=0 | feature_dimension=1280
+2026-07-20 15:39:26,475 | INFO | run_experiments | Starting run MNIST_efficientnetv2_MEM_accuracy_kp1000_seed42
+2026-07-20 15:39:26,475 | INFO | algorithms.memetic | Starting MEM | target_metric=accuracy | keep_percentage=0.1000 | population_size=10 | max_evaluations=100
+2026-07-20 15:45:11,502 | INFO | algorithms.memetic | [MEM] New best during Local Search at evaluation 42/100 | generation=2 | accuracy=0.942917
+2026-07-20 15:45:44,244 | INFO | algorithms.memetic | [MEM] New best during Local Search at evaluation 46/100 | generation=2 | accuracy=0.943083
+2026-07-20 15:48:51,513 | INFO | algorithms.memetic | [MEM] New best during Local Search at evaluation 69/100 | generation=4 | accuracy=0.944250
+2026-07-20 15:53:04,407 | INFO | algorithms.memetic | [MEM] Finished | evaluations=100 | generations=4 | best_accuracy=0.944250
+2026-07-20 15:53:04,472 | INFO | run_experiments | Completed MNIST_efficientnetv2_MEM_accuracy_kp1000_seed42 | evaluations=100 | best_accuracy=0.944250
+2026-07-20 15:53:05,404 | INFO | run_experiments | Starting run MNIST_efficientnetv2_MEM_accuracy_kp1000_seed123
+2026-07-20 15:53:05,404 | INFO | algorithms.memetic | Starting MEM | target_metric=accuracy | keep_percentage=0.1000 | population_size=10 | max_evaluations=100
+2026-07-20 16:02:36,031 | INFO | algorithms.memetic | [MEM] New best during Local Search at evaluation 70/100 | generation=3 | accuracy=0.946667
+2026-07-20 16:03:00,454 | INFO | algorithms.memetic | [MEM] New best during Local Search at evaluation 73/100 | generation=3 | accuracy=0.946917
+2026-07-20 16:06:40,110 | INFO | algorithms.memetic | [MEM] Finished | evaluations=100 | generations=4 | best_accuracy=0.946917
+2026-07-20 16:06:40,149 | INFO | run_experiments | Completed MNIST_efficientnetv2_MEM_accuracy_kp1000_seed123 | evaluations=100 | best_accuracy=0.946917
+2026-07-20 16:06:41,083 | INFO | run_experiments | Starting run MNIST_efficientnetv2_MEM_accuracy_kp1000_seed456
+2026-07-20 16:06:41,083 | INFO | algorithms.memetic | Starting MEM | target_metric=accuracy | keep_percentage=0.1000 | population_size=10 | max_evaluations=100
+2026-07-20 16:09:07,939 | INFO | algorithms.memetic | [MEM] New best during Local Search at evaluation 18/100 | generation=1 | accuracy=0.944167
+2026-07-20 16:09:48,735 | INFO | algorithms.memetic | [MEM] New best during Local Search at evaluation 23/100 | generation=1 | accuracy=0.944333
+2026-07-20 16:20:17,460 | INFO | algorithms.memetic | [MEM] Finished | evaluations=100 | generations=5 | best_accuracy=0.945167
+2026-07-20 16:20:17,500 | INFO | run_experiments | Completed MNIST_efficientnetv2_MEM_accuracy_kp1000_seed456 | evaluations=100 | best_accuracy=0.945167
+2026-07-20 16:20:18,424 | INFO | run_experiments | Starting run MNIST_efficientnetv2_MEM_accuracy_kp1000_seed789
+2026-07-20 16:20:18,425 | INFO | algorithms.memetic | Starting MEM | target_metric=accuracy | keep_percentage=0.1000 | population_size=10 | max_evaluations=100
+2026-07-20 16:33:56,186 | INFO | algorithms.memetic | [MEM] Finished | evaluations=100 | generations=4 | best_accuracy=0.946000
+2026-07-20 16:33:56,224 | INFO | run_experiments | Completed MNIST_efficientnetv2_MEM_accuracy_kp1000_seed789 | evaluations=100 | best_accuracy=0.946000
+2026-07-20 16:33:57,140 | INFO | run_experiments | Starting run MNIST_efficientnetv2_MEM_accuracy_kp1000_seed1024
+2026-07-20 16:33:57,140 | INFO | algorithms.memetic | Starting MEM | target_metric=accuracy | keep_percentage=0.1000 | population_size=10 | max_evaluations=100
+2026-07-20 16:38:34,177 | INFO | algorithms.memetic | [MEM] New best during Local Search at evaluation 34/100 | generation=2 | accuracy=0.945083
+2026-07-20 16:39:31,390 | INFO | algorithms.memetic | [MEM] New best during Local Search at evaluation 41/100 | generation=2 | accuracy=0.946000
+2026-07-20 16:47:32,282 | INFO | algorithms.memetic | [MEM] Finished | evaluations=100 | generations=3 | best_accuracy=0.946000
+2026-07-20 16:47:32,321 | INFO | run_experiments | Completed MNIST_efficientnetv2_MEM_accuracy_kp1000_seed1024 | evaluations=100 | best_accuracy=0.946000
+2026-07-20 16:47:32,619 | INFO | run_experiments | Experiment completed successfully: prelim_features_mnist_efficientnetv2_MEM_kp10

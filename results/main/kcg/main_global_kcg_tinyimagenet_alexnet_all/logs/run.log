@@ -1,0 +1,190 @@
+2026-08-04 22:20:21,542 | INFO | run_experiments | Experiment=main_global_kcg_tinyimagenet_alexnet_all | device=cuda | search_runs=25 | planned_fitness_evaluations=0
+2026-08-04 22:20:21,544 | INFO | run_experiments | Training protocol | pretrained=True | freeze_backbone=True | trainable_scope=replacement_classifier_only | representation=preextracted_features
+2026-08-04 22:20:21,545 | INFO | run_experiments | Preparing data | dataset=TINYIMAGENET | model=alexnet
+2026-08-04 22:20:38,738 | INFO | utils.data_utils | [Features] Tensors loaded | active_train=80000 | base_train=80000 | validation=20000 | test=10000 | classes=200
+2026-08-04 22:20:39,316 | INFO | run_experiments | Data ready | representation=preextracted_features | base_train=80000 | validation=20000 | test=10000 | classes=200 | image_size=0 | feature_dimension=4096
+2026-08-04 22:20:39,338 | INFO | run_experiments | Starting run TINYIMAGENET_alexnet_KCG_accuracy_kp1000_seed42
+2026-08-04 22:20:45,647 | INFO | algorithms.k_center_greedy | Building global pairwise distance cache | instances=80000 | features=4096 | size=23.84 GiB | block_size=512 | device=cuda
+2026-08-04 22:20:53,279 | INFO | algorithms.k_center_greedy | Distance cache progress | block=1/157 | rows=512/80000
+2026-08-04 22:21:46,775 | INFO | algorithms.k_center_greedy | Distance cache progress | block=10/157 | rows=5120/80000
+2026-08-04 22:23:03,792 | INFO | algorithms.k_center_greedy | Distance cache progress | block=20/157 | rows=10240/80000
+2026-08-04 22:24:04,359 | INFO | algorithms.k_center_greedy | Distance cache progress | block=30/157 | rows=15360/80000
+2026-08-04 22:25:15,823 | INFO | algorithms.k_center_greedy | Distance cache progress | block=40/157 | rows=20480/80000
+2026-08-04 22:26:43,831 | INFO | algorithms.k_center_greedy | Distance cache progress | block=50/157 | rows=25600/80000
+2026-08-04 22:27:52,166 | INFO | algorithms.k_center_greedy | Distance cache progress | block=60/157 | rows=30720/80000
+2026-08-04 22:29:10,988 | INFO | algorithms.k_center_greedy | Distance cache progress | block=70/157 | rows=35840/80000
+2026-08-04 22:30:24,980 | INFO | algorithms.k_center_greedy | Distance cache progress | block=80/157 | rows=40960/80000
+2026-08-04 22:31:40,414 | INFO | algorithms.k_center_greedy | Distance cache progress | block=90/157 | rows=46080/80000
+2026-08-04 22:33:00,519 | INFO | algorithms.k_center_greedy | Distance cache progress | block=100/157 | rows=51200/80000
+2026-08-04 22:34:15,912 | INFO | algorithms.k_center_greedy | Distance cache progress | block=110/157 | rows=56320/80000
+2026-08-04 22:35:32,646 | INFO | algorithms.k_center_greedy | Distance cache progress | block=120/157 | rows=61440/80000
+2026-08-04 22:36:50,242 | INFO | algorithms.k_center_greedy | Distance cache progress | block=130/157 | rows=66560/80000
+2026-08-04 22:38:02,384 | INFO | algorithms.k_center_greedy | Distance cache progress | block=140/157 | rows=71680/80000
+2026-08-04 22:39:13,338 | INFO | algorithms.k_center_greedy | Distance cache progress | block=150/157 | rows=76800/80000
+2026-08-04 22:40:01,062 | INFO | algorithms.k_center_greedy | Distance cache progress | block=157/157 | rows=80000/80000
+2026-08-04 22:40:02,503 | INFO | algorithms.k_center_greedy | Global pairwise distance cache completed | seconds=1156.833 | path=/mnt/homeGPU1/jmrodriguez/data/features/k_center_cache/TINYIMAGENET/alexnet/split_seed_42/pairwise_squared_euclidean_float32.dat
+2026-08-04 22:40:04,887 | INFO | algorithms.k_center_greedy | Building global farthest-first order | seed=42 | centers=72000 | instances=80000 | first_center=14592
+2026-08-04 22:40:04,904 | INFO | algorithms.k_center_greedy | Farthest-first progress | seed=42 | centers=2/72000 | covering_radius=123.764634
+2026-08-04 22:40:28,124 | INFO | algorithms.k_center_greedy | Farthest-first progress | seed=42 | centers=3600/72000 | covering_radius=70.861544
+2026-08-04 22:40:49,702 | INFO | algorithms.k_center_greedy | Farthest-first progress | seed=42 | centers=7200/72000 | covering_radius=65.804769
+2026-08-04 22:41:11,758 | INFO | algorithms.k_center_greedy | Farthest-first progress | seed=42 | centers=10800/72000 | covering_radius=62.849492
+2026-08-04 22:41:31,883 | INFO | algorithms.k_center_greedy | Farthest-first progress | seed=42 | centers=14400/72000 | covering_radius=60.614831
+2026-08-04 22:41:55,072 | INFO | algorithms.k_center_greedy | Farthest-first progress | seed=42 | centers=18000/72000 | covering_radius=58.882907
+2026-08-04 22:42:15,309 | INFO | algorithms.k_center_greedy | Farthest-first progress | seed=42 | centers=21600/72000 | covering_radius=57.426141
+2026-08-04 22:42:34,796 | INFO | algorithms.k_center_greedy | Farthest-first progress | seed=42 | centers=25200/72000 | covering_radius=56.094995
+2026-08-04 22:42:52,638 | INFO | algorithms.k_center_greedy | Farthest-first progress | seed=42 | centers=28800/72000 | covering_radius=54.915298
+2026-08-04 22:43:09,936 | INFO | algorithms.k_center_greedy | Farthest-first progress | seed=42 | centers=32400/72000 | covering_radius=53.823709
+2026-08-04 22:43:26,537 | INFO | algorithms.k_center_greedy | Farthest-first progress | seed=42 | centers=36000/72000 | covering_radius=52.811649
+2026-08-04 22:43:42,568 | INFO | algorithms.k_center_greedy | Farthest-first progress | seed=42 | centers=39600/72000 | covering_radius=51.837458
+2026-08-04 22:43:58,842 | INFO | algorithms.k_center_greedy | Farthest-first progress | seed=42 | centers=43200/72000 | covering_radius=50.892887
+2026-08-04 22:44:13,967 | INFO | algorithms.k_center_greedy | Farthest-first progress | seed=42 | centers=46800/72000 | covering_radius=49.904538
+2026-08-04 22:44:28,565 | INFO | algorithms.k_center_greedy | Farthest-first progress | seed=42 | centers=50400/72000 | covering_radius=48.943666
+2026-08-04 22:44:43,368 | INFO | algorithms.k_center_greedy | Farthest-first progress | seed=42 | centers=54000/72000 | covering_radius=47.952954
+2026-08-04 22:44:55,909 | INFO | algorithms.k_center_greedy | Farthest-first progress | seed=42 | centers=57600/72000 | covering_radius=46.924297
+2026-08-04 22:45:07,979 | INFO | algorithms.k_center_greedy | Farthest-first progress | seed=42 | centers=61200/72000 | covering_radius=45.830512
+2026-08-04 22:45:21,491 | INFO | algorithms.k_center_greedy | Farthest-first progress | seed=42 | centers=64800/72000 | covering_radius=44.616016
+2026-08-04 22:45:32,864 | INFO | algorithms.k_center_greedy | Farthest-first progress | seed=42 | centers=68400/72000 | covering_radius=43.179031
+2026-08-04 22:45:42,804 | INFO | algorithms.k_center_greedy | Farthest-first progress | seed=42 | centers=72000/72000 | covering_radius=41.333108
+2026-08-04 22:45:43,370 | INFO | algorithms.k_center_greedy | Global farthest-first order completed | seed=42 | centers=72000 | seconds=337.917
+2026-08-04 22:45:43,512 | INFO | run_experiments | Completed TINYIMAGENET_alexnet_KCG_accuracy_kp1000_seed42 | global_k_center=true | fitness_evaluations=0 | selected_instances=8000 | selection_seconds=1504.108 | covering_radius=65.075921
+2026-08-04 22:45:43,514 | INFO | run_experiments | Starting run TINYIMAGENET_alexnet_KCG_accuracy_kp2500_seed42
+2026-08-04 22:45:46,194 | INFO | run_experiments | Completed TINYIMAGENET_alexnet_KCG_accuracy_kp2500_seed42 | global_k_center=true | fitness_evaluations=0 | selected_instances=20000 | selection_seconds=2.632 | covering_radius=58.044513
+2026-08-04 22:45:46,196 | INFO | run_experiments | Starting run TINYIMAGENET_alexnet_KCG_accuracy_kp5000_seed42
+2026-08-04 22:45:49,004 | INFO | run_experiments | Completed TINYIMAGENET_alexnet_KCG_accuracy_kp5000_seed42 | global_k_center=true | fitness_evaluations=0 | selected_instances=40000 | selection_seconds=2.689 | covering_radius=51.729078
+2026-08-04 22:45:49,009 | INFO | run_experiments | Starting run TINYIMAGENET_alexnet_KCG_accuracy_kp7500_seed42
+2026-08-04 22:45:51,710 | INFO | run_experiments | Completed TINYIMAGENET_alexnet_KCG_accuracy_kp7500_seed42 | global_k_center=true | fitness_evaluations=0 | selected_instances=60000 | selection_seconds=2.584 | covering_radius=46.204422
+2026-08-04 22:45:51,711 | INFO | run_experiments | Starting run TINYIMAGENET_alexnet_KCG_accuracy_kp9000_seed42
+2026-08-04 22:45:54,419 | INFO | run_experiments | Completed TINYIMAGENET_alexnet_KCG_accuracy_kp9000_seed42 | global_k_center=true | fitness_evaluations=0 | selected_instances=72000 | selection_seconds=2.572 | covering_radius=41.333108
+2026-08-04 22:48:17,638 | INFO | run_experiments | Starting run TINYIMAGENET_alexnet_KCG_accuracy_kp1000_seed123
+2026-08-04 22:48:20,396 | INFO | algorithms.k_center_greedy | Building global farthest-first order | seed=123 | centers=72000 | instances=80000 | first_center=6863
+2026-08-04 22:48:20,397 | INFO | algorithms.k_center_greedy | Farthest-first progress | seed=123 | centers=2/72000 | covering_radius=124.741882
+2026-08-04 22:48:20,740 | INFO | algorithms.k_center_greedy | Farthest-first progress | seed=123 | centers=3600/72000 | covering_radius=70.820374
+2026-08-04 22:48:21,078 | INFO | algorithms.k_center_greedy | Farthest-first progress | seed=123 | centers=7200/72000 | covering_radius=65.772390
+2026-08-04 22:48:21,408 | INFO | algorithms.k_center_greedy | Farthest-first progress | seed=123 | centers=10800/72000 | covering_radius=62.823328
+2026-08-04 22:48:21,742 | INFO | algorithms.k_center_greedy | Farthest-first progress | seed=123 | centers=14400/72000 | covering_radius=60.638703
+2026-08-04 22:48:22,098 | INFO | algorithms.k_center_greedy | Farthest-first progress | seed=123 | centers=18000/72000 | covering_radius=58.910680
+2026-08-04 22:48:22,455 | INFO | algorithms.k_center_greedy | Farthest-first progress | seed=123 | centers=21600/72000 | covering_radius=57.424781
+2026-08-04 22:48:22,805 | INFO | algorithms.k_center_greedy | Farthest-first progress | seed=123 | centers=25200/72000 | covering_radius=56.096061
+2026-08-04 22:48:23,132 | INFO | algorithms.k_center_greedy | Farthest-first progress | seed=123 | centers=28800/72000 | covering_radius=54.912839
+2026-08-04 22:48:23,504 | INFO | algorithms.k_center_greedy | Farthest-first progress | seed=123 | centers=32400/72000 | covering_radius=53.830164
+2026-08-04 22:48:23,861 | INFO | algorithms.k_center_greedy | Farthest-first progress | seed=123 | centers=36000/72000 | covering_radius=52.795758
+2026-08-04 22:48:24,231 | INFO | algorithms.k_center_greedy | Farthest-first progress | seed=123 | centers=39600/72000 | covering_radius=51.826596
+2026-08-04 22:48:24,626 | INFO | algorithms.k_center_greedy | Farthest-first progress | seed=123 | centers=43200/72000 | covering_radius=50.875264
+2026-08-04 22:48:25,036 | INFO | algorithms.k_center_greedy | Farthest-first progress | seed=123 | centers=46800/72000 | covering_radius=49.897847
+2026-08-04 22:48:25,451 | INFO | algorithms.k_center_greedy | Farthest-first progress | seed=123 | centers=50400/72000 | covering_radius=48.936063
+2026-08-04 22:48:25,901 | INFO | algorithms.k_center_greedy | Farthest-first progress | seed=123 | centers=54000/72000 | covering_radius=47.955841
+2026-08-04 22:48:26,373 | INFO | algorithms.k_center_greedy | Farthest-first progress | seed=123 | centers=57600/72000 | covering_radius=46.934218
+2026-08-04 22:48:26,923 | INFO | algorithms.k_center_greedy | Farthest-first progress | seed=123 | centers=61200/72000 | covering_radius=45.841199
+2026-08-04 22:48:27,564 | INFO | algorithms.k_center_greedy | Farthest-first progress | seed=123 | centers=64800/72000 | covering_radius=44.624398
+2026-08-04 22:48:28,341 | INFO | algorithms.k_center_greedy | Farthest-first progress | seed=123 | centers=68400/72000 | covering_radius=43.172958
+2026-08-04 22:48:29,677 | INFO | algorithms.k_center_greedy | Farthest-first progress | seed=123 | centers=72000/72000 | covering_radius=41.329720
+2026-08-04 22:48:30,948 | INFO | algorithms.k_center_greedy | Global farthest-first order completed | seed=123 | centers=72000 | seconds=9.282
+2026-08-04 22:48:31,111 | INFO | run_experiments | Completed TINYIMAGENET_alexnet_KCG_accuracy_kp1000_seed123 | global_k_center=true | fitness_evaluations=0 | selected_instances=8000 | selection_seconds=13.375 | covering_radius=65.052503
+2026-08-04 22:48:31,119 | INFO | run_experiments | Starting run TINYIMAGENET_alexnet_KCG_accuracy_kp2500_seed123
+2026-08-04 22:48:33,903 | INFO | run_experiments | Completed TINYIMAGENET_alexnet_KCG_accuracy_kp2500_seed123 | global_k_center=true | fitness_evaluations=0 | selected_instances=20000 | selection_seconds=2.679 | covering_radius=58.054464
+2026-08-04 22:48:33,933 | INFO | run_experiments | Starting run TINYIMAGENET_alexnet_KCG_accuracy_kp5000_seed123
+2026-08-04 22:48:36,763 | INFO | run_experiments | Completed TINYIMAGENET_alexnet_KCG_accuracy_kp5000_seed123 | global_k_center=true | fitness_evaluations=0 | selected_instances=40000 | selection_seconds=2.721 | covering_radius=51.721733
+2026-08-04 22:48:36,769 | INFO | run_experiments | Starting run TINYIMAGENET_alexnet_KCG_accuracy_kp7500_seed123
+2026-08-04 22:48:39,723 | INFO | run_experiments | Completed TINYIMAGENET_alexnet_KCG_accuracy_kp7500_seed123 | global_k_center=true | fitness_evaluations=0 | selected_instances=60000 | selection_seconds=2.788 | covering_radius=46.220900
+2026-08-04 22:48:39,730 | INFO | run_experiments | Starting run TINYIMAGENET_alexnet_KCG_accuracy_kp9000_seed123
+2026-08-04 22:48:42,804 | INFO | run_experiments | Completed TINYIMAGENET_alexnet_KCG_accuracy_kp9000_seed123 | global_k_center=true | fitness_evaluations=0 | selected_instances=72000 | selection_seconds=2.944 | covering_radius=41.329720
+2026-08-04 22:51:38,238 | INFO | run_experiments | Starting run TINYIMAGENET_alexnet_KCG_accuracy_kp1000_seed456
+2026-08-04 22:51:41,011 | INFO | algorithms.k_center_greedy | Building global farthest-first order | seed=456 | centers=72000 | instances=80000 | first_center=58905
+2026-08-04 22:51:41,011 | INFO | algorithms.k_center_greedy | Farthest-first progress | seed=456 | centers=2/72000 | covering_radius=128.718238
+2026-08-04 22:51:41,381 | INFO | algorithms.k_center_greedy | Farthest-first progress | seed=456 | centers=3600/72000 | covering_radius=70.837143
+2026-08-04 22:51:41,732 | INFO | algorithms.k_center_greedy | Farthest-first progress | seed=456 | centers=7200/72000 | covering_radius=65.801203
+2026-08-04 22:51:42,094 | INFO | algorithms.k_center_greedy | Farthest-first progress | seed=456 | centers=10800/72000 | covering_radius=62.840964
+2026-08-04 22:51:42,451 | INFO | algorithms.k_center_greedy | Farthest-first progress | seed=456 | centers=14400/72000 | covering_radius=60.644894
+2026-08-04 22:51:42,792 | INFO | algorithms.k_center_greedy | Farthest-first progress | seed=456 | centers=18000/72000 | covering_radius=58.877787
+2026-08-04 22:51:43,303 | INFO | algorithms.k_center_greedy | Farthest-first progress | seed=456 | centers=21600/72000 | covering_radius=57.418990
+2026-08-04 22:51:43,673 | INFO | algorithms.k_center_greedy | Farthest-first progress | seed=456 | centers=25200/72000 | covering_radius=56.104882
+2026-08-04 22:51:44,006 | INFO | algorithms.k_center_greedy | Farthest-first progress | seed=456 | centers=28800/72000 | covering_radius=54.945125
+2026-08-04 22:51:44,383 | INFO | algorithms.k_center_greedy | Farthest-first progress | seed=456 | centers=32400/72000 | covering_radius=53.840458
+2026-08-04 22:51:44,748 | INFO | algorithms.k_center_greedy | Farthest-first progress | seed=456 | centers=36000/72000 | covering_radius=52.813674
+2026-08-04 22:51:45,095 | INFO | algorithms.k_center_greedy | Farthest-first progress | seed=456 | centers=39600/72000 | covering_radius=51.828688
+2026-08-04 22:51:45,473 | INFO | algorithms.k_center_greedy | Farthest-first progress | seed=456 | centers=43200/72000 | covering_radius=50.872217
+2026-08-04 22:51:45,852 | INFO | algorithms.k_center_greedy | Farthest-first progress | seed=456 | centers=46800/72000 | covering_radius=49.905428
+2026-08-04 22:51:46,257 | INFO | algorithms.k_center_greedy | Farthest-first progress | seed=456 | centers=50400/72000 | covering_radius=48.944110
+2026-08-04 22:51:46,666 | INFO | algorithms.k_center_greedy | Farthest-first progress | seed=456 | centers=54000/72000 | covering_radius=47.952954
+2026-08-04 22:51:47,119 | INFO | algorithms.k_center_greedy | Farthest-first progress | seed=456 | centers=57600/72000 | covering_radius=46.942243
+2026-08-04 22:51:47,567 | INFO | algorithms.k_center_greedy | Farthest-first progress | seed=456 | centers=61200/72000 | covering_radius=45.842472
+2026-08-04 22:51:48,027 | INFO | algorithms.k_center_greedy | Farthest-first progress | seed=456 | centers=64800/72000 | covering_radius=44.624048
+2026-08-04 22:51:48,680 | INFO | algorithms.k_center_greedy | Farthest-first progress | seed=456 | centers=68400/72000 | covering_radius=43.188212
+2026-08-04 22:51:49,455 | INFO | algorithms.k_center_greedy | Farthest-first progress | seed=456 | centers=72000/72000 | covering_radius=41.335541
+2026-08-04 22:51:50,040 | INFO | algorithms.k_center_greedy | Global farthest-first order completed | seed=456 | centers=72000 | seconds=8.444
+2026-08-04 22:51:50,110 | INFO | run_experiments | Completed TINYIMAGENET_alexnet_KCG_accuracy_kp1000_seed456 | global_k_center=true | fitness_evaluations=0 | selected_instances=8000 | selection_seconds=11.836 | covering_radius=65.060249
+2026-08-04 22:51:50,115 | INFO | run_experiments | Starting run TINYIMAGENET_alexnet_KCG_accuracy_kp2500_seed456
+2026-08-04 22:51:52,849 | INFO | run_experiments | Completed TINYIMAGENET_alexnet_KCG_accuracy_kp2500_seed456 | global_k_center=true | fitness_evaluations=0 | selected_instances=20000 | selection_seconds=2.654 | covering_radius=58.035154
+2026-08-04 22:51:52,854 | INFO | run_experiments | Starting run TINYIMAGENET_alexnet_KCG_accuracy_kp5000_seed456
+2026-08-04 22:51:55,599 | INFO | run_experiments | Completed TINYIMAGENET_alexnet_KCG_accuracy_kp5000_seed456 | global_k_center=true | fitness_evaluations=0 | selected_instances=40000 | selection_seconds=2.656 | covering_radius=51.721932
+2026-08-04 22:51:55,600 | INFO | run_experiments | Starting run TINYIMAGENET_alexnet_KCG_accuracy_kp7500_seed456
+2026-08-04 22:51:58,443 | INFO | run_experiments | Completed TINYIMAGENET_alexnet_KCG_accuracy_kp7500_seed456 | global_k_center=true | fitness_evaluations=0 | selected_instances=60000 | selection_seconds=2.710 | covering_radius=46.214614
+2026-08-04 22:51:58,447 | INFO | run_experiments | Starting run TINYIMAGENET_alexnet_KCG_accuracy_kp9000_seed456
+2026-08-04 22:52:01,330 | INFO | run_experiments | Completed TINYIMAGENET_alexnet_KCG_accuracy_kp9000_seed456 | global_k_center=true | fitness_evaluations=0 | selected_instances=72000 | selection_seconds=2.707 | covering_radius=41.335541
+2026-08-04 22:54:56,375 | INFO | run_experiments | Starting run TINYIMAGENET_alexnet_KCG_accuracy_kp1000_seed789
+2026-08-04 22:54:59,109 | INFO | algorithms.k_center_greedy | Building global farthest-first order | seed=789 | centers=72000 | instances=80000 | first_center=62739
+2026-08-04 22:54:59,109 | INFO | algorithms.k_center_greedy | Farthest-first progress | seed=789 | centers=2/72000 | covering_radius=130.640564
+2026-08-04 22:54:59,458 | INFO | algorithms.k_center_greedy | Farthest-first progress | seed=789 | centers=3600/72000 | covering_radius=70.827179
+2026-08-04 22:54:59,799 | INFO | algorithms.k_center_greedy | Farthest-first progress | seed=789 | centers=7200/72000 | covering_radius=65.758198
+2026-08-04 22:55:00,140 | INFO | algorithms.k_center_greedy | Farthest-first progress | seed=789 | centers=10800/72000 | covering_radius=62.832817
+2026-08-04 22:55:00,477 | INFO | algorithms.k_center_greedy | Farthest-first progress | seed=789 | centers=14400/72000 | covering_radius=60.632466
+2026-08-04 22:55:00,814 | INFO | algorithms.k_center_greedy | Farthest-first progress | seed=789 | centers=18000/72000 | covering_radius=58.888873
+2026-08-04 22:55:01,162 | INFO | algorithms.k_center_greedy | Farthest-first progress | seed=789 | centers=21600/72000 | covering_radius=57.396127
+2026-08-04 22:55:01,494 | INFO | algorithms.k_center_greedy | Farthest-first progress | seed=789 | centers=25200/72000 | covering_radius=56.114890
+2026-08-04 22:55:01,835 | INFO | algorithms.k_center_greedy | Farthest-first progress | seed=789 | centers=28800/72000 | covering_radius=54.923144
+2026-08-04 22:55:02,173 | INFO | algorithms.k_center_greedy | Farthest-first progress | seed=789 | centers=32400/72000 | covering_radius=53.836359
+2026-08-04 22:55:02,501 | INFO | algorithms.k_center_greedy | Farthest-first progress | seed=789 | centers=36000/72000 | covering_radius=52.805052
+2026-08-04 22:55:02,827 | INFO | algorithms.k_center_greedy | Farthest-first progress | seed=789 | centers=39600/72000 | covering_radius=51.819346
+2026-08-04 22:55:03,166 | INFO | algorithms.k_center_greedy | Farthest-first progress | seed=789 | centers=43200/72000 | covering_radius=50.865977
+2026-08-04 22:55:03,531 | INFO | algorithms.k_center_greedy | Farthest-first progress | seed=789 | centers=46800/72000 | covering_radius=49.900854
+2026-08-04 22:55:03,978 | INFO | algorithms.k_center_greedy | Farthest-first progress | seed=789 | centers=50400/72000 | covering_radius=48.947531
+2026-08-04 22:55:04,393 | INFO | algorithms.k_center_greedy | Farthest-first progress | seed=789 | centers=54000/72000 | covering_radius=47.963510
+2026-08-04 22:55:04,830 | INFO | algorithms.k_center_greedy | Farthest-first progress | seed=789 | centers=57600/72000 | covering_radius=46.941307
+2026-08-04 22:55:05,197 | INFO | algorithms.k_center_greedy | Farthest-first progress | seed=789 | centers=61200/72000 | covering_radius=45.836411
+2026-08-04 22:55:05,694 | INFO | algorithms.k_center_greedy | Farthest-first progress | seed=789 | centers=64800/72000 | covering_radius=44.614648
+2026-08-04 22:55:06,112 | INFO | algorithms.k_center_greedy | Farthest-first progress | seed=789 | centers=68400/72000 | covering_radius=43.180857
+2026-08-04 22:55:06,628 | INFO | algorithms.k_center_greedy | Farthest-first progress | seed=789 | centers=72000/72000 | covering_radius=41.333108
+2026-08-04 22:55:07,193 | INFO | algorithms.k_center_greedy | Global farthest-first order completed | seed=789 | centers=72000 | seconds=7.519
+2026-08-04 22:55:07,301 | INFO | run_experiments | Completed TINYIMAGENET_alexnet_KCG_accuracy_kp1000_seed789 | global_k_center=true | fitness_evaluations=0 | selected_instances=8000 | selection_seconds=10.846 | covering_radius=65.055284
+2026-08-04 22:55:07,308 | INFO | run_experiments | Starting run TINYIMAGENET_alexnet_KCG_accuracy_kp2500_seed789
+2026-08-04 22:55:10,071 | INFO | run_experiments | Completed TINYIMAGENET_alexnet_KCG_accuracy_kp2500_seed789 | global_k_center=true | fitness_evaluations=0 | selected_instances=20000 | selection_seconds=2.671 | covering_radius=58.027072
+2026-08-04 22:55:10,075 | INFO | run_experiments | Starting run TINYIMAGENET_alexnet_KCG_accuracy_kp5000_seed789
+2026-08-04 22:55:12,889 | INFO | run_experiments | Completed TINYIMAGENET_alexnet_KCG_accuracy_kp5000_seed789 | global_k_center=true | fitness_evaluations=0 | selected_instances=40000 | selection_seconds=2.680 | covering_radius=51.712174
+2026-08-04 22:55:12,894 | INFO | run_experiments | Starting run TINYIMAGENET_alexnet_KCG_accuracy_kp7500_seed789
+2026-08-04 22:55:15,654 | INFO | run_experiments | Completed TINYIMAGENET_alexnet_KCG_accuracy_kp7500_seed789 | global_k_center=true | fitness_evaluations=0 | selected_instances=60000 | selection_seconds=2.647 | covering_radius=46.213140
+2026-08-04 22:55:15,656 | INFO | run_experiments | Starting run TINYIMAGENET_alexnet_KCG_accuracy_kp9000_seed789
+2026-08-04 22:55:18,533 | INFO | run_experiments | Completed TINYIMAGENET_alexnet_KCG_accuracy_kp9000_seed789 | global_k_center=true | fitness_evaluations=0 | selected_instances=72000 | selection_seconds=2.703 | covering_radius=41.333108
+2026-08-04 22:58:13,826 | INFO | run_experiments | Starting run TINYIMAGENET_alexnet_KCG_accuracy_kp1000_seed1024
+2026-08-04 22:58:16,602 | INFO | algorithms.k_center_greedy | Building global farthest-first order | seed=1024 | centers=72000 | instances=80000 | first_center=2507
+2026-08-04 22:58:16,603 | INFO | algorithms.k_center_greedy | Farthest-first progress | seed=1024 | centers=2/72000 | covering_radius=115.615810
+2026-08-04 22:58:16,970 | INFO | algorithms.k_center_greedy | Farthest-first progress | seed=1024 | centers=3600/72000 | covering_radius=70.843650
+2026-08-04 22:58:17,319 | INFO | algorithms.k_center_greedy | Farthest-first progress | seed=1024 | centers=7200/72000 | covering_radius=65.770846
+2026-08-04 22:58:17,663 | INFO | algorithms.k_center_greedy | Farthest-first progress | seed=1024 | centers=10800/72000 | covering_radius=62.833847
+2026-08-04 22:58:18,003 | INFO | algorithms.k_center_greedy | Farthest-first progress | seed=1024 | centers=14400/72000 | covering_radius=60.624050
+2026-08-04 22:58:18,352 | INFO | algorithms.k_center_greedy | Farthest-first progress | seed=1024 | centers=18000/72000 | covering_radius=58.892157
+2026-08-04 22:58:18,708 | INFO | algorithms.k_center_greedy | Farthest-first progress | seed=1024 | centers=21600/72000 | covering_radius=57.412791
+2026-08-04 22:58:19,046 | INFO | algorithms.k_center_greedy | Farthest-first progress | seed=1024 | centers=25200/72000 | covering_radius=56.114189
+2026-08-04 22:58:19,422 | INFO | algorithms.k_center_greedy | Farthest-first progress | seed=1024 | centers=28800/72000 | covering_radius=54.930843
+2026-08-04 22:58:19,766 | INFO | algorithms.k_center_greedy | Farthest-first progress | seed=1024 | centers=32400/72000 | covering_radius=53.839488
+2026-08-04 22:58:20,128 | INFO | algorithms.k_center_greedy | Farthest-first progress | seed=1024 | centers=36000/72000 | covering_radius=52.800429
+2026-08-04 22:58:20,492 | INFO | algorithms.k_center_greedy | Farthest-first progress | seed=1024 | centers=39600/72000 | covering_radius=51.821094
+2026-08-04 22:58:20,865 | INFO | algorithms.k_center_greedy | Farthest-first progress | seed=1024 | centers=43200/72000 | covering_radius=50.871098
+2026-08-04 22:58:21,206 | INFO | algorithms.k_center_greedy | Farthest-first progress | seed=1024 | centers=46800/72000 | covering_radius=49.898486
+2026-08-04 22:58:21,591 | INFO | algorithms.k_center_greedy | Farthest-first progress | seed=1024 | centers=50400/72000 | covering_radius=48.940693
+2026-08-04 22:58:21,983 | INFO | algorithms.k_center_greedy | Farthest-first progress | seed=1024 | centers=54000/72000 | covering_radius=47.952354
+2026-08-04 22:58:22,384 | INFO | algorithms.k_center_greedy | Farthest-first progress | seed=1024 | centers=57600/72000 | covering_radius=46.926747
+2026-08-04 22:58:22,838 | INFO | algorithms.k_center_greedy | Farthest-first progress | seed=1024 | centers=61200/72000 | covering_radius=45.839889
+2026-08-04 22:58:23,270 | INFO | algorithms.k_center_greedy | Farthest-first progress | seed=1024 | centers=64800/72000 | covering_radius=44.608584
+2026-08-04 22:58:23,689 | INFO | algorithms.k_center_greedy | Farthest-first progress | seed=1024 | centers=68400/72000 | covering_radius=43.179308
+2026-08-04 22:58:24,348 | INFO | algorithms.k_center_greedy | Farthest-first progress | seed=1024 | centers=72000/72000 | covering_radius=41.327455
+2026-08-04 22:58:24,968 | INFO | algorithms.k_center_greedy | Global farthest-first order completed | seed=1024 | centers=72000 | seconds=7.746
+2026-08-04 22:58:25,110 | INFO | run_experiments | Completed TINYIMAGENET_alexnet_KCG_accuracy_kp1000_seed1024 | global_k_center=true | fitness_evaluations=0 | selected_instances=8000 | selection_seconds=11.214 | covering_radius=65.023001
+2026-08-04 22:58:25,120 | INFO | run_experiments | Starting run TINYIMAGENET_alexnet_KCG_accuracy_kp2500_seed1024
+2026-08-04 22:58:27,988 | INFO | run_experiments | Completed TINYIMAGENET_alexnet_KCG_accuracy_kp2500_seed1024 | global_k_center=true | fitness_evaluations=0 | selected_instances=20000 | selection_seconds=2.775 | covering_radius=58.036458
+2026-08-04 22:58:27,992 | INFO | run_experiments | Starting run TINYIMAGENET_alexnet_KCG_accuracy_kp5000_seed1024
+2026-08-04 22:58:30,745 | INFO | run_experiments | Completed TINYIMAGENET_alexnet_KCG_accuracy_kp5000_seed1024 | global_k_center=true | fitness_evaluations=0 | selected_instances=40000 | selection_seconds=2.676 | covering_radius=51.708515
+2026-08-04 22:58:30,747 | INFO | run_experiments | Starting run TINYIMAGENET_alexnet_KCG_accuracy_kp7500_seed1024
+2026-08-04 22:58:33,699 | INFO | run_experiments | Completed TINYIMAGENET_alexnet_KCG_accuracy_kp7500_seed1024 | global_k_center=true | fitness_evaluations=0 | selected_instances=60000 | selection_seconds=2.775 | covering_radius=46.215760
+2026-08-04 22:58:33,704 | INFO | run_experiments | Starting run TINYIMAGENET_alexnet_KCG_accuracy_kp9000_seed1024
+2026-08-04 22:58:36,650 | INFO | run_experiments | Completed TINYIMAGENET_alexnet_KCG_accuracy_kp9000_seed1024 | global_k_center=true | fitness_evaluations=0 | selected_instances=72000 | selection_seconds=2.758 | covering_radius=41.327455
+2026-08-04 23:01:31,998 | INFO | run_experiments | Experiment completed successfully: main_global_kcg_tinyimagenet_alexnet_all

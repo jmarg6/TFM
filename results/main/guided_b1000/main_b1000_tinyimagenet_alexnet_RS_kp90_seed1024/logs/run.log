@@ -1,0 +1,19 @@
+2026-08-19 10:10:08,579 | INFO | run_experiments | Experiment=main_b1000_tinyimagenet_alexnet_RS_kp90_seed1024 | device=cuda | search_runs=1 | planned_fitness_evaluations=1000
+2026-08-19 10:10:08,601 | INFO | run_experiments | Training protocol | pretrained=True | freeze_backbone=True | trainable_scope=replacement_classifier_only | representation=preextracted_features
+2026-08-19 10:10:08,601 | INFO | run_experiments | Preparing data | dataset=TINYIMAGENET | model=alexnet
+2026-08-19 10:10:09,940 | INFO | utils.data_utils | [Features] Tensors loaded | active_train=80000 | base_train=80000 | validation=20000 | test=10000 | classes=200
+2026-08-19 10:10:10,103 | INFO | run_experiments | Data ready | representation=preextracted_features | base_train=80000 | validation=20000 | test=10000 | classes=200 | image_size=0 | feature_dimension=4096
+2026-08-19 10:10:10,945 | INFO | run_experiments | Starting run TINYIMAGENET_alexnet_RS_accuracy_kp9000_seed1024
+2026-08-19 10:10:10,945 | INFO | algorithms.random_search | Starting RS | target_metric=accuracy | keep_percentage=0.9000 | max_evaluations=1000
+2026-08-19 10:11:00,516 | INFO | algorithms.random_search | [RS] New best at evaluation 1/1000 | accuracy=0.458100
+2026-08-19 10:21:32,261 | INFO | algorithms.random_search | [RS] New best at evaluation 14/1000 | accuracy=0.458850
+2026-08-19 10:23:09,619 | INFO | algorithms.random_search | [RS] New best at evaluation 16/1000 | accuracy=0.461800
+2026-08-19 11:10:21,971 | INFO | algorithms.random_search | [RS] New best at evaluation 74/1000 | accuracy=0.463500
+2026-08-19 11:49:50,477 | INFO | algorithms.random_search | [RS] New best at evaluation 122/1000 | accuracy=0.464350
+2026-08-19 12:14:39,077 | INFO | algorithms.random_search | [RS] New best at evaluation 152/1000 | accuracy=0.464700
+2026-08-19 13:20:43,652 | INFO | algorithms.random_search | [RS] New best at evaluation 231/1000 | accuracy=0.464950
+2026-08-19 16:04:03,661 | INFO | algorithms.random_search | [RS] New best at evaluation 425/1000 | accuracy=0.465350
+2026-08-19 22:55:40,800 | INFO | algorithms.random_search | [RS] New best at evaluation 914/1000 | accuracy=0.465850
+2026-08-20 00:08:11,529 | INFO | algorithms.random_search | [RS] Finished | evaluations=1000 | best_accuracy=0.465850
+2026-08-20 00:08:11,801 | INFO | run_experiments | Completed TINYIMAGENET_alexnet_RS_accuracy_kp9000_seed1024 | evaluations=1000 | best_accuracy=0.465850
+2026-08-20 00:09:03,566 | INFO | run_experiments | Experiment completed successfully: main_b1000_tinyimagenet_alexnet_RS_kp90_seed1024

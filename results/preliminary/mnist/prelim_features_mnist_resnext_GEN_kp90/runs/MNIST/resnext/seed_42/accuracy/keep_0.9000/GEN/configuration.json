@@ -1,0 +1,78 @@
+{
+  "algorithm": "GEN",
+  "arguments": {
+    "algorithms": [
+      "GEN"
+    ],
+    "allow_nondeterminism": false,
+    "batch_size": 32,
+    "configuration_fingerprint": "06cce53329ff6430decc8b78e2b8d55babec6e31476067ce92aab1e467f1c080",
+    "data_dir": "/mnt/homeGPU1/jmrodriguez/data",
+    "datasets": [
+      "MNIST"
+    ],
+    "device": "cuda",
+    "dry_run": false,
+    "empty_cuda_cache": false,
+    "epochs": 10,
+    "experiment_name": "prelim_features_mnist_resnext_GEN_kp90",
+    "fail_fast": true,
+    "features_dir": "/mnt/homeGPU1/jmrodriguez/data/features",
+    "final_repeats": 1,
+    "final_seed_offset": 200000,
+    "fine_tune_all": false,
+    "image_size": 0,
+    "keep_percentages": [
+      0.9
+    ],
+    "learning_rate": 0.001,
+    "local_search_num_swaps": 10,
+    "max_evaluations": 100,
+    "memetic_local_search_num_swaps": 5,
+    "memetic_local_search_probability": 0.2,
+    "memetic_local_search_steps": 10,
+    "metric_averaging": "macro",
+    "metrics": [
+      "accuracy"
+    ],
+    "models": [
+      "resnext"
+    ],
+    "mutation_fraction": 0.05,
+    "mutation_probability": 0.1,
+    "no_pretrained": false,
+    "num_workers": 0,
+    "output_dir": "/mnt/homeGPU1/jmrodriguez/results",
+    "overwrite": false,
+    "population_size": 10,
+    "seeds": [
+      42,
+      123,
+      456,
+      789,
+      1024
+    ],
+    "skip_full_baseline": false,
+    "skip_test": true,
+    "split_seed": 42,
+    "tournament_size": 3,
+    "training_seed_offset": 100000,
+    "use_features": true,
+    "validation_fraction": 0.2,
+    "verbose": false,
+    "weight_decay": 0.0
+  },
+  "configuration_fingerprint": "06cce53329ff6430decc8b78e2b8d55babec6e31476067ce92aab1e467f1c080",
+  "dataset": "MNIST",
+  "experiment_name": "prelim_features_mnist_resnext_GEN_kp90",
+  "keep_percentage": 0.9,
+  "metric_averaging": "macro",
+  "model": "resnext",
+  "num_classes": 10,
+  "run_id": "MNIST_resnext_GEN_accuracy_kp9000_seed42",
+  "search_seed": 42,
+  "split_seed": 42,
+  "target_metric": "accuracy",
+  "total_instances": 48000,
+  "training_seed": 100042
+}

@@ -1,0 +1,13 @@
+# Keep source files with Unix line endings.
+# This is especially important for Bash/Slurm scripts executed on Linux.
+
+*.sh     text eol=lf
+*.py     text eol=lf
+*.md     text eol=lf
+*.txt    text eol=lf
+*.json   text eol=lf
+*.csv    text eol=lf
+*.yml    text eol=lf
+*.yaml   text eol=lf
+*.cff    text eol=lf
+*.ipynb  text eol=lf

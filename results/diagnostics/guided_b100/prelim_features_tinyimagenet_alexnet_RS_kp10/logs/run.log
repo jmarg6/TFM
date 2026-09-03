@@ -1,0 +1,63 @@
+2026-07-24 12:41:48,246 | INFO | run_experiments | Experiment=prelim_features_tinyimagenet_alexnet_RS_kp10 | device=cuda | search_runs=5 | planned_fitness_evaluations=500
+2026-07-24 12:41:48,253 | INFO | run_experiments | Training protocol | pretrained=True | freeze_backbone=True | trainable_scope=replacement_classifier_only | representation=preextracted_features
+2026-07-24 12:41:48,253 | INFO | run_experiments | Preparing data | dataset=TINYIMAGENET | model=alexnet
+2026-07-24 12:42:13,052 | INFO | utils.data_utils | [Features] Tensors loaded | active_train=80000 | base_train=80000 | validation=20000 | test=10000 | classes=200
+2026-07-24 12:42:13,200 | INFO | run_experiments | Data ready | representation=preextracted_features | base_train=80000 | validation=20000 | test=10000 | classes=200 | image_size=0 | feature_dimension=4096
+2026-07-24 12:42:14,063 | INFO | run_experiments | Starting run TINYIMAGENET_alexnet_RS_accuracy_kp1000_seed42
+2026-07-24 12:42:14,064 | INFO | algorithms.random_search | Starting RS | target_metric=accuracy | keep_percentage=0.1000 | max_evaluations=100
+2026-07-24 12:42:25,596 | INFO | algorithms.random_search | [RS] New best at evaluation 1/100 | accuracy=0.414250
+2026-07-24 12:45:10,558 | INFO | algorithms.random_search | [RS] New best at evaluation 16/100 | accuracy=0.415550
+2026-07-24 12:45:21,508 | INFO | algorithms.random_search | [RS] New best at evaluation 17/100 | accuracy=0.417450
+2026-07-24 12:48:38,228 | INFO | algorithms.random_search | [RS] New best at evaluation 35/100 | accuracy=0.420150
+2026-07-24 12:58:08,575 | INFO | algorithms.random_search | [RS] New best at evaluation 87/100 | accuracy=0.420350
+2026-07-24 13:00:31,349 | INFO | algorithms.random_search | [RS] Finished | evaluations=100 | best_accuracy=0.420350
+2026-07-24 13:00:31,426 | INFO | run_experiments | Completed TINYIMAGENET_alexnet_RS_accuracy_kp1000_seed42 | evaluations=100 | best_accuracy=0.420350
+2026-07-24 13:00:32,390 | INFO | run_experiments | Starting run TINYIMAGENET_alexnet_RS_accuracy_kp1000_seed123
+2026-07-24 13:00:32,390 | INFO | algorithms.random_search | Starting RS | target_metric=accuracy | keep_percentage=0.1000 | max_evaluations=100
+2026-07-24 13:00:43,349 | INFO | algorithms.random_search | [RS] New best at evaluation 1/100 | accuracy=0.417250
+2026-07-24 13:04:44,880 | INFO | algorithms.random_search | [RS] New best at evaluation 23/100 | accuracy=0.418500
+2026-07-24 13:15:57,536 | INFO | algorithms.random_search | [RS] New best at evaluation 84/100 | accuracy=0.418550
+2026-07-24 13:18:43,142 | INFO | algorithms.random_search | [RS] New best at evaluation 99/100 | accuracy=0.422500
+2026-07-24 13:18:54,179 | INFO | algorithms.random_search | [RS] Finished | evaluations=100 | best_accuracy=0.422500
+2026-07-24 13:18:54,249 | INFO | run_experiments | Completed TINYIMAGENET_alexnet_RS_accuracy_kp1000_seed123 | evaluations=100 | best_accuracy=0.422500
+2026-07-24 13:18:55,216 | INFO | run_experiments | Starting run TINYIMAGENET_alexnet_RS_accuracy_kp1000_seed456
+2026-07-24 13:18:55,217 | INFO | algorithms.random_search | Starting RS | target_metric=accuracy | keep_percentage=0.1000 | max_evaluations=100
+2026-07-24 13:19:06,289 | INFO | algorithms.random_search | [RS] New best at evaluation 1/100 | accuracy=0.406100
+2026-07-24 13:19:17,287 | INFO | algorithms.random_search | [RS] New best at evaluation 2/100 | accuracy=0.413150
+2026-07-24 13:19:28,257 | INFO | algorithms.random_search | [RS] New best at evaluation 3/100 | accuracy=0.418700
+2026-07-24 13:27:32,993 | INFO | algorithms.random_search | [RS] New best at evaluation 47/100 | accuracy=0.419850
+2026-07-24 13:35:15,668 | INFO | algorithms.random_search | [RS] New best at evaluation 89/100 | accuracy=0.420100
+2026-07-24 13:37:17,447 | INFO | algorithms.random_search | [RS] Finished | evaluations=100 | best_accuracy=0.420100
+2026-07-24 13:37:17,513 | INFO | run_experiments | Completed TINYIMAGENET_alexnet_RS_accuracy_kp1000_seed456 | evaluations=100 | best_accuracy=0.420100
+2026-07-24 13:37:18,506 | INFO | run_experiments | Starting run TINYIMAGENET_alexnet_RS_accuracy_kp1000_seed789
+2026-07-24 13:37:18,507 | INFO | algorithms.random_search | Starting RS | target_metric=accuracy | keep_percentage=0.1000 | max_evaluations=100
+2026-07-24 13:37:29,571 | INFO | algorithms.random_search | [RS] New best at evaluation 1/100 | accuracy=0.409550
+2026-07-24 13:37:40,628 | INFO | algorithms.random_search | [RS] New best at evaluation 2/100 | accuracy=0.409700
+2026-07-24 13:38:02,696 | INFO | algorithms.random_search | [RS] New best at evaluation 4/100 | accuracy=0.413600
+2026-07-24 13:38:24,711 | INFO | algorithms.random_search | [RS] New best at evaluation 6/100 | accuracy=0.413700
+2026-07-24 13:38:35,779 | INFO | algorithms.random_search | [RS] New best at evaluation 7/100 | accuracy=0.414650
+2026-07-24 13:38:57,877 | INFO | algorithms.random_search | [RS] New best at evaluation 9/100 | accuracy=0.414800
+2026-07-24 13:39:08,922 | INFO | algorithms.random_search | [RS] New best at evaluation 10/100 | accuracy=0.415400
+2026-07-24 13:40:04,150 | INFO | algorithms.random_search | [RS] New best at evaluation 15/100 | accuracy=0.416100
+2026-07-24 13:42:05,483 | INFO | algorithms.random_search | [RS] New best at evaluation 26/100 | accuracy=0.418400
+2026-07-24 13:53:29,815 | INFO | algorithms.random_search | [RS] New best at evaluation 88/100 | accuracy=0.420050
+2026-07-24 13:55:42,465 | INFO | algorithms.random_search | [RS] Finished | evaluations=100 | best_accuracy=0.420050
+2026-07-24 13:55:42,502 | INFO | run_experiments | Completed TINYIMAGENET_alexnet_RS_accuracy_kp1000_seed789 | evaluations=100 | best_accuracy=0.420050
+2026-07-24 13:55:43,441 | INFO | run_experiments | Starting run TINYIMAGENET_alexnet_RS_accuracy_kp1000_seed1024
+2026-07-24 13:55:43,441 | INFO | algorithms.random_search | Starting RS | target_metric=accuracy | keep_percentage=0.1000 | max_evaluations=100
+2026-07-24 13:55:54,511 | INFO | algorithms.random_search | [RS] New best at evaluation 1/100 | accuracy=0.417250
+2026-07-24 14:02:09,329 | INFO | algorithms.random_search | [RS] New best at evaluation 35/100 | accuracy=0.418900
+2026-07-24 14:14:07,518 | INFO | algorithms.random_search | [RS] Finished | evaluations=100 | best_accuracy=0.418900
+2026-07-24 14:14:07,554 | INFO | run_experiments | Completed TINYIMAGENET_alexnet_RS_accuracy_kp1000_seed1024 | evaluations=100 | best_accuracy=0.418900
+2026-07-24 14:14:07,955 | INFO | run_experiments | Experiment completed successfully: prelim_features_tinyimagenet_alexnet_RS_kp10
+2026-07-24 19:34:01,234 | INFO | run_experiments | Experiment=prelim_features_tinyimagenet_alexnet_RS_kp10 | device=cuda | search_runs=5 | planned_fitness_evaluations=500
+2026-07-24 19:34:01,236 | INFO | run_experiments | Training protocol | pretrained=True | freeze_backbone=True | trainable_scope=replacement_classifier_only | representation=preextracted_features
+2026-07-24 19:34:01,236 | INFO | run_experiments | Preparing data | dataset=TINYIMAGENET | model=alexnet
+2026-07-24 19:34:02,637 | INFO | utils.data_utils | [Features] Tensors loaded | active_train=80000 | base_train=80000 | validation=20000 | test=10000 | classes=200
+2026-07-24 19:34:02,795 | INFO | run_experiments | Data ready | representation=preextracted_features | base_train=80000 | validation=20000 | test=10000 | classes=200 | image_size=0 | feature_dimension=4096
+2026-07-24 19:34:04,051 | INFO | run_experiments | Skipping completed run TINYIMAGENET_alexnet_RS_accuracy_kp1000_seed42
+2026-07-24 19:34:16,970 | INFO | run_experiments | Skipping completed run TINYIMAGENET_alexnet_RS_accuracy_kp1000_seed123
+2026-07-24 19:34:29,300 | INFO | run_experiments | Skipping completed run TINYIMAGENET_alexnet_RS_accuracy_kp1000_seed456
+2026-07-24 19:34:41,630 | INFO | run_experiments | Skipping completed run TINYIMAGENET_alexnet_RS_accuracy_kp1000_seed789
+2026-07-24 19:34:54,076 | INFO | run_experiments | Skipping completed run TINYIMAGENET_alexnet_RS_accuracy_kp1000_seed1024
+2026-07-24 19:35:06,020 | INFO | run_experiments | Experiment completed successfully: prelim_features_tinyimagenet_alexnet_RS_kp10

@@ -1,0 +1,3 @@
+dataset,shared_pairwise_cache_seconds
+CIFAR-10,295.494
+Tiny ImageNet,1156.833

@@ -1,0 +1,9 @@
+cff-version: 1.2.0
+message: "If you use this software or its experiment artifacts, please cite the associated Master's Thesis."
+title: "Metaheuristic-Based Instance Selection for Compact Training of Deep Neural Networks"
+type: software
+authors:
+  - family-names: "Rodríguez Gómez"
+    given-names: "Juan Manuel"
+year: 2026
+repository-code: "https://github.com/jmarg6/TFM"

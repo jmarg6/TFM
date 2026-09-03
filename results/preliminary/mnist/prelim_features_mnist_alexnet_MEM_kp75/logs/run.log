@@ -1,0 +1,35 @@
+2026-07-19 01:32:00,179 | INFO | run_experiments | Experiment=prelim_features_mnist_alexnet_MEM_kp75 | device=cuda | search_runs=5 | planned_fitness_evaluations=500
+2026-07-19 01:32:00,182 | INFO | run_experiments | Training protocol | pretrained=True | freeze_backbone=True | trainable_scope=replacement_classifier_only | representation=preextracted_features
+2026-07-19 01:32:00,182 | INFO | run_experiments | Preparing data | dataset=MNIST | model=alexnet
+2026-07-19 01:32:12,432 | INFO | utils.data_utils | [Features] Tensors loaded | active_train=48000 | base_train=48000 | validation=12000 | test=10000 | classes=10
+2026-07-19 01:32:12,564 | INFO | run_experiments | Data ready | representation=preextracted_features | base_train=48000 | validation=12000 | test=10000 | classes=10 | image_size=0 | feature_dimension=4096
+2026-07-19 01:32:13,620 | INFO | run_experiments | Starting run MNIST_alexnet_MEM_accuracy_kp7500_seed42
+2026-07-19 01:32:13,620 | INFO | algorithms.memetic | Starting MEM | target_metric=accuracy | keep_percentage=0.7500 | population_size=10 | max_evaluations=100
+2026-07-19 02:09:38,023 | INFO | algorithms.memetic | [MEM] New best during Local Search at evaluation 72/100 | generation=3 | accuracy=0.975083
+2026-07-19 02:17:56,554 | INFO | algorithms.memetic | [MEM] New best during Local Search at evaluation 88/100 | generation=4 | accuracy=0.976083
+2026-07-19 02:24:10,988 | INFO | algorithms.memetic | [MEM] Finished | evaluations=100 | generations=4 | best_accuracy=0.976083
+2026-07-19 02:24:11,073 | INFO | run_experiments | Completed MNIST_alexnet_MEM_accuracy_kp7500_seed42 | evaluations=100 | best_accuracy=0.976083
+2026-07-19 02:24:12,101 | INFO | run_experiments | Starting run MNIST_alexnet_MEM_accuracy_kp7500_seed123
+2026-07-19 02:24:12,101 | INFO | algorithms.memetic | Starting MEM | target_metric=accuracy | keep_percentage=0.7500 | population_size=10 | max_evaluations=100
+2026-07-19 02:46:02,649 | INFO | algorithms.memetic | [MEM] New best during Local Search at evaluation 42/100 | generation=1 | accuracy=0.976083
+2026-07-19 03:16:14,206 | INFO | algorithms.memetic | [MEM] Finished | evaluations=100 | generations=3 | best_accuracy=0.976083
+2026-07-19 03:16:14,293 | INFO | run_experiments | Completed MNIST_alexnet_MEM_accuracy_kp7500_seed123 | evaluations=100 | best_accuracy=0.976083
+2026-07-19 03:16:15,357 | INFO | run_experiments | Starting run MNIST_alexnet_MEM_accuracy_kp7500_seed456
+2026-07-19 03:16:15,357 | INFO | algorithms.memetic | Starting MEM | target_metric=accuracy | keep_percentage=0.7500 | population_size=10 | max_evaluations=100
+2026-07-19 03:27:11,070 | INFO | algorithms.memetic | [MEM] New best during Local Search at evaluation 21/100 | generation=1 | accuracy=0.975333
+2026-07-19 03:50:06,502 | INFO | algorithms.memetic | [MEM] New best during Local Search at evaluation 65/100 | generation=1 | accuracy=0.975667
+2026-07-19 04:07:18,692 | INFO | algorithms.memetic | [MEM] Finished | evaluations=100 | generations=4 | best_accuracy=0.975667
+2026-07-19 04:07:19,306 | INFO | run_experiments | Completed MNIST_alexnet_MEM_accuracy_kp7500_seed456 | evaluations=100 | best_accuracy=0.975667
+2026-07-19 04:07:20,357 | INFO | run_experiments | Starting run MNIST_alexnet_MEM_accuracy_kp7500_seed789
+2026-07-19 04:07:20,357 | INFO | algorithms.memetic | Starting MEM | target_metric=accuracy | keep_percentage=0.7500 | population_size=10 | max_evaluations=100
+2026-07-19 04:20:33,844 | INFO | algorithms.memetic | [MEM] New best during Local Search at evaluation 28/100 | generation=1 | accuracy=0.975083
+2026-07-19 04:21:02,099 | INFO | algorithms.memetic | [MEM] New best during Local Search at evaluation 29/100 | generation=1 | accuracy=0.975250
+2026-07-19 04:23:23,577 | INFO | algorithms.memetic | [MEM] New best during Local Search at evaluation 34/100 | generation=1 | accuracy=0.975583
+2026-07-19 04:23:52,055 | INFO | algorithms.memetic | [MEM] New best during Local Search at evaluation 35/100 | generation=1 | accuracy=0.976417
+2026-07-19 04:54:36,883 | INFO | algorithms.memetic | [MEM] Finished | evaluations=100 | generations=5 | best_accuracy=0.976417
+2026-07-19 04:54:36,984 | INFO | run_experiments | Completed MNIST_alexnet_MEM_accuracy_kp7500_seed789 | evaluations=100 | best_accuracy=0.976417
+2026-07-19 04:54:37,952 | INFO | run_experiments | Starting run MNIST_alexnet_MEM_accuracy_kp7500_seed1024
+2026-07-19 04:54:37,952 | INFO | algorithms.memetic | Starting MEM | target_metric=accuracy | keep_percentage=0.7500 | population_size=10 | max_evaluations=100
+2026-07-19 05:42:03,490 | INFO | algorithms.memetic | [MEM] Finished | evaluations=100 | generations=5 | best_accuracy=0.975750
+2026-07-19 05:42:03,574 | INFO | run_experiments | Completed MNIST_alexnet_MEM_accuracy_kp7500_seed1024 | evaluations=100 | best_accuracy=0.975750
+2026-07-19 05:42:03,925 | INFO | run_experiments | Experiment completed successfully: prelim_features_mnist_alexnet_MEM_kp75

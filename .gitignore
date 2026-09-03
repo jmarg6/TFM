@@ -1,57 +1,35 @@
-# ==============================================================================
-# 1. ENTORNOS VIRTUALES Y DEPENDENCIAS
-# ==============================================================================
+# Python
+__pycache__/
+*.py[cod]
+*.so
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+
+# Jupyter
+.ipynb_checkpoints/
+
+# Local environments
 .venv/
 venv/
 env/
-ENV/
-dist/
-build/
-*.egg-info/
+.env
 
-# ==============================================================================
-# 2. CACHÉS DE PYTHON Y ARCHIVOS COMPILADOS
-# ==============================================================================
-**/__pycache__/
-*.py[cod]
-*$py.class
-.pytest_cache/
-.mypy_cache/
-
-# ==============================================================================
-# 3. DATOS, LOGS Y RESULTADOS (¡CRUCIAL PARA TU TFM!)
-# Archivos binarios pesados, datasets y miles de imágenes/CSVs generados
-# ==============================================================================
-data/
-img/
-logs/
-results/
-tmp/
-*.pth
+# Large datasets and cached representations
+data/*
+!data/README.md
 *.pt
-*.pkl
-*.h5
+*.pth
+*.npy
+*.npz
+*.dat
 
-# ==============================================================================
-# 4. CONFIGURACIÓN DE JUPYTER NOTEBOOKS
-# ==============================================================================
-.ipynb_checkpoints/
-*/.ipynb_checkpoints/
+# Cluster/runtime logs
+slurm-*.out
+slurm-*.err
 
-# ==============================================================================
-# 5. ENTORNOS DE DESARROLLO (IDEs)
-# ==============================================================================
+# OS/editor files
+.DS_Store
+Thumbs.db
 .vscode/
 .idea/
-*.suo
-*.ntvs*
-*.njsproj
-*.sln
-*.swp
-
-# ==============================================================================
-# 6. ARCHIVOS DEL SISTEMA OPERATIVO (WINDOWS / MAC)
-# ==============================================================================
-Thumbs.db
-desktop.ini
-.DS_Store

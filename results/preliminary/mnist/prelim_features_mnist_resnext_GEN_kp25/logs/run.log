@@ -1,0 +1,50 @@
+2026-07-19 14:42:09,650 | INFO | run_experiments | Experiment=prelim_features_mnist_resnext_GEN_kp25 | device=cuda | search_runs=5 | planned_fitness_evaluations=500
+2026-07-19 14:42:09,653 | INFO | run_experiments | Training protocol | pretrained=True | freeze_backbone=True | trainable_scope=replacement_classifier_only | representation=preextracted_features
+2026-07-19 14:42:09,653 | INFO | run_experiments | Preparing data | dataset=MNIST | model=resnext
+2026-07-19 14:42:19,883 | INFO | utils.data_utils | [Features] Tensors loaded | active_train=48000 | base_train=48000 | validation=12000 | test=10000 | classes=10
+2026-07-19 14:42:20,010 | INFO | run_experiments | Data ready | representation=preextracted_features | base_train=48000 | validation=12000 | test=10000 | classes=10 | image_size=0 | feature_dimension=2048
+2026-07-19 14:42:20,920 | INFO | run_experiments | Starting run MNIST_resnext_GEN_accuracy_kp2500_seed42
+2026-07-19 14:42:20,921 | INFO | algorithms.genetic | Starting GEN | target_metric=accuracy | keep_percentage=0.2500 | population_size=10 | max_evaluations=100
+2026-07-19 14:46:18,285 | INFO | algorithms.genetic | [GEN] New best at evaluation 18/100 | generation=1 | accuracy=0.964750
+2026-07-19 14:48:42,753 | INFO | algorithms.genetic | [GEN] New best at evaluation 29/100 | generation=3 | accuracy=0.964917
+2026-07-19 14:48:55,778 | INFO | algorithms.genetic | [GEN] New best at evaluation 30/100 | generation=3 | accuracy=0.965750
+2026-07-19 15:04:15,100 | INFO | algorithms.genetic | [GEN] Finished | evaluations=100 | generations=10 | best_accuracy=0.965750
+2026-07-19 15:04:15,150 | INFO | run_experiments | Completed MNIST_resnext_GEN_accuracy_kp2500_seed42 | evaluations=100 | best_accuracy=0.965750
+2026-07-19 15:04:16,051 | INFO | run_experiments | Starting run MNIST_resnext_GEN_accuracy_kp2500_seed123
+2026-07-19 15:04:16,052 | INFO | algorithms.genetic | Starting GEN | target_metric=accuracy | keep_percentage=0.2500 | population_size=10 | max_evaluations=100
+2026-07-19 15:07:19,435 | INFO | algorithms.genetic | [GEN] New best at evaluation 14/100 | generation=1 | accuracy=0.964667
+2026-07-19 15:09:17,704 | INFO | algorithms.genetic | [GEN] New best at evaluation 23/100 | generation=2 | accuracy=0.964750
+2026-07-19 15:11:42,551 | INFO | algorithms.genetic | [GEN] New best at evaluation 34/100 | generation=3 | accuracy=0.965500
+2026-07-19 15:13:41,031 | INFO | algorithms.genetic | [GEN] New best at evaluation 43/100 | generation=4 | accuracy=0.965583
+2026-07-19 15:14:20,557 | INFO | algorithms.genetic | [GEN] New best at evaluation 46/100 | generation=4 | accuracy=0.965917
+2026-07-19 15:19:36,280 | INFO | algorithms.genetic | [GEN] New best at evaluation 70/100 | generation=7 | accuracy=0.966167
+2026-07-19 15:25:18,075 | INFO | algorithms.genetic | [GEN] New best at evaluation 96/100 | generation=10 | accuracy=0.966833
+2026-07-19 15:26:10,530 | INFO | algorithms.genetic | [GEN] Finished | evaluations=100 | generations=10 | best_accuracy=0.966833
+2026-07-19 15:26:10,579 | INFO | run_experiments | Completed MNIST_resnext_GEN_accuracy_kp2500_seed123 | evaluations=100 | best_accuracy=0.966833
+2026-07-19 15:26:11,434 | INFO | run_experiments | Starting run MNIST_resnext_GEN_accuracy_kp2500_seed456
+2026-07-19 15:26:11,434 | INFO | algorithms.genetic | Starting GEN | target_metric=accuracy | keep_percentage=0.2500 | population_size=10 | max_evaluations=100
+2026-07-19 15:29:29,268 | INFO | algorithms.genetic | [GEN] New best at evaluation 15/100 | generation=1 | accuracy=0.965667
+2026-07-19 15:32:59,883 | INFO | algorithms.genetic | [GEN] New best at evaluation 31/100 | generation=3 | accuracy=0.966000
+2026-07-19 15:33:39,401 | INFO | algorithms.genetic | [GEN] New best at evaluation 34/100 | generation=3 | accuracy=0.966250
+2026-07-19 15:38:41,645 | INFO | algorithms.genetic | [GEN] New best at evaluation 57/100 | generation=6 | accuracy=0.966333
+2026-07-19 15:42:12,545 | INFO | algorithms.genetic | [GEN] New best at evaluation 73/100 | generation=7 | accuracy=0.966833
+2026-07-19 15:45:29,129 | INFO | algorithms.genetic | [GEN] New best at evaluation 88/100 | generation=9 | accuracy=0.966917
+2026-07-19 15:47:40,310 | INFO | algorithms.genetic | [GEN] New best at evaluation 98/100 | generation=10 | accuracy=0.968167
+2026-07-19 15:48:06,483 | INFO | algorithms.genetic | [GEN] Finished | evaluations=100 | generations=10 | best_accuracy=0.968167
+2026-07-19 15:48:06,533 | INFO | run_experiments | Completed MNIST_resnext_GEN_accuracy_kp2500_seed456 | evaluations=100 | best_accuracy=0.968167
+2026-07-19 15:48:07,385 | INFO | run_experiments | Starting run MNIST_resnext_GEN_accuracy_kp2500_seed789
+2026-07-19 15:48:07,385 | INFO | algorithms.genetic | Starting GEN | target_metric=accuracy | keep_percentage=0.2500 | population_size=10 | max_evaluations=100
+2026-07-19 15:53:22,673 | INFO | algorithms.genetic | [GEN] New best at evaluation 24/100 | generation=2 | accuracy=0.964917
+2026-07-19 15:57:06,116 | INFO | algorithms.genetic | [GEN] New best at evaluation 41/100 | generation=4 | accuracy=0.965000
+2026-07-19 15:57:45,564 | INFO | algorithms.genetic | [GEN] New best at evaluation 44/100 | generation=4 | accuracy=0.965083
+2026-07-19 15:58:24,940 | INFO | algorithms.genetic | [GEN] New best at evaluation 47/100 | generation=5 | accuracy=0.965250
+2026-07-19 16:07:36,055 | INFO | algorithms.genetic | [GEN] New best at evaluation 89/100 | generation=9 | accuracy=0.965583
+2026-07-19 16:10:00,282 | INFO | algorithms.genetic | [GEN] Finished | evaluations=100 | generations=10 | best_accuracy=0.965583
+2026-07-19 16:10:00,332 | INFO | run_experiments | Completed MNIST_resnext_GEN_accuracy_kp2500_seed789 | evaluations=100 | best_accuracy=0.965583
+2026-07-19 16:10:01,181 | INFO | run_experiments | Starting run MNIST_resnext_GEN_accuracy_kp2500_seed1024
+2026-07-19 16:10:01,182 | INFO | algorithms.genetic | Starting GEN | target_metric=accuracy | keep_percentage=0.2500 | population_size=10 | max_evaluations=100
+2026-07-19 16:16:09,315 | INFO | algorithms.genetic | [GEN] New best at evaluation 28/100 | generation=2 | accuracy=0.965750
+2026-07-19 16:25:48,708 | INFO | algorithms.genetic | [GEN] New best at evaluation 72/100 | generation=7 | accuracy=0.966167
+2026-07-19 16:31:56,244 | INFO | algorithms.genetic | [GEN] Finished | evaluations=100 | generations=10 | best_accuracy=0.966167
+2026-07-19 16:31:56,310 | INFO | run_experiments | Completed MNIST_resnext_GEN_accuracy_kp2500_seed1024 | evaluations=100 | best_accuracy=0.966167
+2026-07-19 16:31:56,637 | INFO | run_experiments | Experiment completed successfully: prelim_features_mnist_resnext_GEN_kp25

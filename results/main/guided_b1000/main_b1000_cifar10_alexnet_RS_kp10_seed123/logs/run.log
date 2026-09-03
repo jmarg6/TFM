@@ -1,0 +1,14 @@
+2026-08-27 00:41:13,701 | INFO | run_experiments | Experiment=main_b1000_cifar10_alexnet_RS_kp10_seed123 | device=cuda | search_runs=1 | planned_fitness_evaluations=1000
+2026-08-27 00:41:13,703 | INFO | run_experiments | Training protocol | pretrained=True | freeze_backbone=True | trainable_scope=replacement_classifier_only | representation=preextracted_features
+2026-08-27 00:41:13,703 | INFO | run_experiments | Preparing data | dataset=CIFAR10 | model=alexnet
+2026-08-27 00:41:28,465 | INFO | utils.data_utils | [Features] Tensors loaded | active_train=40000 | base_train=40000 | validation=10000 | test=10000 | classes=10
+2026-08-27 00:41:28,632 | INFO | run_experiments | Data ready | representation=preextracted_features | base_train=40000 | validation=10000 | test=10000 | classes=10 | image_size=0 | feature_dimension=4096
+2026-08-27 00:41:29,485 | INFO | run_experiments | Starting run CIFAR10_alexnet_RS_accuracy_kp1000_seed123
+2026-08-27 00:41:29,485 | INFO | algorithms.random_search | Starting RS | target_metric=accuracy | keep_percentage=0.1000 | max_evaluations=1000
+2026-08-27 00:41:36,263 | INFO | algorithms.random_search | [RS] New best at evaluation 1/1000 | accuracy=0.776600
+2026-08-27 00:41:42,165 | INFO | algorithms.random_search | [RS] New best at evaluation 2/1000 | accuracy=0.782000
+2026-08-27 01:15:05,915 | INFO | algorithms.random_search | [RS] New best at evaluation 348/1000 | accuracy=0.782600
+2026-08-27 01:33:10,201 | INFO | algorithms.random_search | [RS] New best at evaluation 535/1000 | accuracy=0.785500
+2026-08-27 02:17:57,434 | INFO | algorithms.random_search | [RS] Finished | evaluations=1000 | best_accuracy=0.785500
+2026-08-27 02:17:57,538 | INFO | run_experiments | Completed CIFAR10_alexnet_RS_accuracy_kp1000_seed123 | evaluations=1000 | best_accuracy=0.785500
+2026-08-27 02:18:04,667 | INFO | run_experiments | Experiment completed successfully: main_b1000_cifar10_alexnet_RS_kp10_seed123

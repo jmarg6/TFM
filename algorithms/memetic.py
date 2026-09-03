@@ -1,243 +1,822 @@
+import logging
 import random
-from typing import Callable, Tuple, List, Dict
+from typing import Callable
 
-from utils.selection_utils import create_random_mask, mutate_mask
-from utils.config import Metric, Algorithm
-
-# Sincronizados con las optimizaciones O(1) de los módulos previos
-from algorithms.genetic import tournament_selection, weighted_crossover
+from algorithms.genetic import (
+    fixed_size_crossover,
+    tournament_selection,
+)
 from algorithms.local_search import generate_neighbor
+from utils.algorithm_utils import (
+    HistoryEntry,
+    Mask,
+    Metrics,
+    extract_fitness,
+    hamming_distance,
+)
+from utils.config import Algorithm, Metric
+from utils.selection_utils import (
+    create_random_mask,
+    mutate_mask,
+    validate_search_subset_size,
+)
 
+
+# ==============================================================================
+# LOGGER
+# ==============================================================================
+
+logger = logging.getLogger(__name__)
+
+
+# ==============================================================================
+# MEMETIC ALGORITHM
+# ==============================================================================
 
 def memetic_algorithm(
-    fitness_func: Callable[[dict], dict],
+    fitness_func: Callable[[Mask], Metrics],
     total_instances: int,
-    population_size: int = 20,
+    population_size: int = 10,
     keep_percentage: float = 0.1,
-    max_evaluations: int = 50,
-    patience: int = 10,
+    max_evaluations: int = 100,
     tournament_size: int = 3,
-    mutation_rate: float = 0.1,
+    mutation_probability: float = 0.1,
+    mutation_fraction: float = 0.05,
     local_search_probability: float = 0.2,
-    local_search_evaluations: int = 10,
-    local_search_neighbor_size: int = 5,
+    local_search_steps: int = 5,
+    local_search_num_swaps: int = 1,
     target_metric: Metric = Metric.ACCURACY,
-    adjust_size: bool = False
-) -> Tuple[Dict[int, int], float, List[dict], List[float], int]:
+    rng: random.Random | None = None,
+) -> tuple[Mask, float, list[HistoryEntry], list[float], int]:
     """
-    Implements a Memetic Algorithm (MA) for Instance Selection.
-    Combines a global Genetic Algorithm with a Local Search phase to refine individuals.
+    Perform a fixed-size Memetic Algorithm for instance selection.
+
+    The algorithm combines the same evolutionary operators used by the Genetic
+    Algorithm with a probabilistic Local Search refinement phase.
+
+    Every call to `fitness_func` consumes one unit from the same shared global
+    evaluation budget.
 
     Args:
-        fitness_func: Function that receives a mask and returns the metrics.
-        total_instances: Total number of images in the original dataset.
-        population_size: Number of individuals in the population.
-        keep_percentage: Initial percentage of images to select.
-        max_evaluations: Maximum number of overall evaluations allowed.
-        patience: Stopping criterion if no improvements are found.
-        tournament_size: Size of the tournament for parent selection.
-        mutation_rate: Probability of mutating a newly created offspring.
-        local_search_probability: Probability of applying local search to an offspring.
-        local_search_evaluations: Max evaluations permitted within a single local search.
-        local_search_neighbor_size: Number of instances modified to generate a neighbor.
-        target_metric: Metric to optimize.
-        adjust_size: Flag to determine if masks can dynamically fluctuate in size.
+        fitness_func:
+            Function receiving a binary selection mask and returning its
+            evaluation metrics.
+
+        total_instances:
+            Total number of candidate training instances.
+
+        population_size:
+            Number of individuals in each complete population.
+
+        keep_percentage:
+            Fraction of selected instances maintained by every solution.
+
+        max_evaluations:
+            Exact maximum number of fitness evaluations.
+
+        tournament_size:
+            Number of individuals participating in each tournament.
+
+        mutation_probability:
+            Probability of applying mutation to each offspring.
+
+        mutation_fraction:
+            Fraction of selected instances exchanged during mutation.
+
+        local_search_probability:
+            Probability of activating Local Search for an evaluated offspring.
+
+        local_search_steps:
+            Maximum number of additional neighbors evaluated during one Local
+            Search phase.
+
+        local_search_num_swaps:
+            Number of fixed-size swaps used to generate each Local Search
+            neighbor.
+
+        target_metric:
+            Metric used as the optimization objective.
+
+        rng:
+            Optional pseudo-random number generator.
 
     Returns:
-        Tuple containing: (Best Mask, Best Fitness, Metrics History, Best Fitness History, Total Evaluations)
+        A tuple containing the best solution, best fitness, complete evaluation
+        history, running best-fitness history, and number of evaluations.
     """
+    if total_instances <= 0:
+        raise ValueError(
+            f"'total_instances' must be greater than 0, "
+            f"but received {total_instances}."
+        )
+
+    if not 0.0 < keep_percentage < 1.0:
+        raise ValueError(
+            f"'keep_percentage' must be in the interval (0, 1), "
+            f"but received {keep_percentage}. "
+            "The 100% dataset must be evaluated separately as the "
+            "full-dataset baseline."
+        )
+
+    if population_size < 2:
+        raise ValueError(
+            f"'population_size' must be at least 2, "
+            f"but received {population_size}."
+        )
+
+    if max_evaluations < population_size:
+        raise ValueError(
+            "'max_evaluations' must be greater than or equal to "
+            "'population_size'."
+        )
+
+    if tournament_size <= 0:
+        raise ValueError(
+            f"'tournament_size' must be greater than 0, "
+            f"but received {tournament_size}."
+        )
+
+    if tournament_size > population_size - 1:
+        raise ValueError(
+            f"'tournament_size' must be less than or equal to "
+            f"population_size - 1 ({population_size - 1})."
+        )
+
+    if not 0.0 <= mutation_probability <= 1.0:
+        raise ValueError(
+            f"'mutation_probability' must be in the interval [0, 1], "
+            f"but received {mutation_probability}."
+        )
+
+    if not 0.0 < mutation_fraction <= 1.0:
+        raise ValueError(
+            f"'mutation_fraction' must be in the interval (0, 1], "
+            f"but received {mutation_fraction}."
+        )
+
+    if not 0.0 <= local_search_probability <= 1.0:
+        raise ValueError(
+            f"'local_search_probability' must be in the interval [0, 1], "
+            f"but received {local_search_probability}."
+        )
+
+    if local_search_steps < 0:
+        raise ValueError(
+            f"'local_search_steps' must be greater than or equal to 0, "
+            f"but received {local_search_steps}."
+        )
+
+    if (
+        local_search_probability > 0.0
+        and local_search_steps == 0
+    ):
+        raise ValueError(
+            "'local_search_steps' must be greater than 0 when "
+            "'local_search_probability' is greater than 0."
+        )
+
+    if local_search_num_swaps <= 0:
+        raise ValueError(
+            f"'local_search_num_swaps' must be greater than 0, "
+            f"but received {local_search_num_swaps}."
+        )
+
+    subset_size = validate_search_subset_size(
+        total_instances=total_instances,
+        keep_percentage=keep_percentage,
+    )
+
+    max_feasible_local_swaps = min(
+        subset_size,
+        total_instances - subset_size,
+    )
+
+    if (
+        local_search_num_swaps
+        > max_feasible_local_swaps
+    ):
+        raise ValueError(
+            f"'local_search_num_swaps'={local_search_num_swaps} exceeds "
+            f"the maximum feasible number of swaps "
+            f"({max_feasible_local_swaps})."
+        )
+
+    algorithm_id = Algorithm.MEMETIC.value
+    metric_name = target_metric.value
+
+    generator = (
+        rng
+        if rng is not None
+        else random
+    )
+
+    population: list[Mask] = []
+    population_ids: list[int] = []
+    fitness_values: list[float] = []
+
+    fitness_history: list[HistoryEntry] = []
+    best_fitness_history: list[float] = []
+
+    best_solution: Mask = {}
+    best_fitness = float("-inf")
+    best_solution_id: int | None = None
+    best_found_at_evaluation: int | None = None
+
     evaluations_done = 0
-    
-    # Selección dinámica de la etiqueta del algoritmo según configuración central
-    alg_id = Algorithm.FREE_MEMETIC.value if adjust_size else Algorithm.MEMETIC.value
+    generation = 0
 
-    def local_search_improvement_with_limit(individual: dict, remaining_evaluations: int):
-        """Internal helper to apply localized Hill Climbing to an offspring with metadata tracking."""
-        nonlocal evaluations_done
-        
-        current_solution = individual.copy()
-        current_fitness_dict = fitness_func(current_solution)
+    logger.info(
+        "Starting %s | target_metric=%s | keep_percentage=%.4f | "
+        "population_size=%d | max_evaluations=%d",
+        algorithm_id,
+        metric_name,
+        keep_percentage,
+        population_size,
+        max_evaluations,
+    )
+
+    # --------------------------------------------------------------------------
+    # Initial population
+    # --------------------------------------------------------------------------
+
+    for population_slot in range(
+        1,
+        population_size + 1,
+    ):
+        individual = create_random_mask(
+            total_instances=total_instances,
+            keep_percentage=keep_percentage,
+            rng=rng,
+        )
+
+        metrics_result = dict(
+            fitness_func(individual)
+        )
+
+        fitness = extract_fitness(
+            metrics=metrics_result,
+            metric_name=metric_name,
+        )
+
         evaluations_done += 1
-        local_evals = 1
+        solution_id = evaluations_done
 
-        # Enriquecimiento inicial de metadatos locales
-        current_pct = sum(current_solution.values()) / total_instances
-        base_hist = current_fitness_dict.copy()
-        base_hist.update({
-            "Algorithm": alg_id,
-            "Initial Percentage": keep_percentage,
-            "Final Percentage": current_pct,
-            "Iteration": evaluations_done
-        })
+        population.append(
+            individual.copy()
+        )
 
-        current_fitness = current_fitness_dict.get(target_metric.value, 0.0)
-        best_solution_local = current_solution.copy()
-        best_fitness_local = current_fitness
-        best_fitness_dict_local = base_hist.copy()
-        fitness_history_local = [base_hist]
+        population_ids.append(
+            solution_id
+        )
 
-        max_local_evals = min(local_search_evaluations, remaining_evaluations)
+        fitness_values.append(
+            fitness
+        )
 
-        while local_evals < max_local_evals and evaluations_done < max_evaluations:
-            # CORRECCIÓN: Pasamos 'adjust_size' de forma nativa para respetar variantes libres/acotadas
-            neighbor = generate_neighbor(current_solution, local_search_neighbor_size, adjust_size)
-            neighbor_fitness_dict = fitness_func(neighbor)
-            
-            evaluations_done += 1
-            local_evals += 1
-            
-            # Inyección de metadatos en la historia profunda del vecindario
-            neighbor_pct = sum(neighbor.values()) / total_instances
-            hist_entry = neighbor_fitness_dict.copy()
-            hist_entry.update({
-                "Algorithm": alg_id,
+        improved_best = (
+            fitness > best_fitness
+        )
+
+        if improved_best:
+            best_solution = individual.copy()
+            best_fitness = fitness
+            best_solution_id = solution_id
+            best_found_at_evaluation = evaluations_done
+
+        selected_instances = sum(
+            individual.values()
+        )
+
+        history_entry: HistoryEntry = dict(
+            metrics_result
+        )
+
+        history_entry.update(
+            {
+                "Algorithm": algorithm_id,
+                "Evaluation": evaluations_done,
+                "Solution ID": solution_id,
+                "Generation": generation,
+                "Population Slot": population_slot,
+                "Candidate Type": "initial",
                 "Initial Percentage": keep_percentage,
-                "Final Percentage": neighbor_pct,
-                "Iteration": evaluations_done
-            })
-            fitness_history_local.append(hist_entry)
-            
-            neighbor_fitness = neighbor_fitness_dict.get(target_metric.value, 0.0)
+                "Final Percentage":
+                    selected_instances / total_instances,
+                "Selected Instances": selected_instances,
+                "Target Metric": metric_name,
+                "Fitness": fitness,
+                "Best Fitness": best_fitness,
+                "Improved Best": improved_best,
+                "Best Solution ID": best_solution_id,
+                "Best Found At Evaluation":
+                    best_found_at_evaluation,
+                "Parent 1 Index": None,
+                "Parent 2 Index": None,
+                "Parent 1 ID": None,
+                "Parent 2 ID": None,
+                "Parent 1 Fitness": None,
+                "Parent 2 Fitness": None,
+                "Parent Hamming Distance": None,
+                "Offspring Number": None,
+                "Crossover Hamming Parent 1": None,
+                "Crossover Hamming Parent 2": None,
+                "Mutation Applied": False,
+                "Mutation Swaps": 0,
+                "Mutation Hamming Distance": 0,
+                "Local Search Applied": False,
+                "Local Search Origin Evaluation": None,
+                "Local Search Origin Solution ID": None,
+                "Local Search Step": 0,
+                "Local Search Accepted": None,
+                "Local Fitness Before": None,
+                "Local Fitness After": None,
+                "Local Search Hamming Distance": 0,
+                "Local Current Solution ID Before": None,
+                "Local Current Solution ID After": None,
+            }
+        )
 
-            if neighbor_fitness > current_fitness:
-                current_solution = neighbor.copy()
-                current_fitness = neighbor_fitness
+        fitness_history.append(
+            history_entry
+        )
 
-                if current_fitness > best_fitness_local:
-                    best_solution_local = current_solution.copy()
-                    best_fitness_local = current_fitness
-                    best_fitness_dict_local = hist_entry.copy()
+        best_fitness_history.append(
+            best_fitness
+        )
 
-        return best_solution_local, best_fitness_local, best_fitness_dict_local, fitness_history_local
+    # --------------------------------------------------------------------------
+    # Memetic evolutionary process
+    # --------------------------------------------------------------------------
 
-
-    print(f"Starting {alg_id} (Target: {target_metric.value.upper()} | Initial Retention: {keep_percentage*100}%)")
-
-    # 1. Generate and evaluate the initial population
-    population = [create_random_mask(total_instances, keep_percentage) for _ in range(population_size)]
-    fitness_dicts = []
-    fitness_history = []
-    
-    for idx, ind in enumerate(population):
-        if evaluations_done >= max_evaluations:
-            break
-        evaluations_done += 1
-        print(f"--- [{alg_id}] Initial Pop Evaluation {evaluations_done}/{population_size} ---")
-        
-        f_dict = fitness_func(ind)
-        
-        # Inyección estructural de metadatos iniciales
-        current_pct = sum(ind.values()) / total_instances
-        hist_entry = f_dict.copy()
-        hist_entry.update({
-            "Algorithm": alg_id,
-            "Initial Percentage": keep_percentage,
-            "Final Percentage": current_pct,
-            "Iteration": evaluations_done
-        })
-        fitness_dicts.append(hist_entry)
-        fitness_history.append(hist_entry)
-        
-    if not fitness_dicts:
-        return {}, 0.0, [], [], evaluations_done
-
-    fitness_values = [f_dict[target_metric.value] for f_dict in fitness_dicts]
-
-    # Track best individual globally
-    best_fitness_idx = fitness_values.index(max(fitness_values))
-    best_individual = population[best_fitness_idx].copy()
-    best_fitness = fitness_values[best_fitness_idx]
-    best_fitness_dict = fitness_dicts[best_fitness_idx].copy()
-
-    best_fitness_history = [best_fitness]
-    evaluations_without_improvement = 0
-
-    # 2. Main Evolutionary Loop
     while evaluations_done < max_evaluations:
-        new_population = []
-        new_fitness_dicts = []
+        generation += 1
 
-        # Elitism
-        new_population.append(best_individual.copy())
-        new_fitness_dicts.append(best_fitness_dict.copy())
+        elite_index = max(
+            range(len(population)),
+            key=lambda index: fitness_values[index],
+        )
 
-        while len(new_population) < population_size and evaluations_done < max_evaluations:
-            # Selección veloz O(1) basada en índices enteros
-            idx1 = tournament_selection(fitness_values, tournament_size)
-            idx2 = tournament_selection(fitness_values, tournament_size)
+        new_population: list[Mask] = [
+            population[elite_index].copy()
+        ]
 
-            parent1 = population[idx1]
-            parent2 = population[idx2]
-            fitness1 = fitness_values[idx1]
-            fitness2 = fitness_values[idx2]
-            
-            # Crossover
-            child1, child2 = weighted_crossover(parent1, parent2, fitness1, fitness2, adjust_size)
+        new_population_ids: list[int] = [
+            population_ids[elite_index]
+        ]
 
-            # Mutation
-            child1 = mutate_mask(child1, mutation_rate, is_constrained=not adjust_size)
-            child2 = mutate_mask(child2, mutation_rate, is_constrained=not adjust_size)
+        new_fitness_values: list[float] = [
+            fitness_values[elite_index]
+        ]
 
-            # Process offspring
-            for child in [child1, child2]:
-                if len(new_population) < population_size and evaluations_done < max_evaluations:
-                    
-                    # --- MEMETIC REFINEMENT PHASE ---
-                    if random.random() < local_search_probability:
-                        print(f"--- [{alg_id}] Launching Local Search Phase at Eval {evaluations_done + 1} ---")
-                        (
-                            improved_child,
+        while (
+            len(new_population) < population_size
+            and evaluations_done < max_evaluations
+        ):
+            parent1_index = tournament_selection(
+                fitness_values=fitness_values,
+                tournament_size=tournament_size,
+                rng=rng,
+            )
+
+            parent2_index = tournament_selection(
+                fitness_values=fitness_values,
+                tournament_size=tournament_size,
+                rng=rng,
+                excluded_index=parent1_index,
+            )
+
+            parent1 = population[parent1_index]
+            parent2 = population[parent2_index]
+
+            parent1_id = population_ids[parent1_index]
+            parent2_id = population_ids[parent2_index]
+
+            parent1_fitness = fitness_values[parent1_index]
+            parent2_fitness = fitness_values[parent2_index]
+
+            parent_hamming = hamming_distance(
+                parent1,
+                parent2,
+            )
+
+            child1, child2 = fixed_size_crossover(
+                parent1=parent1,
+                parent2=parent2,
+                rng=rng,
+            )
+
+            for offspring_number, crossover_child in enumerate(
+                (child1, child2),
+                start=1,
+            ):
+                if (
+                    len(new_population) >= population_size
+                    or evaluations_done >= max_evaluations
+                ):
+                    break
+
+                population_slot = (
+                    len(new_population) + 1
+                )
+
+                child_before_mutation = (
+                    crossover_child.copy()
+                )
+
+                child = mutate_mask(
+                    mask=crossover_child,
+                    mutation_probability=mutation_probability,
+                    mutation_fraction=mutation_fraction,
+                    rng=rng,
+                )
+
+                mutation_hamming = hamming_distance(
+                    child_before_mutation,
+                    child,
+                )
+
+                # --------------------------------------------------------------
+                # Evaluate offspring
+                # --------------------------------------------------------------
+
+                child_metrics = dict(
+                    fitness_func(child)
+                )
+
+                child_fitness = extract_fitness(
+                    metrics=child_metrics,
+                    metric_name=metric_name,
+                )
+
+                evaluations_done += 1
+                child_solution_id = evaluations_done
+
+                improved_best = (
+                    child_fitness > best_fitness
+                )
+
+                if improved_best:
+                    best_solution = child.copy()
+                    best_fitness = child_fitness
+                    best_solution_id = child_solution_id
+                    best_found_at_evaluation = evaluations_done
+
+                # Local Search is considered applied only when there is enough
+                # global budget to evaluate at least one additional neighbor.
+                local_search_applied = (
+                    local_search_steps > 0
+                    and evaluations_done < max_evaluations
+                    and generator.random()
+                    < local_search_probability
+                )
+
+                selected_instances = sum(
+                    child.values()
+                )
+
+                offspring_history: HistoryEntry = dict(
+                    child_metrics
+                )
+
+                offspring_history.update(
+                    {
+                        "Algorithm": algorithm_id,
+                        "Evaluation": evaluations_done,
+                        "Solution ID": child_solution_id,
+                        "Generation": generation,
+                        "Population Slot": population_slot,
+                        "Candidate Type": "offspring",
+                        "Initial Percentage":
+                            keep_percentage,
+                        "Final Percentage":
+                            selected_instances
+                            / total_instances,
+                        "Selected Instances":
+                            selected_instances,
+                        "Target Metric":
+                            metric_name,
+                        "Fitness":
                             child_fitness,
-                            child_f_dict,
-                            local_fitness_history
-                        ) = local_search_improvement_with_limit(
-                            child,
-                            max_evaluations - evaluations_done
+                        "Best Fitness":
+                            best_fitness,
+                        "Improved Best":
+                            improved_best,
+                        "Best Solution ID":
+                            best_solution_id,
+                        "Best Found At Evaluation":
+                            best_found_at_evaluation,
+                        "Parent 1 Index":
+                            parent1_index + 1,
+                        "Parent 2 Index":
+                            parent2_index + 1,
+                        "Parent 1 ID":
+                            parent1_id,
+                        "Parent 2 ID":
+                            parent2_id,
+                        "Parent 1 Fitness":
+                            parent1_fitness,
+                        "Parent 2 Fitness":
+                            parent2_fitness,
+                        "Parent Hamming Distance":
+                            parent_hamming,
+                        "Offspring Number":
+                            offspring_number,
+                        "Crossover Hamming Parent 1":
+                            hamming_distance(
+                                parent1,
+                                child_before_mutation,
+                            ),
+                        "Crossover Hamming Parent 2":
+                            hamming_distance(
+                                parent2,
+                                child_before_mutation,
+                            ),
+                        "Mutation Applied":
+                            mutation_hamming > 0,
+                        "Mutation Swaps":
+                            mutation_hamming // 2,
+                        "Mutation Hamming Distance":
+                            mutation_hamming,
+                        "Local Search Applied":
+                            local_search_applied,
+                        "Local Search Origin Evaluation":
+                            (
+                                evaluations_done
+                                if local_search_applied
+                                else None
+                            ),
+                        "Local Search Origin Solution ID":
+                            (
+                                child_solution_id
+                                if local_search_applied
+                                else None
+                            ),
+                        "Local Search Step": 0,
+                        "Local Search Accepted": None,
+                        "Local Fitness Before": None,
+                        "Local Fitness After":
+                            child_fitness,
+                        "Local Search Hamming Distance": 0,
+                        "Local Current Solution ID Before":
+                            None,
+                        "Local Current Solution ID After":
+                            child_solution_id,
+                    }
+                )
+
+                fitness_history.append(
+                    offspring_history
+                )
+
+                best_fitness_history.append(
+                    best_fitness
+                )
+
+                # Current refined state.
+                refined_solution = child.copy()
+                refined_fitness = child_fitness
+                refined_solution_id = child_solution_id
+
+                # --------------------------------------------------------------
+                # Optional Local Search
+                # --------------------------------------------------------------
+
+                if local_search_applied:
+                    origin_evaluation = (
+                        child_solution_id
+                    )
+
+                    origin_solution_id = (
+                        child_solution_id
+                    )
+
+                    for local_step in range(
+                        1,
+                        local_search_steps + 1,
+                    ):
+                        if evaluations_done >= max_evaluations:
+                            break
+
+                        local_fitness_before = (
+                            refined_fitness
                         )
-                        new_population.append(improved_child)
-                        new_fitness_dicts.append(child_f_dict)
-                        fitness_history.extend(local_fitness_history)
-                    
-                    # --- STANDARD GENETIC EVALUATION PHASE ---
-                    else:
+
+                        local_solution_id_before = (
+                            refined_solution_id
+                        )
+
+                        neighbor = generate_neighbor(
+                            mask=refined_solution,
+                            num_swaps=
+                                local_search_num_swaps,
+                            rng=rng,
+                        )
+
+                        local_hamming = hamming_distance(
+                            refined_solution,
+                            neighbor,
+                        )
+
+                        neighbor_metrics = dict(
+                            fitness_func(neighbor)
+                        )
+
+                        neighbor_fitness = extract_fitness(
+                            metrics=neighbor_metrics,
+                            metric_name=metric_name,
+                        )
+
                         evaluations_done += 1
-                        print(f"--- [{alg_id}] Evaluation {evaluations_done}/{max_evaluations} ---")
-                        child_fitness_dict = fitness_func(child)
-                        
-                        child_pct = sum(child.values()) / total_instances
-                        hist_entry = child_fitness_dict.copy()
-                        hist_entry.update({
-                            "Algorithm": alg_id,
-                            "Initial Percentage": keep_percentage,
-                            "Final Percentage": child_pct,
-                            "Iteration": evaluations_done
-                        })
-                        new_population.append(child)
-                        new_fitness_dicts.append(hist_entry)
-                        fitness_history.append(hist_entry)
+                        neighbor_solution_id = (
+                            evaluations_done
+                        )
 
-        # Update generational states safely
+                        local_accepted = (
+                            neighbor_fitness
+                            >= refined_fitness
+                        )
+
+                        if local_accepted:
+                            refined_solution = (
+                                neighbor.copy()
+                            )
+
+                            refined_fitness = (
+                                neighbor_fitness
+                            )
+
+                            refined_solution_id = (
+                                neighbor_solution_id
+                            )
+
+                        improved_best = (
+                            neighbor_fitness
+                            > best_fitness
+                        )
+
+                        if improved_best:
+                            best_solution = (
+                                neighbor.copy()
+                            )
+
+                            best_fitness = (
+                                neighbor_fitness
+                            )
+
+                            best_solution_id = (
+                                neighbor_solution_id
+                            )
+
+                            best_found_at_evaluation = (
+                                evaluations_done
+                            )
+
+                            logger.info(
+                                "[%s] New best during Local Search at "
+                                "evaluation %d/%d | generation=%d | "
+                                "%s=%.6f",
+                                algorithm_id,
+                                evaluations_done,
+                                max_evaluations,
+                                generation,
+                                metric_name,
+                                best_fitness,
+                            )
+
+                        selected_instances = sum(
+                            neighbor.values()
+                        )
+
+                        local_history: HistoryEntry = dict(
+                            neighbor_metrics
+                        )
+
+                        local_history.update(
+                            {
+                                "Algorithm":
+                                    algorithm_id,
+                                "Evaluation":
+                                    evaluations_done,
+                                "Solution ID":
+                                    neighbor_solution_id,
+                                "Generation":
+                                    generation,
+                                "Population Slot":
+                                    population_slot,
+                                "Candidate Type":
+                                    "local_neighbor",
+                                "Initial Percentage":
+                                    keep_percentage,
+                                "Final Percentage":
+                                    selected_instances
+                                    / total_instances,
+                                "Selected Instances":
+                                    selected_instances,
+                                "Target Metric":
+                                    metric_name,
+                                "Fitness":
+                                    neighbor_fitness,
+                                "Best Fitness":
+                                    best_fitness,
+                                "Improved Best":
+                                    improved_best,
+                                "Best Solution ID":
+                                    best_solution_id,
+                                "Best Found At Evaluation":
+                                    best_found_at_evaluation,
+                                "Parent 1 Index":
+                                    parent1_index + 1,
+                                "Parent 2 Index":
+                                    parent2_index + 1,
+                                "Parent 1 ID":
+                                    parent1_id,
+                                "Parent 2 ID":
+                                    parent2_id,
+                                "Parent 1 Fitness":
+                                    parent1_fitness,
+                                "Parent 2 Fitness":
+                                    parent2_fitness,
+                                "Parent Hamming Distance":
+                                    parent_hamming,
+                                "Offspring Number":
+                                    offspring_number,
+                                "Crossover Hamming Parent 1":
+                                    hamming_distance(
+                                        parent1,
+                                        child_before_mutation,
+                                    ),
+                                "Crossover Hamming Parent 2":
+                                    hamming_distance(
+                                        parent2,
+                                        child_before_mutation,
+                                    ),
+                                "Mutation Applied":
+                                    mutation_hamming > 0,
+                                "Mutation Swaps":
+                                    mutation_hamming // 2,
+                                "Mutation Hamming Distance":
+                                    mutation_hamming,
+                                "Local Search Applied":
+                                    True,
+                                "Local Search Origin Evaluation":
+                                    origin_evaluation,
+                                "Local Search Origin Solution ID":
+                                    origin_solution_id,
+                                "Local Search Step":
+                                    local_step,
+                                "Local Search Accepted":
+                                    local_accepted,
+                                "Local Fitness Before":
+                                    local_fitness_before,
+                                "Local Fitness After":
+                                    refined_fitness,
+                                "Local Search Hamming Distance":
+                                    local_hamming,
+                                "Local Current Solution ID Before":
+                                    local_solution_id_before,
+                                "Local Current Solution ID After":
+                                    refined_solution_id,
+                            }
+                        )
+
+                        fitness_history.append(
+                            local_history
+                        )
+
+                        best_fitness_history.append(
+                            best_fitness
+                        )
+
+                new_population.append(
+                    refined_solution.copy()
+                )
+
+                new_population_ids.append(
+                    refined_solution_id
+                )
+
+                new_fitness_values.append(
+                    refined_fitness
+                )
+
         population = new_population
-        fitness_dicts = new_fitness_dicts
-        fitness_values = [f_dict[target_metric.value] for f_dict in fitness_dicts]
+        population_ids = new_population_ids
+        fitness_values = new_fitness_values
 
-        # Check for global improvements
-        current_best_idx = fitness_values.index(max(fitness_values))
-        if fitness_values[current_best_idx] > best_fitness:
-            best_individual = population[current_best_idx].copy()
-            best_fitness = fitness_values[current_best_idx]
-            best_fitness_dict = fitness_dicts[current_best_idx].copy()
-            evaluations_without_improvement = 0
-            print(f"New global best solution found! {target_metric.value.capitalize()}: {best_fitness:.4f}")
-        else:
-            evaluations_without_improvement += 1
+    logger.info(
+        "[%s] Finished | evaluations=%d | generations=%d | "
+        "best_%s=%.6f",
+        algorithm_id,
+        evaluations_done,
+        generation,
+        metric_name,
+        best_fitness,
+    )
 
-        best_fitness_history.append(best_fitness)
-        print(f"Generation metrics -> Evals: {evaluations_done}/{max_evaluations} | Best Fitness: {best_fitness:.4f} | Stagnation: {evaluations_without_improvement}/{patience}")
-
-        if evaluations_without_improvement >= patience:
-            print(f"Search terminated due to stagnation after {evaluations_done} evaluations.")
-            break
-
-    print(f"[{alg_id}] Execution Finished. Best {target_metric.value}: {best_fitness:.4f}")
-    return best_individual, best_fitness, fitness_history, best_fitness_history, evaluations_done
+    return (
+        best_solution,
+        best_fitness,
+        fitness_history,
+        best_fitness_history,
+        evaluations_done,
+    )

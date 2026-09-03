@@ -1,0 +1,2 @@
+Algorithm,Candidate Type,Dataset,Evaluation,Experiment Name,Final Percentage,Fitness,Generated Subsets,Model,Requested Keep Percentage,Run ID,Search Seed,Selected Instances,Selection Duration Seconds,Split Seed,Target Metric,Training Seed,Uses Validation For Selection
+SRS,single_stratified_random_sample,TINYIMAGENET,0,main_srs_tinyimagenet_alexnet_kp10,0.1,,1,alexnet,0.1,TINYIMAGENET_alexnet_SRS_accuracy_kp1000_seed1024,1024,8000,0.038056470453739166,42,accuracy,101024,False

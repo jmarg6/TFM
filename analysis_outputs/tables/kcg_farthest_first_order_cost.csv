@@ -1,0 +1,11 @@
+dataset,search_seed,farthest_first_order_seconds
+CIFAR-10,42,94.189
+CIFAR-10,123,2.156
+CIFAR-10,456,2.214
+CIFAR-10,789,2.098
+CIFAR-10,1024,2.08
+Tiny ImageNet,42,337.917
+Tiny ImageNet,123,9.282
+Tiny ImageNet,456,8.444
+Tiny ImageNet,789,7.519
+Tiny ImageNet,1024,7.746

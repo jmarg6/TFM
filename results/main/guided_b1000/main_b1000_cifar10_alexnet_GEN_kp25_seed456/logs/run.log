@@ -1,0 +1,15 @@
+2026-08-26 13:25:38,813 | INFO | run_experiments | Experiment=main_b1000_cifar10_alexnet_GEN_kp25_seed456 | device=cuda | search_runs=1 | planned_fitness_evaluations=1000
+2026-08-26 13:25:38,815 | INFO | run_experiments | Training protocol | pretrained=True | freeze_backbone=True | trainable_scope=replacement_classifier_only | representation=preextracted_features
+2026-08-26 13:25:38,815 | INFO | run_experiments | Preparing data | dataset=CIFAR10 | model=alexnet
+2026-08-26 13:25:47,513 | INFO | utils.data_utils | [Features] Tensors loaded | active_train=40000 | base_train=40000 | validation=10000 | test=10000 | classes=10
+2026-08-26 13:25:47,665 | INFO | run_experiments | Data ready | representation=preextracted_features | base_train=40000 | validation=10000 | test=10000 | classes=10 | image_size=0 | feature_dimension=4096
+2026-08-26 13:25:48,533 | INFO | run_experiments | Starting run CIFAR10_alexnet_GEN_accuracy_kp2500_seed456
+2026-08-26 13:25:48,533 | INFO | algorithms.genetic | Starting GEN | target_metric=accuracy | keep_percentage=0.2500 | population_size=10 | max_evaluations=1000
+2026-08-26 13:28:24,024 | INFO | algorithms.genetic | [GEN] New best at evaluation 11/1000 | generation=1 | accuracy=0.797800
+2026-08-26 13:28:42,889 | INFO | algorithms.genetic | [GEN] New best at evaluation 13/1000 | generation=1 | accuracy=0.800600
+2026-08-26 13:36:53,924 | INFO | algorithms.genetic | [GEN] New best at evaluation 59/1000 | generation=6 | accuracy=0.804400
+2026-08-26 13:43:08,976 | INFO | algorithms.genetic | [GEN] New best at evaluation 97/1000 | generation=10 | accuracy=0.804600
+2026-08-26 14:58:18,083 | INFO | algorithms.genetic | [GEN] New best at evaluation 563/1000 | generation=62 | accuracy=0.805200
+2026-08-26 16:17:00,468 | INFO | algorithms.genetic | [GEN] Finished | evaluations=1000 | generations=110 | best_accuracy=0.805200
+2026-08-26 16:17:00,597 | INFO | run_experiments | Completed CIFAR10_alexnet_GEN_accuracy_kp2500_seed456 | evaluations=1000 | best_accuracy=0.805200
+2026-08-26 16:17:11,137 | INFO | run_experiments | Experiment completed successfully: main_b1000_cifar10_alexnet_GEN_kp25_seed456

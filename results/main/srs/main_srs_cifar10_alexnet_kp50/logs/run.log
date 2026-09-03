@@ -1,0 +1,16 @@
+2026-08-04 21:11:52,511 | INFO | run_experiments | Experiment=main_srs_cifar10_alexnet_kp50 | device=cuda | search_runs=5 | planned_fitness_evaluations=0
+2026-08-04 21:11:52,513 | INFO | run_experiments | Training protocol | pretrained=True | freeze_backbone=True | trainable_scope=replacement_classifier_only | representation=preextracted_features
+2026-08-04 21:11:52,513 | INFO | run_experiments | Preparing data | dataset=CIFAR10 | model=alexnet
+2026-08-04 21:12:02,023 | INFO | utils.data_utils | [Features] Tensors loaded | active_train=40000 | base_train=40000 | validation=10000 | test=10000 | classes=10
+2026-08-04 21:12:02,191 | INFO | run_experiments | Data ready | representation=preextracted_features | base_train=40000 | validation=10000 | test=10000 | classes=10 | image_size=0 | feature_dimension=4096
+2026-08-04 21:12:02,214 | INFO | run_experiments | Starting run CIFAR10_alexnet_SRS_accuracy_kp5000_seed42
+2026-08-04 21:12:02,348 | INFO | run_experiments | Completed CIFAR10_alexnet_SRS_accuracy_kp5000_seed42 | generated_subsets=1 | fitness_evaluations=0 | selected_instances=20000
+2026-08-04 21:12:19,808 | INFO | run_experiments | Starting run CIFAR10_alexnet_SRS_accuracy_kp5000_seed123
+2026-08-04 21:12:19,907 | INFO | run_experiments | Completed CIFAR10_alexnet_SRS_accuracy_kp5000_seed123 | generated_subsets=1 | fitness_evaluations=0 | selected_instances=20000
+2026-08-04 21:12:36,556 | INFO | run_experiments | Starting run CIFAR10_alexnet_SRS_accuracy_kp5000_seed456
+2026-08-04 21:12:36,621 | INFO | run_experiments | Completed CIFAR10_alexnet_SRS_accuracy_kp5000_seed456 | generated_subsets=1 | fitness_evaluations=0 | selected_instances=20000
+2026-08-04 21:12:53,333 | INFO | run_experiments | Starting run CIFAR10_alexnet_SRS_accuracy_kp5000_seed789
+2026-08-04 21:12:53,421 | INFO | run_experiments | Completed CIFAR10_alexnet_SRS_accuracy_kp5000_seed789 | generated_subsets=1 | fitness_evaluations=0 | selected_instances=20000
+2026-08-04 21:13:10,077 | INFO | run_experiments | Starting run CIFAR10_alexnet_SRS_accuracy_kp5000_seed1024
+2026-08-04 21:13:10,143 | INFO | run_experiments | Completed CIFAR10_alexnet_SRS_accuracy_kp5000_seed1024 | generated_subsets=1 | fitness_evaluations=0 | selected_instances=20000
+2026-08-04 21:13:26,833 | INFO | run_experiments | Experiment completed successfully: main_srs_cifar10_alexnet_kp50

@@ -1,0 +1,61 @@
+{
+  "classes": {
+    "0": {
+      "available_instances": 4000,
+      "selected_fraction_within_class": 0.27975,
+      "selected_instances": 1119
+    },
+    "1": {
+      "available_instances": 4000,
+      "selected_fraction_within_class": 0.34925,
+      "selected_instances": 1397
+    },
+    "2": {
+      "available_instances": 4000,
+      "selected_fraction_within_class": 0.23675,
+      "selected_instances": 947
+    },
+    "3": {
+      "available_instances": 4000,
+      "selected_fraction_within_class": 0.2295,
+      "selected_instances": 918
+    },
+    "4": {
+      "available_instances": 4000,
+      "selected_fraction_within_class": 0.1385,
+      "selected_instances": 554
+    },
+    "5": {
+      "available_instances": 4000,
+      "selected_fraction_within_class": 0.289,
+      "selected_instances": 1156
+    },
+    "6": {
+      "available_instances": 4000,
+      "selected_fraction_within_class": 0.18375,
+      "selected_instances": 735
+    },
+    "7": {
+      "available_instances": 4000,
+      "selected_fraction_within_class": 0.272,
+      "selected_instances": 1088
+    },
+    "8": {
+      "available_instances": 4000,
+      "selected_fraction_within_class": 0.22175,
+      "selected_instances": 887
+    },
+    "9": {
+      "available_instances": 4000,
+      "selected_fraction_within_class": 0.29975,
+      "selected_instances": 1199
+    }
+  },
+  "keep_percentage": 0.25,
+  "note": "Class labels were used only to report this distribution after global k-center selection. They were not used by the selection algorithm.",
+  "search_seed": 789,
+  "selected_instances": 10000,
+  "selection_scope": "global",
+  "total_instances": 40000,
+  "uses_class_labels_for_selection": false
+}

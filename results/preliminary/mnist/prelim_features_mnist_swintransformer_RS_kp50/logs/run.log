@@ -1,0 +1,60 @@
+2026-07-20 19:15:30,279 | INFO | run_experiments | Experiment=prelim_features_mnist_swintransformer_RS_kp50 | device=cuda | search_runs=5 | planned_fitness_evaluations=500
+2026-07-20 19:15:30,282 | INFO | run_experiments | Training protocol | pretrained=True | freeze_backbone=True | trainable_scope=replacement_classifier_only | representation=preextracted_features
+2026-07-20 19:15:30,282 | INFO | run_experiments | Preparing data | dataset=MNIST | model=swintransformer
+2026-07-20 19:15:30,498 | INFO | utils.data_utils | [Features] Tensors loaded | active_train=48000 | base_train=48000 | validation=12000 | test=10000 | classes=10
+2026-07-20 19:15:30,641 | INFO | run_experiments | Data ready | representation=preextracted_features | base_train=48000 | validation=12000 | test=10000 | classes=10 | image_size=0 | feature_dimension=768
+2026-07-20 19:15:31,645 | INFO | run_experiments | Starting run MNIST_swintransformer_RS_accuracy_kp5000_seed42
+2026-07-20 19:15:31,645 | INFO | algorithms.random_search | Starting RS | target_metric=accuracy | keep_percentage=0.5000 | max_evaluations=100
+2026-07-20 19:15:49,504 | INFO | algorithms.random_search | [RS] New best at evaluation 1/100 | accuracy=0.967500
+2026-07-20 19:17:05,042 | INFO | algorithms.random_search | [RS] New best at evaluation 6/100 | accuracy=0.968167
+2026-07-20 19:19:42,543 | INFO | algorithms.random_search | [RS] New best at evaluation 16/100 | accuracy=0.968583
+2026-07-20 19:31:23,137 | INFO | algorithms.random_search | [RS] New best at evaluation 59/100 | accuracy=0.968750
+2026-07-20 19:39:12,487 | INFO | algorithms.random_search | [RS] New best at evaluation 88/100 | accuracy=0.969583
+2026-07-20 19:42:40,361 | INFO | algorithms.random_search | [RS] Finished | evaluations=100 | best_accuracy=0.969583
+2026-07-20 19:42:40,419 | INFO | run_experiments | Completed MNIST_swintransformer_RS_accuracy_kp5000_seed42 | evaluations=100 | best_accuracy=0.969583
+2026-07-20 19:42:41,571 | INFO | run_experiments | Starting run MNIST_swintransformer_RS_accuracy_kp5000_seed123
+2026-07-20 19:42:41,572 | INFO | algorithms.random_search | Starting RS | target_metric=accuracy | keep_percentage=0.5000 | max_evaluations=100
+2026-07-20 19:42:56,438 | INFO | algorithms.random_search | [RS] New best at evaluation 1/100 | accuracy=0.966833
+2026-07-20 19:43:25,828 | INFO | algorithms.random_search | [RS] New best at evaluation 3/100 | accuracy=0.967000
+2026-07-20 19:43:40,639 | INFO | algorithms.random_search | [RS] New best at evaluation 4/100 | accuracy=0.969250
+2026-07-20 19:54:46,912 | INFO | algorithms.random_search | [RS] New best at evaluation 45/100 | accuracy=0.969833
+2026-07-20 20:09:22,768 | INFO | algorithms.random_search | [RS] Finished | evaluations=100 | best_accuracy=0.969833
+2026-07-20 20:09:22,825 | INFO | run_experiments | Completed MNIST_swintransformer_RS_accuracy_kp5000_seed123 | evaluations=100 | best_accuracy=0.969833
+2026-07-20 20:09:23,977 | INFO | run_experiments | Starting run MNIST_swintransformer_RS_accuracy_kp5000_seed456
+2026-07-20 20:09:23,978 | INFO | algorithms.random_search | Starting RS | target_metric=accuracy | keep_percentage=0.5000 | max_evaluations=100
+2026-07-20 20:09:38,875 | INFO | algorithms.random_search | [RS] New best at evaluation 1/100 | accuracy=0.965417
+2026-07-20 20:09:54,226 | INFO | algorithms.random_search | [RS] New best at evaluation 2/100 | accuracy=0.965500
+2026-07-20 20:10:49,127 | INFO | algorithms.random_search | [RS] New best at evaluation 5/100 | accuracy=0.968000
+2026-07-20 20:12:59,796 | INFO | algorithms.random_search | [RS] New best at evaluation 13/100 | accuracy=0.968917
+2026-07-20 20:13:14,829 | INFO | algorithms.random_search | [RS] New best at evaluation 14/100 | accuracy=0.969500
+2026-07-20 20:37:52,536 | INFO | algorithms.random_search | [RS] Finished | evaluations=100 | best_accuracy=0.969500
+2026-07-20 20:37:52,593 | INFO | run_experiments | Completed MNIST_swintransformer_RS_accuracy_kp5000_seed456 | evaluations=100 | best_accuracy=0.969500
+2026-07-20 20:37:53,703 | INFO | run_experiments | Starting run MNIST_swintransformer_RS_accuracy_kp5000_seed789
+2026-07-20 20:37:53,703 | INFO | algorithms.random_search | Starting RS | target_metric=accuracy | keep_percentage=0.5000 | max_evaluations=100
+2026-07-20 20:38:08,951 | INFO | algorithms.random_search | [RS] New best at evaluation 1/100 | accuracy=0.966500
+2026-07-20 20:38:27,683 | INFO | algorithms.random_search | [RS] New best at evaluation 2/100 | accuracy=0.967167
+2026-07-20 20:38:46,553 | INFO | algorithms.random_search | [RS] New best at evaluation 3/100 | accuracy=0.967250
+2026-07-20 20:39:24,080 | INFO | algorithms.random_search | [RS] New best at evaluation 5/100 | accuracy=0.967500
+2026-07-20 20:40:16,165 | INFO | algorithms.random_search | [RS] New best at evaluation 8/100 | accuracy=0.967583
+2026-07-20 20:42:05,370 | INFO | algorithms.random_search | [RS] New best at evaluation 14/100 | accuracy=0.967917
+2026-07-20 20:48:44,999 | INFO | algorithms.random_search | [RS] New best at evaluation 39/100 | accuracy=0.968417
+2026-07-20 20:49:44,741 | INFO | algorithms.random_search | [RS] New best at evaluation 43/100 | accuracy=0.968750
+2026-07-20 20:51:54,738 | INFO | algorithms.random_search | [RS] New best at evaluation 51/100 | accuracy=0.968833
+2026-07-20 20:52:42,793 | INFO | algorithms.random_search | [RS] New best at evaluation 54/100 | accuracy=0.968917
+2026-07-20 21:02:34,414 | INFO | algorithms.random_search | [RS] New best at evaluation 90/100 | accuracy=0.969333
+2026-07-20 21:05:11,292 | INFO | algorithms.random_search | [RS] Finished | evaluations=100 | best_accuracy=0.969333
+2026-07-20 21:05:11,353 | INFO | run_experiments | Completed MNIST_swintransformer_RS_accuracy_kp5000_seed789 | evaluations=100 | best_accuracy=0.969333
+2026-07-20 21:05:12,458 | INFO | run_experiments | Starting run MNIST_swintransformer_RS_accuracy_kp5000_seed1024
+2026-07-20 21:05:12,459 | INFO | algorithms.random_search | Starting RS | target_metric=accuracy | keep_percentage=0.5000 | max_evaluations=100
+2026-07-20 21:05:27,153 | INFO | algorithms.random_search | [RS] New best at evaluation 1/100 | accuracy=0.965833
+2026-07-20 21:06:11,210 | INFO | algorithms.random_search | [RS] New best at evaluation 4/100 | accuracy=0.966250
+2026-07-20 21:06:40,528 | INFO | algorithms.random_search | [RS] New best at evaluation 6/100 | accuracy=0.966333
+2026-07-20 21:07:10,018 | INFO | algorithms.random_search | [RS] New best at evaluation 8/100 | accuracy=0.967333
+2026-07-20 21:07:39,380 | INFO | algorithms.random_search | [RS] New best at evaluation 10/100 | accuracy=0.967750
+2026-07-20 21:08:08,759 | INFO | algorithms.random_search | [RS] New best at evaluation 12/100 | accuracy=0.967917
+2026-07-20 21:13:06,067 | INFO | algorithms.random_search | [RS] New best at evaluation 32/100 | accuracy=0.968417
+2026-07-20 21:19:10,124 | INFO | algorithms.random_search | [RS] New best at evaluation 54/100 | accuracy=0.969167
+2026-07-20 21:30:20,227 | INFO | algorithms.random_search | [RS] New best at evaluation 95/100 | accuracy=0.969333
+2026-07-20 21:31:40,798 | INFO | algorithms.random_search | [RS] Finished | evaluations=100 | best_accuracy=0.969333
+2026-07-20 21:31:40,856 | INFO | run_experiments | Completed MNIST_swintransformer_RS_accuracy_kp5000_seed1024 | evaluations=100 | best_accuracy=0.969333
+2026-07-20 21:31:41,160 | INFO | run_experiments | Experiment completed successfully: prelim_features_mnist_swintransformer_RS_kp50

@@ -1,86 +1,219 @@
-from typing import Callable, Tuple, List
-from utils.selection_utils import create_random_mask
-from utils.config import Metric, Algorithm
+import logging
+import random
+from typing import Callable
+
+from utils.algorithm_utils import (
+    HistoryEntry,
+    Mask,
+    Metrics,
+    extract_fitness,
+)
+from utils.config import Algorithm, Metric
+from utils.selection_utils import (
+    create_random_mask,
+    validate_search_subset_size,
+)
+
+# ==============================================================================
+# LOGGER
+# ==============================================================================
+
+logger = logging.getLogger(__name__)
+
+
+# ==============================================================================
+# RANDOM SEARCH
+# ==============================================================================
 
 def random_search(
-    fitness_func: Callable[[dict], dict],
+    fitness_func: Callable[[Mask], Metrics],
     total_instances: int,
     keep_percentage: float = 0.5,
     max_evaluations: int = 100,
-    patience: int = 20,
-    target_metric: Metric = Metric.ACCURACY
-) -> Tuple[dict, float, List[dict], List[float], int]:
+    target_metric: Metric = Metric.ACCURACY,
+    rng: random.Random | None = None,
+) -> tuple[Mask, float, list[HistoryEntry], list[float], int]:
     """
-    Implements a Random Search algorithm for Instance Selection.
-    
-    Generates independent random subsets and keeps the best one.
-    Stops if it reaches 'max_evaluations' or if 'patience' iterations pass without improvement.
+    Perform Random Search for fixed-size instance selection.
+
+    At each evaluation, an independent random subset is generated and
+    evaluated. The best solution found over the complete evaluation budget is
+    returned.
+
+    Random Search acts as the baseline optimization method and therefore
+    always consumes the complete fitness-evaluation budget.
 
     Args:
-        fitness_func: Function that receives a mask (dict) and returns the metrics (dict).
-        total_instances: Total number of images in the original dataset.
-        keep_percentage: Percentage of images to keep (e.g., 0.10 for 10%).
-        max_evaluations: Maximum number of evaluations allowed.
-        patience: Early stopping criterion (stagnation limit).
-        target_metric: Metric to optimize (e.g., ACCURACY or F1).
+        fitness_func:
+            Function receiving a binary selection mask and returning the
+            evaluation metrics of the selected subset.
+
+        total_instances:
+            Total number of candidate training instances.
+
+        keep_percentage:
+            Fraction of training instances retained in every candidate
+            solution.
+
+        max_evaluations:
+            Exact number of candidate subsets to evaluate.
+
+        target_metric:
+            Metric used as the optimization objective.
+
+        rng:
+            Optional pseudo-random number generator.
 
     Returns:
-        Tuple containing: (Best Mask, Best Fitness, Metrics History, Best Fitness History, Total Evaluations)
+        A tuple containing:
+
+        - Best selection mask found.
+        - Best fitness value obtained.
+        - Complete evaluation history.
+        - Running best-fitness history.
+        - Total number of fitness evaluations performed.
     """
-    evaluations_without_improvement = 0
-    evaluations_done = 0
-    
-    best_fitness = -1.0
-    best_solution = {}
-    
-    fitness_history = []
-    best_fitness_history = []
-    
-    # Text identifier for consistency across logs and charts
-    alg_id = Algorithm.RANDOM_SEARCH.value
-    print(f"Starting Random Search (Target: {target_metric.value.upper()} | Retention: {keep_percentage*100}%)")
+    if total_instances <= 0:
+        raise ValueError(
+            f"'total_instances' must be greater than 0, "
+            f"but received {total_instances}."
+        )
 
-    # Main evaluation loop
-    while evaluations_done < max_evaluations:
-        print(f"--- [{alg_id}] Evaluation {evaluations_done + 1}/{max_evaluations} ---")
-        
-        # Generate a completely new random subset (mask)
-        current_solution = create_random_mask(total_instances, keep_percentage)
-        
-        # Evaluate the generated mask using the provided fitness function
-        metrics_result = fitness_func(current_solution)
-        
-        # Defensive lookups avoiding key errors
-        current_fitness = metrics_result.get(target_metric.value, 0.0)
-        
-        # INYECCIÓN DE METADATOS: Enriquecemos el diccionario para alimentar a plot_utils de forma nativa
-        metrics_result["Algorithm"] = alg_id
-        metrics_result["Initial Percentage"] = keep_percentage
-        metrics_result["Final Percentage"] = keep_percentage  # En RS clásico se mantiene idéntico
-        metrics_result["Iteration"] = evaluations_done + 1
-        
-        # Store the enriched metrics dictionary for this iteration
-        fitness_history.append(metrics_result)
-        evaluations_done += 1
+    if not 0.0 < keep_percentage < 1.0:
+        raise ValueError(
+            f"'keep_percentage' must be in the interval (0, 1), "
+            f"but received {keep_percentage}. "
+            "The 100% dataset must be evaluated separately as the "
+            "full-dataset baseline."
+        )
 
-        # Check if the current solution improves the best known fitness
-        if current_fitness > best_fitness:
+    if max_evaluations <= 0:
+        raise ValueError(
+            f"'max_evaluations' must be greater than 0, "
+            f"but received {max_evaluations}."
+        )
+    
+    validate_search_subset_size(
+        total_instances=total_instances,
+        keep_percentage=keep_percentage,
+    )
+
+    algorithm_id = Algorithm.RANDOM_SEARCH.value
+    metric_name = target_metric.value
+
+    best_fitness = float("-inf")
+    best_solution: Mask = {}
+
+    best_solution_id: int | None = None
+    best_found_at_evaluation: int | None = None
+
+    fitness_history: list[HistoryEntry] = []
+    best_fitness_history: list[float] = []
+
+    logger.info(
+        "Starting %s | target_metric=%s | keep_percentage=%.4f | "
+        "max_evaluations=%d",
+        algorithm_id,
+        metric_name,
+        keep_percentage,
+        max_evaluations,
+    )
+
+    for evaluation in range(
+        1,
+        max_evaluations + 1,
+    ):
+        solution_id = evaluation
+
+        current_solution = create_random_mask(
+            total_instances=total_instances,
+            keep_percentage=keep_percentage,
+            rng=rng,
+        )
+
+        metrics_result = dict(
+            fitness_func(current_solution)
+        )
+
+        current_fitness = extract_fitness(
+            metrics=metrics_result,
+            metric_name=metric_name,
+        )
+
+        selected_instances = sum(
+            current_solution.values()
+        )
+
+        final_percentage = (
+            selected_instances / total_instances
+        )
+
+        improved_best = (
+            current_fitness > best_fitness
+        )
+
+        if improved_best:
             best_fitness = current_fitness
-            best_solution = current_solution.copy()  # Clonamos defensivamente para evitar mutaciones accidentales
-            evaluations_without_improvement = 0
-            print(f"New best solution found. {target_metric.value.capitalize()}: {best_fitness:.4f}")
-        else:
-            evaluations_without_improvement += 1
-            print(f"No improvement. Patience: {evaluations_without_improvement}/{patience}")
+            best_solution = current_solution.copy()
+            best_solution_id = solution_id
+            best_found_at_evaluation = evaluation
 
-        # Track the running best fitness score over time
-        best_fitness_history.append(best_fitness)
+            logger.info(
+                "[%s] New best at evaluation %d/%d | %s=%.6f",
+                algorithm_id,
+                evaluation,
+                max_evaluations,
+                metric_name,
+                best_fitness,
+            )
 
-        # Early stopping check based on patience
-        if evaluations_without_improvement >= patience:
-            print(f"Search terminated due to stagnation after {evaluations_done} evaluations.")
-            break
+        history_entry: HistoryEntry = dict(
+            metrics_result
+        )
 
-    print(f"[{alg_id}] Finished. Best {target_metric.value}: {best_fitness:.4f}")
-    
-    return best_solution, best_fitness, fitness_history, best_fitness_history, evaluations_done
+        history_entry.update(
+            {
+                "Algorithm": algorithm_id,
+                "Evaluation": evaluation,
+                "Solution ID": solution_id,
+                "Candidate Type": "random",
+                "Initial Percentage": keep_percentage,
+                "Final Percentage": final_percentage,
+                "Selected Instances": selected_instances,
+                "Target Metric": metric_name,
+                "Fitness": current_fitness,
+                "Best Fitness": best_fitness,
+                "Improved Best": improved_best,
+                "Best Solution ID": best_solution_id,
+                "Best Found At Evaluation":
+                    best_found_at_evaluation,
+            }
+        )
+
+        fitness_history.append(
+            history_entry
+        )
+
+        best_fitness_history.append(
+            best_fitness
+        )
+
+    evaluations_done = len(
+        fitness_history
+    )
+
+    logger.info(
+        "[%s] Finished | evaluations=%d | best_%s=%.6f",
+        algorithm_id,
+        evaluations_done,
+        metric_name,
+        best_fitness,
+    )
+
+    return (
+        best_solution,
+        best_fitness,
+        fitness_history,
+        best_fitness_history,
+        evaluations_done,
+    )

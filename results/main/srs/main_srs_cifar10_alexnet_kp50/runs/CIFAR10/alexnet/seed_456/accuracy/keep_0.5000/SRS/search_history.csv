@@ -1,0 +1,2 @@
+Algorithm,Candidate Type,Dataset,Evaluation,Experiment Name,Final Percentage,Fitness,Generated Subsets,Model,Requested Keep Percentage,Run ID,Search Seed,Selected Instances,Selection Duration Seconds,Split Seed,Target Metric,Training Seed,Uses Validation For Selection
+SRS,single_stratified_random_sample,CIFAR10,0,main_srs_cifar10_alexnet_kp50,0.5,,1,alexnet,0.5,CIFAR10_alexnet_SRS_accuracy_kp5000_seed456,456,20000,0.023860037326812744,42,accuracy,100456,False

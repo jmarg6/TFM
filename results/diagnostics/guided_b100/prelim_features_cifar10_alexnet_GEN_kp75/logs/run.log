@@ -1,0 +1,53 @@
+2026-07-24 00:32:02,077 | INFO | run_experiments | Experiment=prelim_features_cifar10_alexnet_GEN_kp75 | device=cuda | search_runs=5 | planned_fitness_evaluations=500
+2026-07-24 00:32:02,079 | INFO | run_experiments | Training protocol | pretrained=True | freeze_backbone=True | trainable_scope=replacement_classifier_only | representation=preextracted_features
+2026-07-24 00:32:02,079 | INFO | run_experiments | Preparing data | dataset=CIFAR10 | model=alexnet
+2026-07-24 00:32:02,864 | INFO | utils.data_utils | [Features] Tensors loaded | active_train=40000 | base_train=40000 | validation=10000 | test=10000 | classes=10
+2026-07-24 00:32:03,010 | INFO | run_experiments | Data ready | representation=preextracted_features | base_train=40000 | validation=10000 | test=10000 | classes=10 | image_size=0 | feature_dimension=4096
+2026-07-24 00:32:03,870 | INFO | run_experiments | Starting run CIFAR10_alexnet_GEN_accuracy_kp7500_seed42
+2026-07-24 00:32:03,870 | INFO | algorithms.genetic | Starting GEN | target_metric=accuracy | keep_percentage=0.7500 | population_size=10 | max_evaluations=100
+2026-07-24 00:41:13,308 | INFO | algorithms.genetic | [GEN] New best at evaluation 27/100 | generation=2 | accuracy=0.816300
+2026-07-24 00:41:54,145 | INFO | algorithms.genetic | [GEN] New best at evaluation 29/100 | generation=3 | accuracy=0.816800
+2026-07-24 00:50:43,116 | INFO | algorithms.genetic | [GEN] New best at evaluation 55/100 | generation=5 | accuracy=0.817700
+2026-07-24 01:05:18,294 | INFO | algorithms.genetic | [GEN] New best at evaluation 98/100 | generation=10 | accuracy=0.819900
+2026-07-24 01:05:59,027 | INFO | algorithms.genetic | [GEN] Finished | evaluations=100 | generations=10 | best_accuracy=0.819900
+2026-07-24 01:05:59,287 | INFO | run_experiments | Completed CIFAR10_alexnet_GEN_accuracy_kp7500_seed42 | evaluations=100 | best_accuracy=0.819900
+2026-07-24 01:06:00,290 | INFO | run_experiments | Starting run CIFAR10_alexnet_GEN_accuracy_kp7500_seed123
+2026-07-24 01:06:00,291 | INFO | algorithms.genetic | Starting GEN | target_metric=accuracy | keep_percentage=0.7500 | population_size=10 | max_evaluations=100
+2026-07-24 01:10:44,824 | INFO | algorithms.genetic | [GEN] New best at evaluation 14/100 | generation=1 | accuracy=0.812500
+2026-07-24 01:18:53,211 | INFO | algorithms.genetic | [GEN] New best at evaluation 38/100 | generation=4 | accuracy=0.814300
+2026-07-24 01:20:57,671 | INFO | algorithms.genetic | [GEN] New best at evaluation 44/100 | generation=4 | accuracy=0.817400
+2026-07-24 01:22:59,829 | INFO | algorithms.genetic | [GEN] New best at evaluation 50/100 | generation=5 | accuracy=0.821200
+2026-07-24 01:40:00,293 | INFO | algorithms.genetic | [GEN] Finished | evaluations=100 | generations=10 | best_accuracy=0.821200
+2026-07-24 01:40:00,950 | INFO | run_experiments | Completed CIFAR10_alexnet_GEN_accuracy_kp7500_seed123 | evaluations=100 | best_accuracy=0.821200
+2026-07-24 01:40:01,930 | INFO | run_experiments | Starting run CIFAR10_alexnet_GEN_accuracy_kp7500_seed456
+2026-07-24 01:40:01,930 | INFO | algorithms.genetic | Starting GEN | target_metric=accuracy | keep_percentage=0.7500 | population_size=10 | max_evaluations=100
+2026-07-24 01:43:46,871 | INFO | algorithms.genetic | [GEN] New best at evaluation 11/100 | generation=1 | accuracy=0.814000
+2026-07-24 01:48:13,000 | INFO | algorithms.genetic | [GEN] New best at evaluation 24/100 | generation=2 | accuracy=0.816000
+2026-07-24 01:49:14,385 | INFO | algorithms.genetic | [GEN] New best at evaluation 27/100 | generation=2 | accuracy=0.818700
+2026-07-24 02:14:13,639 | INFO | algorithms.genetic | [GEN] Finished | evaluations=100 | generations=10 | best_accuracy=0.818700
+2026-07-24 02:14:13,716 | INFO | run_experiments | Completed CIFAR10_alexnet_GEN_accuracy_kp7500_seed456 | evaluations=100 | best_accuracy=0.818700
+2026-07-24 02:14:14,670 | INFO | run_experiments | Starting run CIFAR10_alexnet_GEN_accuracy_kp7500_seed789
+2026-07-24 02:14:14,670 | INFO | algorithms.genetic | Starting GEN | target_metric=accuracy | keep_percentage=0.7500 | population_size=10 | max_evaluations=100
+2026-07-24 02:19:02,619 | INFO | algorithms.genetic | [GEN] New best at evaluation 14/100 | generation=1 | accuracy=0.816100
+2026-07-24 02:21:06,434 | INFO | algorithms.genetic | [GEN] New best at evaluation 20/100 | generation=2 | accuracy=0.816500
+2026-07-24 02:27:16,592 | INFO | algorithms.genetic | [GEN] New best at evaluation 38/100 | generation=4 | accuracy=0.818900
+2026-07-24 02:48:33,560 | INFO | algorithms.genetic | [GEN] Finished | evaluations=100 | generations=10 | best_accuracy=0.818900
+2026-07-24 02:48:33,671 | INFO | run_experiments | Completed CIFAR10_alexnet_GEN_accuracy_kp7500_seed789 | evaluations=100 | best_accuracy=0.818900
+2026-07-24 02:48:34,627 | INFO | run_experiments | Starting run CIFAR10_alexnet_GEN_accuracy_kp7500_seed1024
+2026-07-24 02:48:34,627 | INFO | algorithms.genetic | Starting GEN | target_metric=accuracy | keep_percentage=0.7500 | population_size=10 | max_evaluations=100
+2026-07-24 02:53:02,995 | INFO | algorithms.genetic | [GEN] New best at evaluation 13/100 | generation=1 | accuracy=0.817800
+2026-07-24 03:00:37,251 | INFO | algorithms.genetic | [GEN] New best at evaluation 35/100 | generation=3 | accuracy=0.819100
+2026-07-24 03:23:01,557 | INFO | algorithms.genetic | [GEN] Finished | evaluations=100 | generations=10 | best_accuracy=0.819100
+2026-07-24 03:23:01,671 | INFO | run_experiments | Completed CIFAR10_alexnet_GEN_accuracy_kp7500_seed1024 | evaluations=100 | best_accuracy=0.819100
+2026-07-24 03:23:02,144 | INFO | run_experiments | Experiment completed successfully: prelim_features_cifar10_alexnet_GEN_kp75
+2026-07-24 18:59:13,441 | INFO | run_experiments | Experiment=prelim_features_cifar10_alexnet_GEN_kp75 | device=cuda | search_runs=5 | planned_fitness_evaluations=500
+2026-07-24 18:59:13,450 | INFO | run_experiments | Training protocol | pretrained=True | freeze_backbone=True | trainable_scope=replacement_classifier_only | representation=preextracted_features
+2026-07-24 18:59:13,451 | INFO | run_experiments | Preparing data | dataset=CIFAR10 | model=alexnet
+2026-07-24 18:59:22,888 | INFO | utils.data_utils | [Features] Tensors loaded | active_train=40000 | base_train=40000 | validation=10000 | test=10000 | classes=10
+2026-07-24 18:59:23,028 | INFO | run_experiments | Data ready | representation=preextracted_features | base_train=40000 | validation=10000 | test=10000 | classes=10 | image_size=0 | feature_dimension=4096
+2026-07-24 18:59:24,258 | INFO | run_experiments | Skipping completed run CIFAR10_alexnet_GEN_accuracy_kp7500_seed42
+2026-07-24 18:59:47,173 | INFO | run_experiments | Skipping completed run CIFAR10_alexnet_GEN_accuracy_kp7500_seed123
+2026-07-24 19:00:09,422 | INFO | run_experiments | Skipping completed run CIFAR10_alexnet_GEN_accuracy_kp7500_seed456
+2026-07-24 19:00:31,179 | INFO | run_experiments | Skipping completed run CIFAR10_alexnet_GEN_accuracy_kp7500_seed789
+2026-07-24 19:00:53,079 | INFO | run_experiments | Skipping completed run CIFAR10_alexnet_GEN_accuracy_kp7500_seed1024
+2026-07-24 19:01:14,131 | INFO | run_experiments | Experiment completed successfully: prelim_features_cifar10_alexnet_GEN_kp75

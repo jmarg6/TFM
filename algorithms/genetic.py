@@ -1,223 +1,708 @@
+import logging
 import random
-from typing import Callable, Tuple, List, Dict
+from typing import Callable
 
-from utils.selection_utils import create_random_mask, mutate_mask
-from utils.config import Metric, Algorithm
+from utils.algorithm_utils import (
+    HistoryEntry,
+    Mask,
+    Metrics,
+    extract_fitness,
+    hamming_distance,
+    validate_mask,
+    validate_same_index_space,
+)
+from utils.config import Algorithm, Metric
+from utils.selection_utils import (
+    create_random_mask,
+    mutate_mask,
+    validate_search_subset_size,
+)
 
-def weighted_crossover(
-    parent1: Dict[int, int], 
-    parent2: Dict[int, int], 
-    fitness1: float = 1.0, 
-    fitness2: float = 1.0, 
-    adjust_size: bool = False
-) -> Tuple[Dict[int, int], Dict[int, int]]:
+
+# ==============================================================================
+# LOGGER
+# ==============================================================================
+
+logger = logging.getLogger(__name__)
+
+
+# ==============================================================================
+# CROSSOVER
+# ==============================================================================
+
+def fixed_size_crossover(
+    parent1: Mask,
+    parent2: Mask,
+    rng: random.Random | None = None,
+) -> tuple[Mask, Mask]:
     """
-    Performs crossover between two parents to generate two offspring.
-    
+    Generate two offspring using cardinality-preserving set-based crossover.
+
+    Instances selected by both parents are inherited by both offspring.
+
+    The selected instances on which the parents disagree are randomly divided
+    between the two offspring.
+
+    Both offspring preserve exactly the same number of selected instances as
+    their parents.
+
     Args:
-        parent1, parent2: The mask dictionaries of the parents.
-        fitness1, fitness2: Fitness scores of the parents used to bias trait selection.
-        adjust_size: If False, strictly maintains the exact number of selected images.
-                     If True, performs a uniform/weighted crossover where size can fluctuate.
-                     
+        parent1:
+            First parent selection mask.
+
+        parent2:
+            Second parent selection mask.
+
+        rng:
+            Optional pseudo-random number generator.
+
     Returns:
-        Two new child masks.
+        Two offspring with the same subset cardinality as the parents.
+
+    Raises:
+        ValueError:
+            If the parent masks are invalid or incompatible.
     """
-    child1 = parent1.copy()
-    child2 = parent2.copy()
+    validate_mask(parent1)
+    validate_mask(parent2)
 
-    if adjust_size:
-        # Flexible size: Use a probabilistic approach to inherit traits symmetrically
-        total_fitness = fitness1 + fitness2
-        prob1 = fitness1 / total_fitness if total_fitness > 0 else 0.5
-        
-        for key in child1.keys():
-            # If parent2 is preferred or wins the roll, swap genes symmetrically
-            if random.random() > prob1:
-                child1[key] = parent2[key]
-                child2[key] = parent1[key]
-                
-    else:
-        # Strict size: Swap exact differences to maintain the same total number of 1s
-        selected1 = set(img for img, val in parent1.items() if val == 1)
-        selected2 = set(img for img, val in parent2.items() if val == 1)
+    validate_same_index_space(
+        mask1=parent1,
+        mask2=parent2,
+    )
 
-        only_in_1 = list(selected1 - selected2)
-        only_in_2 = list(selected2 - selected1)
+    selected_parent1 = {
+        index
+        for index, selected in parent1.items()
+        if selected == 1
+    }
 
-        num_swap = min(len(only_in_1), len(only_in_2)) // 2
+    selected_parent2 = {
+        index
+        for index, selected in parent2.items()
+        if selected == 1
+    }
 
-        if num_swap > 0:
-            swap_from_1 = random.sample(only_in_1, num_swap)
-            swap_from_2 = random.sample(only_in_2, num_swap)
+    if len(selected_parent1) != len(selected_parent2):
+        raise ValueError(
+            "Both parents must select exactly the same number of instances."
+        )
 
-            # Perform the gene swap
-            for img1, img2 in zip(swap_from_1, swap_from_2):
-                child1[img1] = 0
-                child1[img2] = 1
+    generator = (
+        rng
+        if rng is not None
+        else random
+    )
 
-                child2[img2] = 0
-                child2[img1] = 1
+    common_selected = (
+        selected_parent1
+        & selected_parent2
+    )
 
-    return child1, child2
+    # Sorting removes any dependency on the internal iteration order of sets,
+    # improving reproducibility across executions and environments.
+    differing_selected = sorted(
+        selected_parent1
+        ^ selected_parent2
+    )
 
+    target_subset_size = len(
+        selected_parent1
+    )
+
+    num_to_select = (
+        target_subset_size
+        - len(common_selected)
+    )
+
+    if num_to_select == 0:
+        return (
+            parent1.copy(),
+            parent2.copy(),
+        )
+
+    child1_unique = set(
+        generator.sample(
+            differing_selected,
+            k=num_to_select,
+        )
+    )
+
+    child2_unique = (
+        set(differing_selected)
+        - child1_unique
+    )
+
+    child1_selected = (
+        common_selected
+        | child1_unique
+    )
+
+    child2_selected = (
+        common_selected
+        | child2_unique
+    )
+
+    child1 = {
+        index: int(index in child1_selected)
+        for index in parent1
+    }
+
+    child2 = {
+        index: int(index in child2_selected)
+        for index in parent1
+    }
+
+    return (
+        child1,
+        child2,
+    )
+
+
+# ==============================================================================
+# TOURNAMENT SELECTION
+# ==============================================================================
 
 def tournament_selection(
-    fitness_values: List[float], 
-    tournament_size: int = 3
+    fitness_values: list[float],
+    tournament_size: int = 3,
+    rng: random.Random | None = None,
+    excluded_index: int | None = None,
 ) -> int:
     """
-    Selects an individual from the population using tournament selection.
-    Returns the integer INDEX of the winner to guarantee O(1) performance.
-    """
-    tournament_indices = random.sample(range(len(fitness_values)), tournament_size)
-    tournament_fitness = [fitness_values[i] for i in tournament_indices]
-    
-    winner_idx = tournament_indices[tournament_fitness.index(max(tournament_fitness))]
-    return winner_idx
+    Select one individual using tournament selection.
 
+    Args:
+        fitness_values:
+            Fitness value associated with each population individual.
+
+        tournament_size:
+            Number of individuals participating in the tournament.
+
+        rng:
+            Optional pseudo-random number generator.
+
+        excluded_index:
+            Optional population index excluded from the tournament.
+
+    Returns:
+        Index of the tournament winner.
+    """
+    if not fitness_values:
+        raise ValueError(
+            "'fitness_values' must contain at least one value."
+        )
+
+    if tournament_size <= 0:
+        raise ValueError(
+            f"'tournament_size' must be greater than 0, "
+            f"but received {tournament_size}."
+        )
+
+    available_indices = [
+        index
+        for index in range(len(fitness_values))
+        if index != excluded_index
+    ]
+
+    if tournament_size > len(available_indices):
+        raise ValueError(
+            f"'tournament_size'={tournament_size} exceeds the number of "
+            f"available individuals ({len(available_indices)})."
+        )
+
+    generator = (
+        rng
+        if rng is not None
+        else random
+    )
+
+    tournament_indices = generator.sample(
+        available_indices,
+        k=tournament_size,
+    )
+
+    return max(
+        tournament_indices,
+        key=lambda index: fitness_values[index],
+    )
+
+
+# ==============================================================================
+# GENETIC ALGORITHM
+# ==============================================================================
 
 def genetic_algorithm(
-    fitness_func: Callable[[dict], dict],
+    fitness_func: Callable[[Mask], Metrics],
     total_instances: int,
     population_size: int = 10,
     keep_percentage: float = 0.1,
-    max_evaluations: int = 50,
-    patience: int = 10,
+    max_evaluations: int = 100,
     tournament_size: int = 3,
-    mutation_rate: float = 0.1,
+    mutation_probability: float = 0.1,
+    mutation_fraction: float = 0.05,
     target_metric: Metric = Metric.ACCURACY,
-    adjust_size: bool = False
-) -> Tuple[Dict[int, int], float, List[dict], List[float], int]:
+    rng: random.Random | None = None,
+) -> tuple[Mask, float, list[HistoryEntry], list[float], int]:
     """
-    Implements a Genetic Algorithm for instance selection.
+    Perform a fixed-size Genetic Algorithm for instance selection.
+
+    The algorithm uses:
+
+    - Random fixed-size initialization.
+    - Tournament selection.
+    - Cardinality-preserving crossover.
+    - Fixed-size swap mutation.
+    - One-individual elitism.
+    - A shared fixed fitness-evaluation budget.
 
     Args:
-        fitness_func: Function that receives a mask and returns the metrics.
-        total_instances: Total number of images in the original dataset.
-        population_size: Number of individuals in the population.
-        keep_percentage: Initial percentage of images to select.
-        max_evaluations: Maximum number of overall evaluations allowed.
-        patience: Stopping criterion if no improvements are found.
-        tournament_size: Size of the tournament for parent selection.
-        mutation_rate: Probability of mutating a newly created offspring.
-        target_metric: Metric to optimize.
-        adjust_size: Flag to determine if crossover should allow subset size fluctuation.
+        fitness_func:
+            Function receiving a binary selection mask and returning its
+            evaluation metrics.
+
+        total_instances:
+            Total number of candidate training instances.
+
+        population_size:
+            Number of individuals in each complete population.
+
+        keep_percentage:
+            Fraction of instances selected by every individual.
+
+        max_evaluations:
+            Exact maximum number of fitness evaluations.
+
+        tournament_size:
+            Number of individuals participating in each tournament.
+
+        mutation_probability:
+            Probability of applying mutation to each offspring.
+
+        mutation_fraction:
+            Fraction of selected instances exchanged when mutation occurs.
+
+        target_metric:
+            Metric used as the optimization objective.
+
+        rng:
+            Optional pseudo-random number generator.
 
     Returns:
-        Tuple containing: (Best Mask, Best Fitness, Metrics History, Best Fitness History, Total Evaluations)
+        A tuple containing the best solution, best fitness, complete evaluation
+        history, running best-fitness history, and number of evaluations.
     """
-    alg_id = Algorithm.FREE_GENETIC_V2.value if adjust_size else Algorithm.GENETIC.value
-    print(f"Starting {alg_id} (Target: {target_metric.value.upper()} | Initial Retention: {keep_percentage*100}%)")
+    if total_instances <= 0:
+        raise ValueError(
+            f"'total_instances' must be greater than 0, "
+            f"but received {total_instances}."
+        )
 
-    # 1. Generate and evaluate the initial population step-by-step
-    initial_pop_size = min(population_size, max_evaluations)
-    population = [create_random_mask(total_instances, keep_percentage) for _ in range(initial_pop_size)]
-    
-    fitness_dicts = []
-    fitness_history = []
+    if not 0.0 < keep_percentage < 1.0:
+        raise ValueError(
+            f"'keep_percentage' must be in the interval (0, 1), "
+            f"but received {keep_percentage}. "
+            "The 100% dataset must be evaluated separately as the "
+            "full-dataset baseline."
+        )
+
+    if population_size < 2:
+        raise ValueError(
+            f"'population_size' must be at least 2, "
+            f"but received {population_size}."
+        )
+
+    if max_evaluations < population_size:
+        raise ValueError(
+            "'max_evaluations' must be greater than or equal to "
+            "'population_size'."
+        )
+
+    if tournament_size <= 0:
+        raise ValueError(
+            f"'tournament_size' must be greater than 0, "
+            f"but received {tournament_size}."
+        )
+
+    if tournament_size > population_size - 1:
+        raise ValueError(
+            f"'tournament_size' must be less than or equal to "
+            f"population_size - 1 ({population_size - 1})."
+        )
+
+    if not 0.0 <= mutation_probability <= 1.0:
+        raise ValueError(
+            f"'mutation_probability' must be in the interval [0, 1], "
+            f"but received {mutation_probability}."
+        )
+
+    if not 0.0 < mutation_fraction <= 1.0:
+        raise ValueError(
+            f"'mutation_fraction' must be in the interval (0, 1], "
+            f"but received {mutation_fraction}."
+        )
+
+    validate_search_subset_size(
+        total_instances=total_instances,
+        keep_percentage=keep_percentage,
+    )
+
+    algorithm_id = Algorithm.GENETIC.value
+    metric_name = target_metric.value
+
+    population: list[Mask] = []
+    population_ids: list[int] = []
+    fitness_values: list[float] = []
+
+    fitness_history: list[HistoryEntry] = []
+    best_fitness_history: list[float] = []
+
+    best_solution: Mask = {}
+    best_fitness = float("-inf")
+    best_solution_id: int | None = None
+    best_found_at_evaluation: int | None = None
+
     evaluations_done = 0
+    generation = 0
 
-    for ind in population:
+    logger.info(
+        "Starting %s | target_metric=%s | keep_percentage=%.4f | "
+        "population_size=%d | max_evaluations=%d",
+        algorithm_id,
+        metric_name,
+        keep_percentage,
+        population_size,
+        max_evaluations,
+    )
+
+    # --------------------------------------------------------------------------
+    # Initial population
+    # --------------------------------------------------------------------------
+
+    for population_slot in range(
+        1,
+        population_size + 1,
+    ):
+        individual = create_random_mask(
+            total_instances=total_instances,
+            keep_percentage=keep_percentage,
+            rng=rng,
+        )
+
+        metrics_result = dict(
+            fitness_func(individual)
+        )
+
+        fitness = extract_fitness(
+            metrics=metrics_result,
+            metric_name=metric_name,
+        )
+
         evaluations_done += 1
-        print(f"--- [{alg_id}] Initial Pop Evaluation {evaluations_done}/{initial_pop_size} ---")
-        f_dict = fitness_func(ind)
-        
-        # Metadata Injection for tracking
-        current_pct = sum(ind.values()) / total_instances
-        hist_entry = f_dict.copy()
-        hist_entry.update({
-            "Algorithm": alg_id,
-            "Initial Percentage": keep_percentage,
-            "Final Percentage": current_pct,
-            "Iteration": evaluations_done
-        })
-        fitness_dicts.append(hist_entry)
-        fitness_history.append(hist_entry)
-        
-    fitness_values = [f_dict[target_metric.value] for f_dict in fitness_dicts]
+        solution_id = evaluations_done
 
-    # Track best individual
-    best_fitness_idx = fitness_values.index(max(fitness_values))
-    best_individual = population[best_fitness_idx].copy()
-    best_fitness = fitness_values[best_fitness_idx]
-    
-    best_fitness_history = [best_fitness]
-    evaluations_without_improvement = 0
+        population.append(
+            individual.copy()
+        )
 
-    # 2. Main Evolutionary Loop
+        population_ids.append(
+            solution_id
+        )
+
+        fitness_values.append(
+            fitness
+        )
+
+        improved_best = (
+            fitness > best_fitness
+        )
+
+        if improved_best:
+            best_solution = individual.copy()
+            best_fitness = fitness
+            best_solution_id = solution_id
+            best_found_at_evaluation = evaluations_done
+
+        selected_instances = sum(
+            individual.values()
+        )
+
+        history_entry: HistoryEntry = dict(
+            metrics_result
+        )
+
+        history_entry.update(
+            {
+                "Algorithm": algorithm_id,
+                "Evaluation": evaluations_done,
+                "Solution ID": solution_id,
+                "Generation": generation,
+                "Population Slot": population_slot,
+                "Candidate Type": "initial",
+                "Initial Percentage": keep_percentage,
+                "Final Percentage":
+                    selected_instances / total_instances,
+                "Selected Instances": selected_instances,
+                "Target Metric": metric_name,
+                "Fitness": fitness,
+                "Best Fitness": best_fitness,
+                "Improved Best": improved_best,
+                "Best Solution ID": best_solution_id,
+                "Best Found At Evaluation":
+                    best_found_at_evaluation,
+                "Parent 1 Index": None,
+                "Parent 2 Index": None,
+                "Parent 1 ID": None,
+                "Parent 2 ID": None,
+                "Parent 1 Fitness": None,
+                "Parent 2 Fitness": None,
+                "Parent Hamming Distance": None,
+                "Offspring Number": None,
+                "Crossover Hamming Parent 1": None,
+                "Crossover Hamming Parent 2": None,
+                "Mutation Applied": False,
+                "Mutation Swaps": 0,
+                "Mutation Hamming Distance": 0,
+            }
+        )
+
+        fitness_history.append(
+            history_entry
+        )
+
+        best_fitness_history.append(
+            best_fitness
+        )
+
+    # --------------------------------------------------------------------------
+    # Evolutionary process
+    # --------------------------------------------------------------------------
+
     while evaluations_done < max_evaluations:
-        new_population = []
-        new_fitness_dicts = []
+        generation += 1
 
-        # Elitism: carry over the best individual to the next generation
-        new_population.append(best_individual.copy())
-        new_fitness_dicts.append(fitness_dicts[best_fitness_idx])
+        elite_index = max(
+            range(len(population)),
+            key=lambda index: fitness_values[index],
+        )
 
-        # Generate new population
-        while len(new_population) < population_size and evaluations_done < max_evaluations:
-            
-            # Selection (Returns indices -> O(1) performance)
-            idx1 = tournament_selection(fitness_values, tournament_size)
-            idx2 = tournament_selection(fitness_values, tournament_size)
-            
-            parent1 = population[idx1]
-            parent2 = population[idx2]
-            fitness1 = fitness_values[idx1]
-            fitness2 = fitness_values[idx2]
+        new_population: list[Mask] = [
+            population[elite_index].copy()
+        ]
 
-            # Crossover
-            child1, child2 = weighted_crossover(parent1, parent2, fitness1, fitness2, adjust_size)
+        new_population_ids: list[int] = [
+            population_ids[elite_index]
+        ]
 
-            # Mutation (Clean linkage to selection_utils mutation rules)
-            child1 = mutate_mask(child1, mutation_rate, is_constrained=not adjust_size)
-            child2 = mutate_mask(child2, mutation_rate, is_constrained=not adjust_size)
+        new_fitness_values: list[float] = [
+            fitness_values[elite_index]
+        ]
 
-            # Evaluation
-            for child in [child1, child2]:
-                if len(new_population) < population_size and evaluations_done < max_evaluations:
-                    evaluations_done += 1
-                    print(f"--- [{alg_id}] Evaluation {evaluations_done}/{max_evaluations} ---")
-                    
-                    child_fitness_dict = fitness_func(child)
-                    
-                    # Metadata Injection
-                    child_pct = sum(child.values()) / total_instances
-                    hist_entry = child_fitness_dict.copy()
-                    hist_entry.update({
-                        "Algorithm": alg_id,
-                        "Initial Percentage": keep_percentage,
-                        "Final Percentage": child_pct,
-                        "Iteration": evaluations_done
-                    })
-                    
-                    new_population.append(child)
-                    new_fitness_dicts.append(hist_entry)
-                    fitness_history.append(hist_entry)
+        while (
+            len(new_population) < population_size
+            and evaluations_done < max_evaluations
+        ):
+            parent1_index = tournament_selection(
+                fitness_values=fitness_values,
+                tournament_size=tournament_size,
+                rng=rng,
+            )
 
-        # Update population state
+            parent2_index = tournament_selection(
+                fitness_values=fitness_values,
+                tournament_size=tournament_size,
+                rng=rng,
+                excluded_index=parent1_index,
+            )
+
+            parent1 = population[parent1_index]
+            parent2 = population[parent2_index]
+
+            parent1_id = population_ids[parent1_index]
+            parent2_id = population_ids[parent2_index]
+
+            parent1_fitness = fitness_values[parent1_index]
+            parent2_fitness = fitness_values[parent2_index]
+
+            parent_hamming = hamming_distance(
+                parent1,
+                parent2,
+            )
+
+            child1, child2 = fixed_size_crossover(
+                parent1=parent1,
+                parent2=parent2,
+                rng=rng,
+            )
+
+            for offspring_number, crossover_child in enumerate(
+                (child1, child2),
+                start=1,
+            ):
+                if (
+                    len(new_population) >= population_size
+                    or evaluations_done >= max_evaluations
+                ):
+                    break
+
+                child_before_mutation = (
+                    crossover_child.copy()
+                )
+
+                child = mutate_mask(
+                    mask=crossover_child,
+                    mutation_probability=mutation_probability,
+                    mutation_fraction=mutation_fraction,
+                    rng=rng,
+                )
+
+                mutation_hamming = hamming_distance(
+                    child_before_mutation,
+                    child,
+                )
+
+                metrics_result = dict(
+                    fitness_func(child)
+                )
+
+                fitness = extract_fitness(
+                    metrics=metrics_result,
+                    metric_name=metric_name,
+                )
+
+                evaluations_done += 1
+                solution_id = evaluations_done
+
+                new_population.append(
+                    child.copy()
+                )
+
+                new_population_ids.append(
+                    solution_id
+                )
+
+                new_fitness_values.append(
+                    fitness
+                )
+
+                improved_best = (
+                    fitness > best_fitness
+                )
+
+                if improved_best:
+                    best_solution = child.copy()
+                    best_fitness = fitness
+                    best_solution_id = solution_id
+                    best_found_at_evaluation = evaluations_done
+
+                    logger.info(
+                        "[%s] New best at evaluation %d/%d | "
+                        "generation=%d | %s=%.6f",
+                        algorithm_id,
+                        evaluations_done,
+                        max_evaluations,
+                        generation,
+                        metric_name,
+                        best_fitness,
+                    )
+
+                selected_instances = sum(
+                    child.values()
+                )
+
+                history_entry: HistoryEntry = dict(
+                    metrics_result
+                )
+
+                history_entry.update(
+                    {
+                        "Algorithm": algorithm_id,
+                        "Evaluation": evaluations_done,
+                        "Solution ID": solution_id,
+                        "Generation": generation,
+                        "Population Slot":
+                            len(new_population),
+                        "Candidate Type": "offspring",
+                        "Initial Percentage":
+                            keep_percentage,
+                        "Final Percentage":
+                            selected_instances
+                            / total_instances,
+                        "Selected Instances":
+                            selected_instances,
+                        "Target Metric":
+                            metric_name,
+                        "Fitness":
+                            fitness,
+                        "Best Fitness":
+                            best_fitness,
+                        "Improved Best":
+                            improved_best,
+                        "Best Solution ID":
+                            best_solution_id,
+                        "Best Found At Evaluation":
+                            best_found_at_evaluation,
+                        "Parent 1 Index":
+                            parent1_index + 1,
+                        "Parent 2 Index":
+                            parent2_index + 1,
+                        "Parent 1 ID":
+                            parent1_id,
+                        "Parent 2 ID":
+                            parent2_id,
+                        "Parent 1 Fitness":
+                            parent1_fitness,
+                        "Parent 2 Fitness":
+                            parent2_fitness,
+                        "Parent Hamming Distance":
+                            parent_hamming,
+                        "Offspring Number":
+                            offspring_number,
+                        "Crossover Hamming Parent 1":
+                            hamming_distance(
+                                parent1,
+                                child_before_mutation,
+                            ),
+                        "Crossover Hamming Parent 2":
+                            hamming_distance(
+                                parent2,
+                                child_before_mutation,
+                            ),
+                        "Mutation Applied":
+                            mutation_hamming > 0,
+                        "Mutation Swaps":
+                            mutation_hamming // 2,
+                        "Mutation Hamming Distance":
+                            mutation_hamming,
+                    }
+                )
+
+                fitness_history.append(
+                    history_entry
+                )
+
+                best_fitness_history.append(
+                    best_fitness
+                )
+
         population = new_population
-        fitness_dicts = new_fitness_dicts
-        fitness_values = [f_dict[target_metric.value] for f_dict in fitness_dicts]
+        population_ids = new_population_ids
+        fitness_values = new_fitness_values
 
-        # Check for global improvements
-        current_best_idx = fitness_values.index(max(fitness_values))
-        if fitness_values[current_best_idx] > best_fitness:
-            best_individual = population[current_best_idx].copy()
-            best_fitness = fitness_values[current_best_idx]
-            best_fitness_idx = current_best_idx
-            evaluations_without_improvement = 0
-            print(f"New best solution found. {target_metric.value.capitalize()}: {best_fitness:.4f}")
-        else:
-            evaluations_without_improvement += 1
-            print(f"Generation finished without improvement. Patience: {evaluations_without_improvement}/{patience}")
+    logger.info(
+        "[%s] Finished | evaluations=%d | generations=%d | "
+        "best_%s=%.6f",
+        algorithm_id,
+        evaluations_done,
+        generation,
+        metric_name,
+        best_fitness,
+    )
 
-        best_fitness_history.append(best_fitness)
-
-        # Check stagnation
-        if evaluations_without_improvement >= patience:
-            print(f"Search terminated due to stagnation after {evaluations_done} evaluations.")
-            break
-
-    print(f"[{alg_id}] Finished. Best {target_metric.value}: {best_fitness:.4f}")
-    return best_individual, best_fitness, fitness_history, best_fitness_history, evaluations_done
+    return (
+        best_solution,
+        best_fitness,
+        fitness_history,
+        best_fitness_history,
+        evaluations_done,
+    )

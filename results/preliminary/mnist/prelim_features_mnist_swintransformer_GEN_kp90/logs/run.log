@@ -1,0 +1,34 @@
+2026-07-21 02:38:34,867 | INFO | run_experiments | Experiment=prelim_features_mnist_swintransformer_GEN_kp90 | device=cuda | search_runs=5 | planned_fitness_evaluations=500
+2026-07-21 02:38:34,870 | INFO | run_experiments | Training protocol | pretrained=True | freeze_backbone=True | trainable_scope=replacement_classifier_only | representation=preextracted_features
+2026-07-21 02:38:34,870 | INFO | run_experiments | Preparing data | dataset=MNIST | model=swintransformer
+2026-07-21 02:38:38,656 | INFO | utils.data_utils | [Features] Tensors loaded | active_train=48000 | base_train=48000 | validation=12000 | test=10000 | classes=10
+2026-07-21 02:38:38,802 | INFO | run_experiments | Data ready | representation=preextracted_features | base_train=48000 | validation=12000 | test=10000 | classes=10 | image_size=0 | feature_dimension=768
+2026-07-21 02:38:40,381 | INFO | run_experiments | Starting run MNIST_swintransformer_GEN_accuracy_kp9000_seed42
+2026-07-21 02:38:40,382 | INFO | algorithms.genetic | Starting GEN | target_metric=accuracy | keep_percentage=0.9000 | population_size=10 | max_evaluations=100
+2026-07-21 02:46:27,400 | INFO | algorithms.genetic | [GEN] New best at evaluation 17/100 | generation=1 | accuracy=0.973333
+2026-07-21 02:57:21,250 | INFO | algorithms.genetic | [GEN] New best at evaluation 41/100 | generation=4 | accuracy=0.973917
+2026-07-21 03:03:47,406 | INFO | algorithms.genetic | [GEN] New best at evaluation 57/100 | generation=6 | accuracy=0.974000
+2026-07-21 03:22:38,312 | INFO | algorithms.genetic | [GEN] Finished | evaluations=100 | generations=10 | best_accuracy=0.974000
+2026-07-21 03:22:38,406 | INFO | run_experiments | Completed MNIST_swintransformer_GEN_accuracy_kp9000_seed42 | evaluations=100 | best_accuracy=0.974000
+2026-07-21 03:22:39,501 | INFO | run_experiments | Starting run MNIST_swintransformer_GEN_accuracy_kp9000_seed123
+2026-07-21 03:22:39,502 | INFO | algorithms.genetic | Starting GEN | target_metric=accuracy | keep_percentage=0.9000 | population_size=10 | max_evaluations=100
+2026-07-21 03:28:20,255 | INFO | algorithms.genetic | [GEN] New best at evaluation 13/100 | generation=1 | accuracy=0.974250
+2026-07-21 04:07:16,537 | INFO | algorithms.genetic | [GEN] Finished | evaluations=100 | generations=10 | best_accuracy=0.974250
+2026-07-21 04:07:16,657 | INFO | run_experiments | Completed MNIST_swintransformer_GEN_accuracy_kp9000_seed123 | evaluations=100 | best_accuracy=0.974250
+2026-07-21 04:07:17,747 | INFO | run_experiments | Starting run MNIST_swintransformer_GEN_accuracy_kp9000_seed456
+2026-07-21 04:07:17,748 | INFO | algorithms.genetic | Starting GEN | target_metric=accuracy | keep_percentage=0.9000 | population_size=10 | max_evaluations=100
+2026-07-21 04:20:58,818 | INFO | algorithms.genetic | [GEN] New best at evaluation 30/100 | generation=3 | accuracy=0.973417
+2026-07-21 04:35:21,432 | INFO | algorithms.genetic | [GEN] New best at evaluation 61/100 | generation=6 | accuracy=0.973500
+2026-07-21 04:53:02,824 | INFO | algorithms.genetic | [GEN] Finished | evaluations=100 | generations=10 | best_accuracy=0.973500
+2026-07-21 04:53:02,918 | INFO | run_experiments | Completed MNIST_swintransformer_GEN_accuracy_kp9000_seed456 | evaluations=100 | best_accuracy=0.973500
+2026-07-21 04:53:04,185 | INFO | run_experiments | Starting run MNIST_swintransformer_GEN_accuracy_kp9000_seed789
+2026-07-21 04:53:04,185 | INFO | algorithms.genetic | Starting GEN | target_metric=accuracy | keep_percentage=0.9000 | population_size=10 | max_evaluations=100
+2026-07-21 04:58:26,138 | INFO | algorithms.genetic | [GEN] New best at evaluation 12/100 | generation=1 | accuracy=0.974167
+2026-07-21 05:38:14,891 | INFO | algorithms.genetic | [GEN] Finished | evaluations=100 | generations=10 | best_accuracy=0.974167
+2026-07-21 05:38:14,983 | INFO | run_experiments | Completed MNIST_swintransformer_GEN_accuracy_kp9000_seed789 | evaluations=100 | best_accuracy=0.974167
+2026-07-21 05:38:16,057 | INFO | run_experiments | Starting run MNIST_swintransformer_GEN_accuracy_kp9000_seed1024
+2026-07-21 05:38:16,057 | INFO | algorithms.genetic | Starting GEN | target_metric=accuracy | keep_percentage=0.9000 | population_size=10 | max_evaluations=100
+2026-07-21 06:06:31,048 | INFO | algorithms.genetic | [GEN] New best at evaluation 63/100 | generation=6 | accuracy=0.974250
+2026-07-21 06:23:03,538 | INFO | algorithms.genetic | [GEN] Finished | evaluations=100 | generations=10 | best_accuracy=0.974250
+2026-07-21 06:23:03,630 | INFO | run_experiments | Completed MNIST_swintransformer_GEN_accuracy_kp9000_seed1024 | evaluations=100 | best_accuracy=0.974250
+2026-07-21 06:23:03,913 | INFO | run_experiments | Experiment completed successfully: prelim_features_mnist_swintransformer_GEN_kp90

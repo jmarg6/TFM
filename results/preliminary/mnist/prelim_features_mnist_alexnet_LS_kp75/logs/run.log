@@ -1,0 +1,47 @@
+2026-07-18 17:19:28,579 | INFO | run_experiments | Experiment=prelim_features_mnist_alexnet_LS_kp75 | device=cuda | search_runs=5 | planned_fitness_evaluations=500
+2026-07-18 17:19:28,582 | INFO | run_experiments | Training protocol | pretrained=True | freeze_backbone=True | trainable_scope=replacement_classifier_only | representation=preextracted_features
+2026-07-18 17:19:28,582 | INFO | run_experiments | Preparing data | dataset=MNIST | model=alexnet
+2026-07-18 17:19:29,381 | INFO | utils.data_utils | [Features] Tensors loaded | active_train=48000 | base_train=48000 | validation=12000 | test=10000 | classes=10
+2026-07-18 17:19:29,511 | INFO | run_experiments | Data ready | representation=preextracted_features | base_train=48000 | validation=12000 | test=10000 | classes=10 | image_size=0 | feature_dimension=4096
+2026-07-18 17:19:30,444 | INFO | run_experiments | Starting run MNIST_alexnet_LS_accuracy_kp7500_seed42
+2026-07-18 17:19:30,444 | INFO | algorithms.local_search | Starting LS | target_metric=accuracy | keep_percentage=0.7500 | max_evaluations=100 | num_swaps=10
+2026-07-18 17:20:34,073 | INFO | algorithms.local_search | [LS] New best at evaluation 2/100 | accuracy=0.975500
+2026-07-18 18:11:51,549 | INFO | algorithms.local_search | [LS] Finished | evaluations=100 | best_accuracy=0.975500
+2026-07-18 18:11:51,629 | INFO | run_experiments | Completed MNIST_alexnet_LS_accuracy_kp7500_seed42 | evaluations=100 | best_accuracy=0.975500
+2026-07-18 18:11:52,649 | INFO | run_experiments | Starting run MNIST_alexnet_LS_accuracy_kp7500_seed123
+2026-07-18 18:11:52,649 | INFO | algorithms.local_search | Starting LS | target_metric=accuracy | keep_percentage=0.7500 | max_evaluations=100 | num_swaps=10
+2026-07-18 18:12:55,666 | INFO | algorithms.local_search | [LS] New best at evaluation 2/100 | accuracy=0.970417
+2026-07-18 18:13:27,122 | INFO | algorithms.local_search | [LS] New best at evaluation 3/100 | accuracy=0.971417
+2026-07-18 18:13:58,676 | INFO | algorithms.local_search | [LS] New best at evaluation 4/100 | accuracy=0.972667
+2026-07-18 18:17:38,647 | INFO | algorithms.local_search | [LS] New best at evaluation 11/100 | accuracy=0.973333
+2026-07-18 18:20:15,418 | INFO | algorithms.local_search | [LS] New best at evaluation 16/100 | accuracy=0.974417
+2026-07-18 18:27:35,495 | INFO | algorithms.local_search | [LS] New best at evaluation 30/100 | accuracy=0.974917
+2026-07-18 18:50:09,145 | INFO | algorithms.local_search | [LS] New best at evaluation 73/100 | accuracy=0.975333
+2026-07-18 19:04:20,442 | INFO | algorithms.local_search | [LS] Finished | evaluations=100 | best_accuracy=0.975333
+2026-07-18 19:04:20,534 | INFO | run_experiments | Completed MNIST_alexnet_LS_accuracy_kp7500_seed123 | evaluations=100 | best_accuracy=0.975333
+2026-07-18 19:04:21,560 | INFO | run_experiments | Starting run MNIST_alexnet_LS_accuracy_kp7500_seed456
+2026-07-18 19:04:21,560 | INFO | algorithms.local_search | Starting LS | target_metric=accuracy | keep_percentage=0.7500 | max_evaluations=100 | num_swaps=10
+2026-07-18 19:05:24,706 | INFO | algorithms.local_search | [LS] New best at evaluation 2/100 | accuracy=0.974000
+2026-07-18 19:08:01,942 | INFO | algorithms.local_search | [LS] New best at evaluation 7/100 | accuracy=0.974917
+2026-07-18 19:11:11,183 | INFO | algorithms.local_search | [LS] New best at evaluation 13/100 | accuracy=0.975250
+2026-07-18 19:38:30,816 | INFO | algorithms.local_search | [LS] New best at evaluation 65/100 | accuracy=0.975583
+2026-07-18 19:56:55,000 | INFO | algorithms.local_search | [LS] Finished | evaluations=100 | best_accuracy=0.975583
+2026-07-18 19:56:55,092 | INFO | run_experiments | Completed MNIST_alexnet_LS_accuracy_kp7500_seed456 | evaluations=100 | best_accuracy=0.975583
+2026-07-18 19:56:56,119 | INFO | run_experiments | Starting run MNIST_alexnet_LS_accuracy_kp7500_seed789
+2026-07-18 19:56:56,119 | INFO | algorithms.local_search | Starting LS | target_metric=accuracy | keep_percentage=0.7500 | max_evaluations=100 | num_swaps=10
+2026-07-18 19:57:59,282 | INFO | algorithms.local_search | [LS] New best at evaluation 2/100 | accuracy=0.972417
+2026-07-18 19:58:30,717 | INFO | algorithms.local_search | [LS] New best at evaluation 3/100 | accuracy=0.973750
+2026-07-18 20:01:40,253 | INFO | algorithms.local_search | [LS] New best at evaluation 9/100 | accuracy=0.975167
+2026-07-18 20:03:46,762 | INFO | algorithms.local_search | [LS] New best at evaluation 13/100 | accuracy=0.975250
+2026-07-18 20:33:49,644 | INFO | algorithms.local_search | [LS] New best at evaluation 70/100 | accuracy=0.975917
+2026-07-18 20:49:38,469 | INFO | algorithms.local_search | [LS] Finished | evaluations=100 | best_accuracy=0.975917
+2026-07-18 20:49:38,547 | INFO | run_experiments | Completed MNIST_alexnet_LS_accuracy_kp7500_seed789 | evaluations=100 | best_accuracy=0.975917
+2026-07-18 20:49:39,575 | INFO | run_experiments | Starting run MNIST_alexnet_LS_accuracy_kp7500_seed1024
+2026-07-18 20:49:39,575 | INFO | algorithms.local_search | Starting LS | target_metric=accuracy | keep_percentage=0.7500 | max_evaluations=100 | num_swaps=10
+2026-07-18 20:50:42,946 | INFO | algorithms.local_search | [LS] New best at evaluation 2/100 | accuracy=0.971833
+2026-07-18 20:51:14,810 | INFO | algorithms.local_search | [LS] New best at evaluation 3/100 | accuracy=0.973583
+2026-07-18 20:52:17,966 | INFO | algorithms.local_search | [LS] New best at evaluation 5/100 | accuracy=0.975167
+2026-07-18 21:03:54,180 | INFO | algorithms.local_search | [LS] New best at evaluation 27/100 | accuracy=0.975583
+2026-07-18 21:42:30,384 | INFO | algorithms.local_search | [LS] Finished | evaluations=100 | best_accuracy=0.975583
+2026-07-18 21:42:30,698 | INFO | run_experiments | Completed MNIST_alexnet_LS_accuracy_kp7500_seed1024 | evaluations=100 | best_accuracy=0.975583
+2026-07-18 21:42:31,473 | INFO | run_experiments | Experiment completed successfully: prelim_features_mnist_alexnet_LS_kp75

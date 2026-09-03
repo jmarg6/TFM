@@ -1,0 +1,35 @@
+2026-07-21 07:08:45,415 | INFO | run_experiments | Experiment=prelim_features_mnist_swintransformer_MEM_kp25 | device=cuda | search_runs=5 | planned_fitness_evaluations=500
+2026-07-21 07:08:45,417 | INFO | run_experiments | Training protocol | pretrained=True | freeze_backbone=True | trainable_scope=replacement_classifier_only | representation=preextracted_features
+2026-07-21 07:08:45,417 | INFO | run_experiments | Preparing data | dataset=MNIST | model=swintransformer
+2026-07-21 07:08:49,925 | INFO | utils.data_utils | [Features] Tensors loaded | active_train=48000 | base_train=48000 | validation=12000 | test=10000 | classes=10
+2026-07-21 07:08:50,079 | INFO | run_experiments | Data ready | representation=preextracted_features | base_train=48000 | validation=12000 | test=10000 | classes=10 | image_size=0 | feature_dimension=768
+2026-07-21 07:08:51,955 | INFO | run_experiments | Starting run MNIST_swintransformer_MEM_accuracy_kp2500_seed42
+2026-07-21 07:08:51,955 | INFO | algorithms.memetic | Starting MEM | target_metric=accuracy | keep_percentage=0.2500 | population_size=10 | max_evaluations=100
+2026-07-21 07:26:48,040 | INFO | algorithms.memetic | [MEM] Finished | evaluations=100 | generations=5 | best_accuracy=0.963833
+2026-07-21 07:26:48,089 | INFO | run_experiments | Completed MNIST_swintransformer_MEM_accuracy_kp2500_seed42 | evaluations=100 | best_accuracy=0.963833
+2026-07-21 07:26:49,226 | INFO | run_experiments | Starting run MNIST_swintransformer_MEM_accuracy_kp2500_seed123
+2026-07-21 07:26:49,226 | INFO | algorithms.memetic | Starting MEM | target_metric=accuracy | keep_percentage=0.2500 | population_size=10 | max_evaluations=100
+2026-07-21 07:33:33,066 | INFO | algorithms.memetic | [MEM] New best during Local Search at evaluation 37/100 | generation=1 | accuracy=0.961750
+2026-07-21 07:44:32,352 | INFO | algorithms.memetic | [MEM] Finished | evaluations=100 | generations=4 | best_accuracy=0.962583
+2026-07-21 07:44:32,397 | INFO | run_experiments | Completed MNIST_swintransformer_MEM_accuracy_kp2500_seed123 | evaluations=100 | best_accuracy=0.962583
+2026-07-21 07:44:33,531 | INFO | run_experiments | Starting run MNIST_swintransformer_MEM_accuracy_kp2500_seed456
+2026-07-21 07:44:33,531 | INFO | algorithms.memetic | Starting MEM | target_metric=accuracy | keep_percentage=0.2500 | population_size=10 | max_evaluations=100
+2026-07-21 07:50:56,485 | INFO | algorithms.memetic | [MEM] New best during Local Search at evaluation 33/100 | generation=1 | accuracy=0.960833
+2026-07-21 07:55:11,751 | INFO | algorithms.memetic | [MEM] New best during Local Search at evaluation 56/100 | generation=2 | accuracy=0.961583
+2026-07-21 07:55:32,699 | INFO | algorithms.memetic | [MEM] New best during Local Search at evaluation 58/100 | generation=2 | accuracy=0.962000
+2026-07-21 07:56:06,926 | INFO | algorithms.memetic | [MEM] New best during Local Search at evaluation 61/100 | generation=2 | accuracy=0.962083
+2026-07-21 07:56:40,381 | INFO | algorithms.memetic | [MEM] New best during Local Search at evaluation 64/100 | generation=2 | accuracy=0.962750
+2026-07-21 08:02:54,403 | INFO | algorithms.memetic | [MEM] Finished | evaluations=100 | generations=4 | best_accuracy=0.962750
+2026-07-21 08:02:54,478 | INFO | run_experiments | Completed MNIST_swintransformer_MEM_accuracy_kp2500_seed456 | evaluations=100 | best_accuracy=0.962750
+2026-07-21 08:02:55,593 | INFO | run_experiments | Starting run MNIST_swintransformer_MEM_accuracy_kp2500_seed789
+2026-07-21 08:02:55,593 | INFO | algorithms.memetic | Starting MEM | target_metric=accuracy | keep_percentage=0.2500 | population_size=10 | max_evaluations=100
+2026-07-21 08:08:08,171 | INFO | algorithms.memetic | [MEM] New best during Local Search at evaluation 27/100 | generation=2 | accuracy=0.962583
+2026-07-21 08:21:08,462 | INFO | algorithms.memetic | [MEM] Finished | evaluations=100 | generations=4 | best_accuracy=0.962583
+2026-07-21 08:21:08,590 | INFO | run_experiments | Completed MNIST_swintransformer_MEM_accuracy_kp2500_seed789 | evaluations=100 | best_accuracy=0.962583
+2026-07-21 08:21:09,719 | INFO | run_experiments | Starting run MNIST_swintransformer_MEM_accuracy_kp2500_seed1024
+2026-07-21 08:21:09,719 | INFO | algorithms.memetic | Starting MEM | target_metric=accuracy | keep_percentage=0.2500 | population_size=10 | max_evaluations=100
+2026-07-21 08:25:45,022 | INFO | algorithms.memetic | [MEM] New best during Local Search at evaluation 26/100 | generation=1 | accuracy=0.961333
+2026-07-21 08:26:06,050 | INFO | algorithms.memetic | [MEM] New best during Local Search at evaluation 28/100 | generation=1 | accuracy=0.961667
+2026-07-21 08:38:56,848 | INFO | algorithms.memetic | [MEM] Finished | evaluations=100 | generations=4 | best_accuracy=0.961667
+2026-07-21 08:38:56,896 | INFO | run_experiments | Completed MNIST_swintransformer_MEM_accuracy_kp2500_seed1024 | evaluations=100 | best_accuracy=0.961667
+2026-07-21 08:38:57,193 | INFO | run_experiments | Experiment completed successfully: prelim_features_mnist_swintransformer_MEM_kp25
