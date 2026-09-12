@@ -2,8 +2,8 @@ dataset_name,method,mean_block_rank,block_wins
 CIFAR-10,GA,1.8,11
 CIFAR-10,KCG,2.84,4
 CIFAR-10,RS,2.52,8
-CIFAR-10,SRS,2.84,2
+CIFAR-10,SSRS,2.84,2
 Tiny ImageNet,GA,2.52,4
 Tiny ImageNet,KCG,2.64,8
 Tiny ImageNet,RS,2.4,7
-Tiny ImageNet,SRS,2.44,6
+Tiny ImageNet,SSRS,2.44,6
